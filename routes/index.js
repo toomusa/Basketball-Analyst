@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const apiRoutes = require("./api");
-const htmlRoutes = 
+const apiRoutes = require("./api/apiRoutes.js");
+const htmlRoutes = require("./html/htmlRoutes.js");
 
 router.use("/api", apiRoutes);
-
-router.get("/", (req, res) => res.send("Yeeee"));
+router.use("/html", htmlRoutes);
 
 module.exports = router;
 
+ 

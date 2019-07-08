@@ -1,13 +1,18 @@
 const express = require("express");
 const router = express.Router();
 
-const todosController = require("./../../../controllers/todosController.js");
+const htmlController = require("../../controllers/html/htmlController.js");
 
 router.route("/")
-    .get(todosController.findAll);
+    .get(htmlController.findAll);
 
-router.route("/:id")
-    .delete(todosController.deleteById)
-    .get(todosController.findById);
+router.route("/search")
+    .get(htmlController.findAll);
+
+router.route("/dashboard")
+    .get(htmlController.findAll);
+
+router.route("/contact")
+    .get(htmlController.findAll);
 
 module.exports = router;
