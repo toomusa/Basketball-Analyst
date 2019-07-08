@@ -1,13 +1,18 @@
 const express = require("express");
 const router = express.Router();
 
-const todosController = require("./../../../controllers/todosController.js");
+const authController = require("../../controllers/auth/authController.js");
 
 router.route("/")
-    .get(todosController.findAll);
+    .get(authController.findAll);
 
-router.route("/:id")
-    .delete(todosController.deleteById)
-    .get(todosController.findById);
+router.route("/search")
+    .get(authController.findAll);
+
+router.route("/dashboard")
+    .get(authController.findAll);
+
+router.route("/contact")
+    .get(authController.findAll);
 
 module.exports = router;

@@ -2,6 +2,7 @@
 //----------------------------------------------------
 const express = require("express");
 const exphbs = require("express-handlebars");
+const path = require("path");
 
 
 const PORT = process.env.PORT || 3000;
@@ -12,6 +13,7 @@ const app = express();
 // Middleware
 //----------------------------------------------------
 app.use(express.urlencoded({extended: true}));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.static('public')); 
 // Set Handlebars as the default templating engine.

@@ -1,10 +1,18 @@
 const express = require("express");
 const router = express.Router();
 
-const todoRoutes = require("./todos");
+const apiController = require("../../controllers/api/apiController.js");
 
-router.use("/todos", todoRoutes);
+router.route("/api")
+    .get(apiController.findAll);
 
-router.get("/", (req, res) => res.send("I am inside /api"));
+router.route("/api/save")
+    .get(apiController.findAll);
+
+router.route("/api/read")
+    .get(apiController.findAll);
+
+router.route("/api/delete")
+    .get(apiController.findAll);
 
 module.exports = router;

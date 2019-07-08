@@ -1,12 +1,12 @@
-DROP DATABASE IF EXISTS todo_db;
+DROP DATABASE IF EXISTS bball_db;
 
-CREATE DATABASE todo_db;
+CREATE DATABASE bball_db;
 
-USE todo_db;
+USE bball_db;
 
-CREATE TABLE todos (
-    id INTEGER AUTO_INCREMENT,
-    text VARCHAR (255) NOT NULL,
+CREATE TABLE users (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    user VARCHAR (255) NOT NULL,
     completed BOOLEAN DEFAULT 0,
     PRIMARY KEY (id)
 );
