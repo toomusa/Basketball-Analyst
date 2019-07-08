@@ -1,18 +1,18 @@
 const express = require("express");
 const router = express.Router();
 
-const htmlController = require("../../controllers/html/htmlController.js");
+const authController = require("../../controllers/auth/authController.js");
 
 router.route("/")
-    .get(htmlController.findAll);
+    .get(authController.findAll);
 
 router.route("/search")
-    .get(htmlController.findAll);
+    .get(authController.findAll);
 
 router.route("/dashboard")
-    .get(htmlController.findAll);
+    .get(authController.findAll);
 
 router.route("/contact")
-    .get(htmlController.findAll);
+    .get(authController.findAll);
 
 module.exports = router;
