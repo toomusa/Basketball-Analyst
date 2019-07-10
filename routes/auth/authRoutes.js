@@ -1,18 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-const htmlController = require("../../controllers/html/htmlController.js");
+const authController = require("../../controllers/auth/authController.js");
 
-router.route("/")
-    .get(htmlController.findAll);
+// router.route("/auth").get(authController.userLogin);
 
-router.route("/login")
-    .get(htmlController.findAll);
+router.route("/login").post(authController.userLogin);
 
-router.route("/logout")
-    .get(htmlController.findAll);
+// router.route("/auth/signup").get(authController.findAll);
 
-router.route("/register")
-    .get(htmlController.findAll);
+// router.route("/auth/logout").get(authController.findAll);
 
 module.exports = router;

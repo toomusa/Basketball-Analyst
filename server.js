@@ -8,14 +8,12 @@ const path = require("path");
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-// const routes = require("./routes");
+const routes = require("./routes/index.js");
 
 // Middleware
 //----------------------------------------------------
-app.use(express.urlencoded({
-  extended: true
-}));
-app.use(express.static(path.join(__dirname, "public")));
+
+app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static('public'));
 // Set Handlebars as the default templating engine.
@@ -24,28 +22,9 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
-
 // Routing
 //----------------------------------------------------
-// app.use(routes);
-
-// Routes
-app.get("/", function (req, res) {
-  res.render("index");
-});
-
-app.get("/dashboard", function (req, res) {
-  res.render("dashboard");
-});
-
-app.get("/search", function (req, res) {
-  res.render("search");
-});
-
-app.get("/contact", function (req, res) {
-  res.render("contact");
-});
-
+app.use(routes);
 
 // Listening to the server on port 3000
 app.listen(PORT, function () {
