@@ -5,5 +5,16 @@ const authModal = require("../../models/auth/authModels.js");
 
 
 module.exports = {
-
+    goHome: (req, res) => {
+        res.render("index", {title: "Home"});
+    },
+    goDashboard: (req, res) => {
+        res.render("dashboard", {title: "Dashboard"});
+    },
+    goSearch: (req, res) => {
+        res.render("search", {title: "Search"});
+    },
+    goContact: (req, res) => {
+        res.render("contact", {title: "Contact"});
+    }
 };

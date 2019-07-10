@@ -1,37 +1,6 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark row">
-    <div class="col-sm-0"></div>
-    <div class="ml-5 col-sm-5 col-md-5 col-lg-5 col-xl-4">
-        <h4 class="text-light">Basketball Analytics</h4>
-    </div>
+{{>header}}
 
-    <button class="navbar-toggler mt-3" type="button" data-toggle="collapse" data-target="#navbarToggler"
-        aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="col-sm-2"></div>
-    <div class="col-sm-5">
-        <div class="collapse navbar-collapse mr-5">
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="/dashboard">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/search">Search</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/contact">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="col-sm-1"></div>
-</nav>
-
-<div class="contact-us jumbotron mx-5 mt-5 py-3 px-3">
-
-
-    {{!-- contact us form  --}}
+<div class="container">
     <div class="contact-form">
         <section class="mb-4">
 
@@ -56,7 +25,8 @@
                             <div class="col-md-6">
                                 <div class="md-form mb-0">
                                     <label for="name" class="yourname">Your name</label>
-                                    <input type="text" id="name" name="name" class="form-control">
+                                    <input type="text" id="name" name="name" class="form-control"
+                                        placeholder="Enter your name">
                                 </div>
                             </div>
                             <!--Grid column-->
@@ -65,7 +35,8 @@
                             <div class="col-md-6">
                                 <div class="md-form mb-0">
                                     <label for="email" class="youremail">Your email</label>
-                                    <input type="text" id="email" name="email" class="form-control">
+                                    <input type="text" id="email" name="email" class="form-control"
+                                        placeholder="Enter your email">
                                 </div>
                             </div>
                             <!--Grid column-->
@@ -91,8 +62,7 @@
                                 <div class="md-form">
                                     <label class="yourmessage" for="message">Your message</label>
                                     <textarea type="text" id="message" name="message" rows="2"
-                                        class="form-control md-textarea">
-                                        </textarea>
+                                        class="form-control md-textarea"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +71,8 @@
                     </form>
 
                     <div class="text-center text-md-left">
-                        <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+                        <a class="btn btn-outline-primary btn-md "
+                            onclick="document.getElementById('contact-form').submit();">Send</a>
                     </div>
                     <div class="status"></div>
                 </div>
@@ -129,4 +100,7 @@
 
         </section>
     </div>
+
 </div>
+
+{{>footer}}

@@ -14,11 +14,33 @@
   min-height: 250px;
 }
 
+.searchChecks {
+  min-height: 250px;
+}
+
+.customFunctions {
+  min-height: 280px;
+}
+
 .loginBox {
   min-height: 60%;
   width: 30%;
   position: fixed;
   right: 10%;
-  top: 25%; 
+  top: 25%;
   background: rgba(52, 58, 64, 1);
 }
+
+.house {
+  display:block;
+  position:absolute;
+  background:url('/public/assets/images/james-harden.jpg');
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  width:122px;
+  height:148px;
+  float:right;
+  bottom:0;
+  right:0;
+}
+
