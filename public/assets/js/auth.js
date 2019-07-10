@@ -34,12 +34,6 @@ btnLogin.addEventListener("click", e => {
     //     }
     // })
 
-    // fetch("/auth", {
-    //     method: "POST",
-    //     body: JSON.stringify({email, password})
-    // }).then(res => console.log("RES: " + res))
-    //   .catch(err => console.error(err));
-
     const promise = auth.signInWithEmailAndPassword(email, password);
     promise.catch(e => console.error(e.message));
     // window.location.href = '/dashboard';
