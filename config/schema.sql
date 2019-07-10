@@ -4,10 +4,11 @@ CREATE DATABASE bball_db;
 
 USE bball_db;
 
-CREATE TABLE users (
+CREATE TABLE players (
     id INTEGER NOT NULL AUTO_INCREMENT,
-    user VARCHAR (255) NOT NULL,
-    completed BOOLEAN DEFAULT 0,
+    playerName VARCHAR(100) NOT NULL,
+    teamName VARCHAR(100) NOT NULL,
+    teamId INTEGER,
     PRIMARY KEY (id)
 );
 

@@ -1,29 +1,107 @@
+{{>header}}
 
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark row">
-  <div class="col-sm-0"></div>
-  <div class="ml-5 col-sm-5 col-md-5 col-lg-5 col-xl-4">
-      <h4 class="text-light">Basketball Analytics</h4>
-  </div>
+<div class="container">
+    <div class="contact-form">
+        <section class="mb-4">
 
-  <button class="navbar-toggler mt-3" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-  </button>
-  
-  <div class="col-sm-2"></div>
-  <div class="col-sm-5">
-      <div class="collapse navbar-collapse mr-5">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-              <li class="nav-item">
-                  <a class="nav-link" href="/dashboard">Dashboard</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="/search">Search</a>
-              </li>
-              <li class="nav-item active">
-                  <a class="nav-link" href="/contact">Contact</a>
-              </li>
-          </ul>
-      </div>
-  </div>
-  <div class="col-sm-1"></div>
-</nav>
+            <!--Section heading-->
+            <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+            <!--Section description-->
+            <p id="contactbodyintro" class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do
+                not hesitate to
+                contact us directly. Our team will come back to you within
+                a matter of hours to help you.</p>
+
+            <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-9 mb-md-0 mb-5">
+                    <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+
+                        <!--Grid row-->
+                        <div class="row">
+
+                            <!--Grid column-->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <label for="name" class="yourname">Your name</label>
+                                    <input type="text" id="name" name="name" class="form-control"
+                                        placeholder="Enter your name">
+                                </div>
+                            </div>
+                            <!--Grid column-->
+
+                            <!--Grid column-->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <label for="email" class="youremail">Your email</label>
+                                    <input type="text" id="email" name="email" class="form-control"
+                                        placeholder="Enter your email">
+                                </div>
+                            </div>
+                            <!--Grid column-->
+
+                        </div>
+                        <!--Grid row-->
+
+                        <!--Grid row-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="md-form mb-0">
+                                    <label for="subject" class="subject">Subject</label>
+                                    <input type="text" id="subject" name="subject" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <!--Grid row-->
+
+                        <!--Grid row-->
+                        <div class="row">
+                            <!--Grid column-->
+                            <div class="col-md-12">
+                                <div class="md-form">
+                                    <label class="yourmessage" for="message">Your message</label>
+                                    <textarea type="text" id="message" name="message" rows="2"
+                                        class="form-control md-textarea"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Grid row-->
+
+                    </form>
+
+                    <div class="text-center text-md-left">
+                        <a class="btn btn-outline-primary btn-md "
+                            onclick="document.getElementById('contact-form').submit();">Send</a>
+                    </div>
+                    <div class="status"></div>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-3 text-center">
+                    <ul class="list-unstyled mb-0">
+                        <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                            <p>San Francisco, CA 94126, USA</p>
+                        </li>
+
+                        <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                            <p>+ 01 234 567 89</p>
+                        </li>
+
+                        <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                            <p>contact@mdbootstrap.com</p>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+            </div>
+
+        </section>
+    </div>
+
+</div>
+</div>
+
+{{>footer}}
