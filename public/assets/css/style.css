@@ -14,6 +14,14 @@
   min-height: 250px;
 }
 
+.searchChecks {
+  min-height: 250px;
+}
+
+.customFunctions {
+  min-height: 280px;
+}
+
 .loginBox {
   min-height: 60%;
   width: 30%;
