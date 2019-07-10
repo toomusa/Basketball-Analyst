@@ -1,18 +1,19 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark row">
   <div class="col-sm-0"></div>
   <div class="ml-5 col-sm-5 col-md-5 col-lg-5 col-xl-4">
-      <h4 class="text-light">Basketball Analytics</h4>
+    <h4 class="text-light">Basketball Analytics</h4>
   </div>
 
-  <button class="navbar-toggler mt-3" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
+  <button class="navbar-toggler mt-3" type="button" data-toggle="collapse" data-target="#navbarToggler"
+    aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
 </nav>
 
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-        <img src="http://localhost:3000/assets/images/jumpShot.jpg" class="d-block w-100" alt="...">
+      <img src="http://localhost:3000/assets/images/jumpShot.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
       <img src="http://localhost:3000/assets/images/james-harden.jpg" class="d-block w-100" alt="...">
@@ -33,22 +34,24 @@
 </div>
 
 <div class="loginBox jumbotron text-light py-3">
-  <div class="login"><h4>Login</h4></div>
+  <div class="login">
+    <h4>Login</h4>
+  </div>
   <form action="/api/login" method="POST" class="loginForm">
-  <div class="form form-group">
-    <label for="name">Enter your username: </label>
-    <input class="form-control" type="text" name="username" id="username" required>
-  </div>
-  <div class="form form-group">
-    <label for="email">Enter your email: </label>
-    <input class="form-control" type="email" name="email" id="email" required>
-  </div>
-  <div class="form form-group">
-    <label for="password">Enter your password:  </label>
-    <input class="form-control" type="password" name="psswd" id="password" maxlength="32" required>
-  </div>
-  <div class="form">
-    <input class="btn btn-light" type="submit" value="Start!">
-  </div>
-</form>
+    <div class="form form-group">
+      <label for="name">Enter your username: </label>
+      <input class="form-control" type="text" name="username" id="username" required>
+    </div>
+    <div class="form form-group">
+      <label for="email">Enter your email: </label>
+      <input class="form-control" type="email" name="email" id="email" required>
+    </div>
+    <div class="form form-group">
+      <label for="password">Enter your password: </label>
+      <input class="form-control" type="password" name="psswd" id="password" maxlength="32" required>
+    </div>
+    <div class="form">
+      <input class="btn btn-light" type="submit" value="Start!">
+    </div>
+  </form>
 </div>
