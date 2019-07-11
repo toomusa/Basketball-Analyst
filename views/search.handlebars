@@ -19,14 +19,25 @@
               <button type="button" class="btn btn-secondary teamButton">Team</button>
             </div>
           </div>
-          <div class="playerSearchBar">
+          <div class="playerSearchBar row mx-0">
             <label>Search For a Player</label>
-            <input id="playerSearch" class="form-control" type="text" placeholder="Kevin Durant">
+            <input id="playerSearch" class="form-control col-sm-10 pr-0 mr-0" type="text" placeholder="Kevin Durant">
+            <div class="pull-right col-sm-2 pl-0 ml-0">
+              <button type="button" class="playerAddBtn btn btn-block btn-success ml-3 btnAdd"> + </button>
+            </div>
           </div>
-          <div class="teamSearchBar mt-2">
+          <div class="teamSearchBar row mt-2 mx-0">
             <label>Search For a Team</label>
-            <input id="teamSearch" class="form-control" type="text" placeholder="Golden State Warriors">
+            <input id="teamSearch" class="form-control col-sm-10 pr-0 mr-0" type="text" placeholder="Golden State Warriors"/>
+            <div class="pull-right col-sm-2 pl-0 ml-0">
+              <button type="button" class="teamAddBtn btn btn-block btn-success ml-3 btnAdd"> + </button>
+            </div>
           </div>
+          <div class="listAppend mt-2">
+            <label>List</label>
+            <textarea readonly class="form-control listAdd" id="formtextArea" rows="4"></textarea>
+          </div>
+
         </div>
       </div>
     </div>
@@ -42,72 +53,68 @@
               <div class="row row1">
                 <div class="form-check col-sm-3">
                   <input class="form-check-input" type="checkbox" id="date" value="date">
-                  <button class="btn btn-secondary" type="button" id="" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Date Range
-                  </button>
+                  <label>Date Range</label>
                 </div>
-                <div class="col-sm-5 datePicker formBox" id="reportrange"
-                  style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%; min-height:38px;">
+                <div class="col-sm-5 custom-select">
+                  <div class="datePicker" id="reportrange">
+                  {{!-- style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%; min-height:38px;" --}}
                   <i class="fa fa-calendar"></i>&nbsp;
-                  <span></span> <i class="fa fa-caret-down"></i>
+                  <span id="spanDate"></span> <i class="fa fa-caret-down"></i>
+                </div>
                 </div>
               </div>
 
               <div class="row row2 mt-3">
                 <div class="form-check col-sm-3">
                   <input class="form-check-input" type="checkbox" id="season" value="season">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Season
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuPlayoff">
-                    <a class="dropdown-item 2019playoff">2019 Playoff</a>
-                    <a class="dropdown-item 2018-2019regular">2018-2019 Regular</a>
-                    <a class="dropdown-item 2018playoff">2018 Playoff</a>
-                    <a class="dropdown-item 2017-2018regular">2017-2018 Regular</a>
-                    <a class="dropdown-item 2017playoff">2017 Playoff</a>
-                    <a class="dropdown-item 2016-2017regular">2016-2017 Regular</a>
-                    <a class="dropdown-item 2016playoff">2016 Playoff</a>
-                    <a class="dropdown-item 2015-2016regular">2015-2016 Regular</a>
-                  </div>
+                  <label>Season</label>
                 </div>
-                <div id="seasonInput" class="col-sm-5 formBox"></div>
+                <div class="col-sm-5 px-0">
+                  <select id="seasonInput" class="selector custom-select pl-3" aria-labelledby="dropdownMenuButton">
+                    <option class="nbaSeason" name="2019playoff">Current</option>
+                    <option class="nbaSeason" name="2019playoff">2019 Playoff</option>
+                    <option class="nbaSeason" name="2018-2019regular">2018-2019 Regular</option>
+                    <option class="nbaSeason" name="2018playoff">2018 Playoff</option>
+                    <option class="nbaSeason" name="2017-2018regular">2017-2018 Regular</option>
+                    <option class="nbaSeason" name="2017playoff">2017 Playoff</option>
+                    <option class="nbaSeason" name="2016-2017regular">2016-2017 Regular</option>
+                    <option class="nbaSeason" name="2016playoff">2016 Playoff</option>
+                    <option class="nbaSeason" name="2015-2016regular">2015-2016 Regular</option>
+                  </select>
+                </div>
             </div>
 
             <div class="row row3 mt-3">
                 <div class="form-check col-sm-3">
                   <input class="form-check-input" type="checkbox" id="season" value="season">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Position
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuPlayoff">
-                    <a class="dropdown-item">Point Guard</a>
-                    <a class="dropdown-item">Shooting Guard</a>
-                    <a class="dropdown-item">Small Forward</a>
-                    <a class="dropdown-item">Power Forward</a>
-                    <a class="dropdown-item">Center</a>
-                  </div>
+                  <label>Position</label>
                 </div>
-                <div id="positionInput" class="col-sm-5 formBox"></div>
+                <div class="col-sm-5 px-0">
+                  <select id="positionInput" class="selector custom-select pl-3" aria-labelledby="dropdownMenuPlayoff">
+                    <option class="">All</option>
+                    <option class="">Point Guard</option>
+                    <option class="">Shooting Guard</option>
+                    <option class="">Small Forward</option>
+                    <option class="">Power Forward</option>
+                    <option class="">Center</option>
+                  </select>
+                </div>
             </div>
 
             <div class="row row4 mt-3">
                 <div class="form-check col-sm-3">
                   <input class="form-check-input" type="checkbox" id="season" value="season">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Roster Status
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuPlayoff">
-                    <a class="dropdown-item">Available</a>
-                    <a class="dropdown-item">Probable</a>
-                    <a class="dropdown-item">Suspended</a>
-                    <a class="dropdown-item">Out</a>
-                  </div>
+                  <label>Roster Status</label>
+                  
                 </div>
-                <div id="positionInput" class="col-sm-5 formBox"></div>
+                <div class="col-sm-5 px-0">
+                  <select id="rosterStatus" class="selector custom-select pl-3" aria-labelledby="dropdownMenuPlayoff">
+                    <option class="">Available</option>
+                    <option class="">Probable</option>
+                    <option class="">Suspended</option>
+                    <option class="">Out</option>
+                  </select>
+                </div>
             </div>
           </div>
         </div>
@@ -129,7 +136,7 @@
 
 
 
-        <div class="col-sm align-self-end"><button type="submit" class="btn btn-primary float-right">Submit</button>
+        <div class="col-sm align-self-end"><button type="submit" class="searchSubmit btn btn-primary float-right">Submit</button>
         </div>
 
       </div>
