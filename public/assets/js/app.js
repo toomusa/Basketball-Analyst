@@ -10,3 +10,19 @@ const checkboxMaker = (obj) => {
   }
 }
 
+let apikey_token = "1895dd8d-e910-476e-a495-9f7980"
+
+$.ajax
+({
+  type: "GET",
+  url: "https://cors-anywhere.herokuapp.com/" + "https://api.mysportsfeeds.com/v2.1/pull/nba/players",
+  dataType: 'json',
+  async: false,
+  headers: {
+    "Authorization": `Basic btoa({1895dd8d-e910-476e-a495-9f7980}): MYSPORTSFEEDS`
+  },
+  data: '{ "comment" }',
+  success: function (){
+    alert('Thanks for your comment!'); 
+  }
+});
