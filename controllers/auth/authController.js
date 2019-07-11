@@ -9,13 +9,17 @@ const auth = require('../../config/keys').auth;
 
 module.exports = {
     userLogin: async (req, res) => {
-        let {email} = req.body;
-        let {password} = req.body;
-        const user = await auth.signInWithEmailAndPassword(email, password);
-        // const promise = auth.signInWithEmailAndPassword(email, password);
-        // promise.catch(e => console.error(e.message));
+        let {userId} = req.body;
+
+        // query mysql users table
+        // if user.uid exists in mysql
+        //     query mysql for exisiting queries 
+        //     render api queries to dashboard
+        // render dashboard
+        // else
+        // render search
+
         console.log("userLogin works!");
-        // console.log(res);
         res.json({email, password, user});
     }
 };
