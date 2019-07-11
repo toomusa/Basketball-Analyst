@@ -420,3 +420,5 @@ const API = {
         return seasonalTeamStats;
     }
 }
+
+module.exports=API;

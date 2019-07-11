@@ -11,13 +11,20 @@
 }
 
 .search {
-  min-height: 250px;
+  min-height: 270px;
 }
 
-.searchChecks {
-  min-height: 250px;
-}
+/* .searchChecks {
+  min-height: 200px;
+} */
 
+.searchParams {
+  min-height: 200px;
+} 
+
+.cardMiddle {
+  min-height: 300px;
+}
 .customFunctions {
   min-height: 280px;
 }
@@ -42,5 +49,9 @@
   float:right;
   bottom:0;
   right:0;
+}
+
+.datePicker {
+  height: 50px;
 }
 
