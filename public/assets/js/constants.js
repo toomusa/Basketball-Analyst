@@ -470,3 +470,20 @@ const API = {
         } 
     } 
 } 
+
+const checkboxMaker = (obj) => {
+    for(let key in obj) {
+        for(let keyy in obj[key]){
+            for(let keyyy in obj[key][keyy]) {
+                let newDiv = $(`<div class="col-sm-4">`);
+                newDiv.append(`<div class="form-check">
+                <input class="form-check-input" type="checkbox" id="${keyyy}" value="${keyyy}">
+                <label class="form-check-label" for="inlineCheckbox3">${obj[key][keyy][keyyy]}</label>
+                </div>`);
+                $('.searchChecks').prepend(newDiv);
+                }
+            }
+        }
+    }
+
+  checkboxMaker(API);
