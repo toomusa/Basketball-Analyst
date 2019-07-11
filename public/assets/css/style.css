@@ -52,6 +52,11 @@
 }
 
 .datePicker {
-  height: 50px;
+  height: 35px;
 }
 
+.formBox {
+  border-style: solid;
+  border-width: 1px;
+  border-color:#EBC2C2;
+}

@@ -32,20 +32,90 @@
     </div>
 
     <div class="col-sm-8 ml-0">
-      <div class="card cardMiddle">
-        <div class="card-body">
-          <h5>Parameters</h5>
-        </div>
-        <div class="card-body searchParams row ">
-          {{!-- daterangepicker.com --}}
-          <div class="col-sm-4 datePicker" id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-            <i class="fa fa-calendar"></i>&nbsp;
-            <span></span> <i class="fa fa-caret-down"></i>
+      <div class="row params">
+        <div class="col-sm-12">
+          <div class="card cardMiddle">
+              <h5 class="mx-4 mt-4">Parameters</h5>
+            <div class="card-body searchParams mx-3">
+              {{!-- daterangepicker.com --}}
+
+              <div class="row row1">
+                <div class="form-check col-sm-3">
+                  <input class="form-check-input" type="checkbox" id="date" value="date">
+                  <button class="btn btn-secondary" type="button" id="" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Date Range
+                  </button>
+                </div>
+                <div class="col-sm-5 datePicker formBox" id="reportrange"
+                  style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%; min-height:38px;">
+                  <i class="fa fa-calendar"></i>&nbsp;
+                  <span></span> <i class="fa fa-caret-down"></i>
+                </div>
+              </div>
+
+              <div class="row row2 mt-3">
+                <div class="form-check col-sm-3">
+                  <input class="form-check-input" type="checkbox" id="season" value="season">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Season
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuPlayoff">
+                    <a class="dropdown-item 2019playoff">2019 Playoff</a>
+                    <a class="dropdown-item 2018-2019regular">2018-2019 Regular</a>
+                    <a class="dropdown-item 2018playoff">2018 Playoff</a>
+                    <a class="dropdown-item 2017-2018regular">2017-2018 Regular</a>
+                    <a class="dropdown-item 2017playoff">2017 Playoff</a>
+                    <a class="dropdown-item 2016-2017regular">2016-2017 Regular</a>
+                    <a class="dropdown-item 2016playoff">2016 Playoff</a>
+                    <a class="dropdown-item 2015-2016regular">2015-2016 Regular</a>
+                  </div>
+                </div>
+                <div id="seasonInput" class="col-sm-5 formBox"></div>
+            </div>
+
+            <div class="row row3 mt-3">
+                <div class="form-check col-sm-3">
+                  <input class="form-check-input" type="checkbox" id="season" value="season">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Position
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuPlayoff">
+                    <a class="dropdown-item">Point Guard</a>
+                    <a class="dropdown-item">Shooting Guard</a>
+                    <a class="dropdown-item">Small Forward</a>
+                    <a class="dropdown-item">Power Forward</a>
+                    <a class="dropdown-item">Center</a>
+                  </div>
+                </div>
+                <div id="positionInput" class="col-sm-5 formBox"></div>
+            </div>
+
+            <div class="row row4 mt-3">
+                <div class="form-check col-sm-3">
+                  <input class="form-check-input" type="checkbox" id="season" value="season">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Roster Status
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuPlayoff">
+                    <a class="dropdown-item">Available</a>
+                    <a class="dropdown-item">Probable</a>
+                    <a class="dropdown-item">Suspended</a>
+                    <a class="dropdown-item">Out</a>
+                  </div>
+                </div>
+                <div id="positionInput" class="col-sm-5 formBox"></div>
+            </div>
           </div>
+        </div>
+      </div>
+        
 
           {{!-- Season, Date, Roster Status(out, probable, suspended,), Position, Country --}}
-
-        </div>
+        
 
       </div>
     </div>
