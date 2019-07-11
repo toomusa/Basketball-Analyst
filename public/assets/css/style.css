@@ -11,13 +11,20 @@
 }
 
 .search {
-  min-height: 250px;
+  min-height: 270px;
 }
 
-.searchChecks {
-  min-height: 250px;
-}
+/* .searchChecks {
+  min-height: 200px;
+} */
 
+.searchParams {
+  min-height: 200px;
+} 
+
+.cardMiddle {
+  min-height: 300px;
+}
 .customFunctions {
   min-height: 280px;
 }
@@ -44,3 +51,12 @@
   right:0;
 }
 
+.datePicker {
+  height: 35px;
+}
+
+.formBox {
+  border-style: solid;
+  border-width: 1px;
+  border-color:#EBC2C2;
+}
