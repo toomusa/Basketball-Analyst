@@ -16,5 +16,8 @@ module.exports = {
     },
     goContact: (req, res) => {
         res.render("contact", {title: "Contact"});
+    },
+    goError: (req, res) => {
+        res.render("error" , {title: "Error"});
     }
 };

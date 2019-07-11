@@ -11,4 +11,5 @@ router.route("/search").get(htmlController.goSearch);
 
 router.route("/contact").get(htmlController.goContact);
 
+router.route("/*").get(htmlController.goError);
 module.exports = router;
