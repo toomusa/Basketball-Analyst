@@ -1,4 +1,13 @@
-// =================================player vs team button logic on frontend search ====================================
+
+//default
+$('.playerSearchBar').show();
+$('.teamSearchBar').hide();
+
+
+$(document).ready(function() {
+// =================================calendar function====================================
+
+
 $(function() {
 
     var start = moment().subtract(29, 'days');
@@ -24,9 +33,45 @@ $(function() {
     cb(start, end);
 
 });
+// ==================================Params Section Search Page===============================
+// $(document).on('click', '.nbaSeason', () => {
+//   let currentSeason = $(this).text();
+//   let currentSeason = $('.nbaSeason option:selected').text();
+//   console.log(currentSeason + "3");
+//   $('#seasonInput').text(currentSeason);
+// })
 
+//player search click functions
+$(document).on('click', '.playerButton', function(){
+  $('.playerSearchBar').show();
+  $('.teamSearchBar').hide();
+  $('.listAdd').empty();
+});
 
+$(document).on('click', '.teamButton', function(){
+  $('.playerSearchBar').hide();
+  $('.teamSearchBar').show();
+  $('.listAdd').empty();
+});
 
+$(document).on('click', '.searchSubmit', () => {
+  event.preventDefault();
+  
+  let date = $('#spanDate').val();
+  let season = $('#seasonInput').val();
+  let position = $('#positionInput').val();
+  let roster = $('#rosterStatus').val();
+
+  let searchObj = {
+    date, season, position, roster
+  }
+
+  console.log(searchObj);
+
+  $.post('api/search', searchObj, () =>{
+    console.log("SENT BBY");
+  })
+})
 // =================================player vs team button logic on frontend search ====================================
 // var MySportsFeeds = require("mysportsfeeds-node");
 // var msf = new MySportsFeeds("2.0", true);
@@ -59,4 +104,6 @@ $.ajax
   success: function (){
     alert('Thanks for your comment!'); 
   }
+});
+
 });
