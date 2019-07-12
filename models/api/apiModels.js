@@ -1,7 +1,7 @@
+let objectsbe;
 
 const API = {
     players: (data) => {
-        console.log(data.players[0].player.firstName);
         const players = {
             plyrLastUpdatedOn: data.lastUpdatedOn,
             plyrId: data.players[0].player.id,
