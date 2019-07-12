@@ -72,6 +72,7 @@ auth.onAuthStateChanged(user => {
         //         window.location.href = '/search';
         //     }
         // }
+
         // $(btnLogout).removeClass("d-none");
     } else {
         console.log("not logged in");
