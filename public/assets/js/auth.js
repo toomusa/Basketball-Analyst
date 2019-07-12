@@ -63,11 +63,7 @@ btnLogout.addEventListener("click", e => {
 auth.onAuthStateChanged(user => {
     if (user) {
         console.log(user.uid);
-        
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 504142d305f36bb782f4c7fb5c18646db8a19419
+
         // $.post("/auth/login", user.uid, function(data) {
         //     // some code
         //     if(data) {
@@ -76,21 +72,17 @@ auth.onAuthStateChanged(user => {
         //         window.location.href = '/search';
         //     }
         // }
-<<<<<<< HEAD
-=======
-        $.post("/auth/login", user.uid, function(data) {
-            // some code
-            if(data) {
-                window.location.href = '/dashboard';
-            } else {
-                window.location.href = '/search';
-            }
-        }
 
-    })
->>>>>>> 1a455ead2869afdb828fcb5676cae3415cb7df1f
-=======
->>>>>>> 504142d305f36bb782f4c7fb5c18646db8a19419
+    //     $.post("/auth/login", user.uid, function(data) {
+    //         // some code
+    //         if(data) {
+    //             window.location.href = '/dashboard';
+    //         } else {
+    //             window.location.href = '/search';
+    //         }
+    //     }
+
+    // })
         // $(btnLogout).removeClass("d-none");
     } else {
         console.log("not logged in");
