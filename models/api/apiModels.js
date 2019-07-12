@@ -1,9 +1,8 @@
-players.[key].d
 
 const API = {
     players: (data) => {
         const players = {
-            plyrLastUpdatedOn: [data.lastUpdatedOn, "Last Updated On"],
+            plyrLastUpdatedOn: data.lastUpdatedOn,
             plyrId: data.players[0].player.id,
             plyrFirstName: data.players[0].player.firstName,
             plyrLastName: data.players[0].player.lastName,
