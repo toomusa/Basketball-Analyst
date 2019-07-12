@@ -90,10 +90,10 @@ body {
   margin-top: 30px;
   color: #5294FB;
   padding: 10px 0 10px 0;
-  letter-spacing: 1px;
   text-shadow: .2px .2px #fff;
   background-color: #ff9800;
   margin-bottom: 0;
+  border-top: 3px solid #5294FB;
 }
 
 
@@ -111,10 +111,16 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 700;
-  /* background-color: #EBC2C2; */
   background-image: linear-gradient(to right, red, yellow);
   padding: 10px;
   margin: 0;
   border: 1px solid #fff;
   border-radius: 50%;
+}
+
+/*********************************
+ Contact Form
+**********************************/
+.contact-form {
+  margin-top: 30px;
 }
