@@ -4,6 +4,7 @@ const router = express.Router();
 const apiController = require("../../controllers/api/apiController.js");
 
 router.route("/search").post(apiController.queryData);
+// router.route("/search/response").get(apiController.queryData);
 
 // router.route("/api/save")
 //     .get(apiController.findAll);

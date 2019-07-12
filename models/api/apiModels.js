@@ -1,6 +1,7 @@
 
 const API = {
-    players = (data) => {
+    players: (data) => {
+        console.log(data.players[0].player.firstName);
         const players = {
             plyrLastUpdatedOn: data.lastUpdatedOn,
             plyrId: data.players[0].player.id,
@@ -40,8 +41,9 @@ const API = {
             plyrTeamAsOfDateAbbreviation: data.players[0].teamAsOfDate.abbreviation
         }
         return players;
+        // console.log(playersData);
     },
-    playerInjuries = (data) => {
+    playerInjuries: (data) => {
         const playerInjuries = {
             plijLastUpdatedOn: data.lastUpdatedOn,
             plijId: data.players[0].id,
@@ -69,7 +71,7 @@ const API = {
         }
         return playerInjuries;
     },
-    dailyPlayerGameLogs = (data) => {
+    dailyPlayerGameLogs: (data) => {
         const dailyPlayerGameLogs = {
             dpglLatestUpdatedOn: data.lastUpdatedOn,
             dpglGameId: data.gamelogs[0].game.id,
@@ -153,7 +155,7 @@ const API = {
         }
         return dailyPlayerGameLogs;
     },
-    dailyTeamGamelogs = (data) => {
+    dailyTeamGamelogs: (data) => {
         const dailyTeamGamelogs = {
             dtglLastUpdatedOn: data.lastUpdatedOn,
             dtglGameId: data.gamelogs[0].game.id,
@@ -241,7 +243,7 @@ const API = {
         }
         return dailyTeamGamelogs;
     },
-    seasonalPlayerStats = (data) => {
+    seasonalPlayerStats: (data) => {
         const seasonalPlayerStats = {
             splsLastUpdatedOn: data.lastUpdatedOn,
             splsPlayerId: data.playerStatsTotals[0].player.id,
@@ -332,7 +334,7 @@ const API = {
         }
         return seasonalPlayerStats;
     },
-    seasonalTeamStats = (data) => {
+    seasonalTeamStats: (data) => {
         const seasonalTeamStats = {
             stmsLastUpdatedOn: data.lastUpdatedOn,
             stmsTeamId: data.teamStatsTotals[0].team.id,
@@ -425,4 +427,4 @@ const API = {
 }
 
 
-module.exports=API;
+module.exports = API;
