@@ -64,7 +64,6 @@ auth.onAuthStateChanged(user => {
     if (user) {
         console.log(user.uid);
         
-<<<<<<< HEAD
         // $.post("/auth/login", user.uid, function(data) {
         //     // some code
         //     if(data) {
@@ -73,18 +72,7 @@ auth.onAuthStateChanged(user => {
         //         window.location.href = '/search';
         //     }
         // }
-=======
-        $.post("/auth/login", user.uid, function(data) {
-            // some code
-            if(data) {
-                window.location.href = '/dashboard';
-            } else {
-                window.location.href = '/search';
-            }
-        }
 
-    })
->>>>>>> 1a455ead2869afdb828fcb5676cae3415cb7df1f
         // $(btnLogout).removeClass("d-none");
     } else {
         console.log("not logged in");
