@@ -84,7 +84,7 @@ $(document).on('click', '.searchSubmit', () => {
   // let endpoint;
 
   let searchObj = {
-    date, season, position, roster
+    date, season, position, roster, checkBox
   }
 
   console.log(searchObj);
