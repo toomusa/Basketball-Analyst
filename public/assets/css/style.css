@@ -30,18 +30,6 @@
   background: rgba(52, 58, 64, 1);
 }
 
-.house {
-  display:block;
-  position:absolute;
-  background:url('/public/assets/images/james-harden.jpg');
-  background-repeat:no-repeat;
-  background-size: 100% 100%;
-  width:122px;
-  height:148px;
-  float:right;
-  bottom:0;
-  right:0;
-}
 
 .datePicker {
   height: 35px;
@@ -62,6 +50,7 @@
 
 .btnAdd {
   font-weight: bold;
+}
 
 .bg-gif { 
   background-image: url(https://media3.giphy.com/media/Fg22kcTuD29iw/giphy.gif);
