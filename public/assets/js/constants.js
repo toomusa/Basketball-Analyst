@@ -29,7 +29,7 @@ const API = {
             plyrDraftedRound: "Draft Round",
             plyrOverallPick: "Overall Pick Number"
         },
-        unused: {
+        // unused: {
             // plyrCurrentRosterStatus: "Roster Status",
             // plyrCurrentInjury: "Current Injury"
             // plyrId: "Player ID",
@@ -42,7 +42,7 @@ const API = {
             // plyrExternalMappingsId: 
             // plyrTeamAsOfDateId: 
             // plyrTeamAsOfDateAbbreviation: 
-        }
+        // }
     },
     playerInjuries: {
         primary: {
@@ -53,7 +53,7 @@ const API = {
             plijSocialMediaAccountsMediaType: "Social Media Type",
             plijSocialMediaAccountsValue: "Social Media Link"
         },
-        unused: {
+        // unused: {
             // plijLastUpdatedOn: 
             // plijFirstName: 
             // plijLastName: 
@@ -71,7 +71,7 @@ const API = {
             // plijHandednessShoots: 
             // plijOfficialImageSrc: 
             // plijId: 
-        }
+        // }
     },
     dailyPlayerGameLogs: {
         primary: {
@@ -160,7 +160,7 @@ const API = {
             dpglFoulFlage2Drawn: "Flagrant 2 Fouls Drawn",
             dpglFoulFlag2DrawnPerGame: "Flagrant 2 Fouls Drawn per Game"
         },
-        unused: {
+        // unused: {
             // dpglLatestUpdatedOn: 
             // dpglPlayerId: 
             // dpglPlayerFirstName: 
@@ -169,7 +169,7 @@ const API = {
             // dpglPlayerJerseyNumber: 
             // dpglTeamId: 
             // dpglTeamAbbreviation: 
-        }
+        // }
     },
     dailyTeamGamelogs: {
         primary: {
@@ -473,17 +473,30 @@ const API = {
 
 const checkboxMaker = (obj) => {
     for(let key in obj) {
+        let rowDiv = $(`<div class="row${key}">`);
         for(let keyy in obj[key]){
+            let bigDiv;
+            if (keyy === 'primary') {
+                bigDiv = $(`<div class="row primary"> <br>`);
+                bigDiv.append(`<h5 class="col-sm-12">${key} ${keyy}</h5>`);
+            } else {
+                bigDiv = $(`<div class="row advanced"> <br>`);
+                bigDiv.append(`<h5 class="col-sm-12">${key} ${keyy}</h5>`);
+            }
             for(let keyyy in obj[key][keyy]) {
                 let newDiv = $(`<div class="col-sm-4">`);
                 newDiv.append(`<div class="form-check">
                 <input class="form-check-input" type="checkbox" id="${keyyy}" name="chk" value="${obj[key][keyy][keyyy]}">
                 <label class="form-check-label" for="inlineCheckbox3">${obj[key][keyy][keyyy]}</label>
                 </div>`);
-                $('.searchChecks').prepend(newDiv);
+                bigDiv.append(newDiv);
                 }
-            }
+            rowDiv.append(bigDiv);
+            rowDiv.append(`<hr>`);
+            } 
+        $('.searchChecks').append(rowDiv);
         }
+        $('.searchChecks').append(`<div class="col-sm align-self-end"><button type="submit" class="searchSubmit btn btn-primary float-right">Submit</button>`);
     }
 
   checkboxMaker(API);
