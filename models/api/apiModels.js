@@ -41,7 +41,6 @@ const API = {
             plyrTeamAsOfDateAbbreviation: data.players[0].teamAsOfDate.abbreviation
         }
         return players;
-        // console.log(playersData);
     },
     playerInjuries: (data) => {
         const playerInjuries = {
