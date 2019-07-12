@@ -1,10 +1,8 @@
-players.[key].d
 
 const API = {
     players: (data) => {
-        console.log(data.players[0].player.firstName);
         const players = {
-            plyrLastUpdatedOn: [data.lastUpdatedOn, "Last Updated On"],
+            plyrLastUpdatedOn: data.lastUpdatedOn,
             plyrId: data.players[0].player.id,
             plyrFirstName: data.players[0].player.firstName,
             plyrLastName: data.players[0].player.lastName,
@@ -42,7 +40,6 @@ const API = {
             plyrTeamAsOfDateAbbreviation: data.players[0].teamAsOfDate.abbreviation
         }
         return players;
-        // console.log(playersData);
     },
     playerInjuries: (data) => {
         const playerInjuries = {
