@@ -49,16 +49,18 @@
     <label for="password">Enter your password:  </label>
     <input class="form-control" type="password" name="psswd" id="password" maxlength="32" required>
   </div>
-  <div class="form">
-    <button class="btn btn-light" type="submit" value="Start!" id="btnLogin">Login</button>
-  </div>
-  <br>
-  <div class="form">
-    <button class="btn btn-light" type="submit" value="Start!" id="btnSignUp">Signup</button>
-  </div>
-  <br>
-  <div class="form">
-    <button class="btn btn-light" type="submit" value="Start!" id="btnLogout">Logout</button>
+  <div class="row">
+    <div class="form col-sm-6">
+      <button class="btn btn-light btn-block" type="submit" value="Start!" id="btnLogin">Login</button>
+    </div>
+    <br>
+    <div class="form col-sm-6">
+      <button class="btn btn-light btn-block" type="submit" value="Start!" id="btnSignUp">Signup</button>
+    </div>
+    <br>
+    {{!-- <div class="form col-sm-3">
+      <button class="btn btn-light" type="submit" value="Start!" id="btnLogout">Logout</button>
+    </div> --}}
   </div>
 </form>
 
