@@ -13,6 +13,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "firebase": "^6.2.4",
+<<<<<<< HEAD
     "mysportsfeeds-node": "^2.0.1",
     "mysql": "^2.17.1",
     "nodemon": "^1.19.1",
@@ -27,4 +28,12 @@
   },
   "homepage": "https://github.com/toomusa/Basketball-Analyst#readme",
   "description": ""
+=======
+    "hapi": "^18.1.0",
+    "mongoose": "^5.6.4",
+    "mysql": "^2.17.1",
+    "path": "^0.12.7",
+    "validator": "^11.1.0"
+  }
+>>>>>>> 861eea452266c2e95e845648286bab6f1f59e742
 }
