@@ -1,4 +1,3 @@
-let objectsbe;
 
 const API = {
     players: (data) => {
