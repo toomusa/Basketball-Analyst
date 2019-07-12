@@ -17,6 +17,7 @@
 .cardMiddle {
   min-height: 340px;
 }
+
 .customFunctions {
   min-height: 280px;
 }
@@ -39,7 +40,7 @@
 .formBox {
   border-style: solid;
   border-width: 1px;
-  border-color:#EBC2C2;
+  border-color: #EBC2C2;
 }
 
 .selector {
@@ -52,21 +53,39 @@
   font-weight: bold;
 }
 
-.bg-gif { 
+.bg-gif {
   background-image: url(https://media3.giphy.com/media/Fg22kcTuD29iw/giphy.gif);
   background-size: cover;
   height: 100vh;
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
 }
+
 .error-template {
-  padding: 40px 15px;text-align: center;
+  padding: 40px 15px;
+  text-align: center;
   color: white;
   outline-color: black;
 }
+
 .error-actions {
-  margin-top:15px;margin-bottom:15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
-.error-actions .btn { 
-  margin-right:10px; 
+
+.error-actions .btn {
+  margin-right: 10px;
+}
+
+/*********************************
+ Footer
+**********************************/
+.footer {
+  text-align: center;
+  font-size: small;
+  margin-top: 50px;
+  padding: 20px 0 20px 0;
+  letter-spacing: 1px;
+  text-shadow: .2px .2px #fff;
+  background-color: #343A40;
 }
