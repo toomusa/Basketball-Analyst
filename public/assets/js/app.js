@@ -67,11 +67,22 @@ $(document).on('click', '.searchSubmit', () => {
   let season = $('#seasonInput').val();
   let position = $('#positionInput').val();
   let roster = $('#rosterStatus').val();
-  let checkBox = [];
+  let checkBox = {};
   $("input:checkbox[name=chk]:checked").each(function () {
-    checkBox.push($(this).attr("id"));
+    checkBox[$(this).attr("id")] = $(this).attr("value");
   });
- 
+
+  console.log(checkBox);
+  // checkBox.forEach(item => {
+  //if item matches key in constants.js object
+  // take value of constants.key and save as key of user object
+  // 
+  // });
+  
+  // let teamString;
+  // let playerString;
+  // let endpoint;
+
   let searchObj = {
     date, season, position, roster
   }

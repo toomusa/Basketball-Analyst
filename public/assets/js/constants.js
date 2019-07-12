@@ -477,7 +477,7 @@ const checkboxMaker = (obj) => {
             for(let keyyy in obj[key][keyy]) {
                 let newDiv = $(`<div class="col-sm-4">`);
                 newDiv.append(`<div class="form-check">
-                <input class="form-check-input" type="checkbox" id="${keyyy}" name="chk" value="${keyyy}">
+                <input class="form-check-input" type="checkbox" id="${keyyy}" name="chk" value="${obj[key][keyy][keyyy]}">
                 <label class="form-check-label" for="inlineCheckbox3">${obj[key][keyy][keyyy]}</label>
                 </div>`);
                 $('.searchChecks').prepend(newDiv);
