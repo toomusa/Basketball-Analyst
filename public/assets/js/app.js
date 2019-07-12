@@ -54,14 +54,24 @@ $(document).on('click', '.teamButton', function(){
   $('.listAdd').empty();
 });
 
+//function that checks which DB endpoints to use goes here
+//slices off 4 letter prefixes and sees what kinds there are
+  //can we run 2 endpoints?
+
+
 $(document).on('click', '.searchSubmit', () => {
+  
   event.preventDefault();
   
   let date = $('#spanDate').val();
   let season = $('#seasonInput').val();
   let position = $('#positionInput').val();
   let roster = $('#rosterStatus').val();
-
+  let checkBox = [];
+  $("input:checkbox[name=chk]:checked").each(function () {
+    checkBox.push($(this).attr("id"));
+  });
+ 
   let searchObj = {
     date, season, position, roster
   }
