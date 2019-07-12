@@ -118,6 +118,12 @@ body {
   border-radius: 50%;
 }
 
+a:hover {
+  border-bottom: 1px solid #5294FB;
+  text-shadow: none;
+  color: #000;
+}
+
 /*********************************
  Contact Form
 **********************************/
