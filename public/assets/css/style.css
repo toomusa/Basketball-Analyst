@@ -62,4 +62,22 @@
 
 .btnAdd {
   font-weight: bold;
+
+.bg-gif { 
+  background-image: url(https://media3.giphy.com/media/Fg22kcTuD29iw/giphy.gif);
+  background-size: cover;
+  height: 100vh;
+  padding:0;
+  margin:0;
+}
+.error-template {
+  padding: 40px 15px;text-align: center;
+  color: white;
+  outline-color: black;
+}
+.error-actions {
+  margin-top:15px;margin-bottom:15px;
+}
+.error-actions .btn { 
+  margin-right:10px; 
 }

@@ -3,8 +3,7 @@ const router = express.Router();
 
 const apiController = require("../../controllers/api/apiController.js");
 
-// router.route("/api")
-//     .get(apiController.findAll);
+router.route("/search").post(apiController.queryData);
 
 // router.route("/api/save")
 //     .get(apiController.findAll);
