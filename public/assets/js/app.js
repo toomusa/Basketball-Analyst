@@ -72,16 +72,6 @@ $(document).on('click', '.searchSubmit', () => {
     checkBox[$(this).attr("id")] = $(this).attr("value");
   });
 
-  console.log(checkBox);
-  // checkBox.forEach(item => {
-  //if item matches key in constants.js object
-  // take value of constants.key and save as key of user object
-  // 
-  // });
-  
-  // let teamString;
-  // let playerString;
-  // let endpoint;
 
   let searchObj = {
     date, season, position, roster, checkBox
