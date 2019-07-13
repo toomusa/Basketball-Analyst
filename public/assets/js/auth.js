@@ -34,11 +34,7 @@ btnLogin.addEventListener("click", e => {
     //     }
     // })
 
-    // fetch("/auth", {
-    //     method: "POST",
-    //     body: JSON.stringify({email, password})
-    // }).then(res => console.log("RES: " + res))
-    //   .catch(err => console.error(err));
+    // check for username validation and required, then fire off google auth
 
     const promise = auth.signInWithEmailAndPassword(email, password);
     promise.catch(e => console.error(e.message));
