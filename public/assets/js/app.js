@@ -1,4 +1,8 @@
-
+var playerButton = true;
+var info = true;
+var gameLogs = false;
+var seasonLogs = false;
+var currentShow = 'players';
 //default
 $('.playerSearchBar').show();
 $('.teamSearchBar').hide();
@@ -41,23 +45,97 @@ $(function() {
 //   $('#seasonInput').text(currentSeason);
 // })
 
+
 //player search click functions
 $(document).on('click', '.playerButton', function(){
   $('.playerSearchBar').show();
   $('.teamSearchBar').hide();
   $('.listAdd').empty();
+  $('.playerButton').addClass('active');
+  $('.teamButton').removeClass('active');
+  $('.infoButton').removeClass('disabled');
+  playerButton = true;
+  checkBoxFilter();
 });
 
 $(document).on('click', '.teamButton', function(){
   $('.playerSearchBar').hide();
   $('.teamSearchBar').show();
   $('.listAdd').empty();
+  $('.playerButton').removeClass('active');
+  $('.teamButton').addClass('active');
+  $('.infoButton').addClass('disabled');
+  playerButton = false;
+  checkBoxFilter();
+});
+
+$(document).on('click', '.infoButton', function(){
+  if(!playerButton) {return};
+  info = true;
+  gameLogs = false;
+  seasonLogs = false;
+  $('.infoButton').addClass('active');
+  $('.gameLogButton').removeClass('active');
+  $('.seasonButton').removeClass('active');
+  checkBoxFilter();
+});
+
+$(document).on('click', '.gameLogButton', function(){
+  info = false;
+  gameLogs = true;
+  seasonLogs = false;
+  $('.infoButton').removeClass('active');
+  $('.gameLogButton').addClass('active');
+  $('.seasonButton').removeClass('active');
+  checkBoxFilter();
+});
+
+$(document).on('click', '.seasonButton', function(){
+  info = false;
+  gameLogs = false;
+  seasonLogs = true;
+  $('.infoButton').removeClass('active');
+  $('.gameLogButton').removeClass('active');
+  $('.seasonButton').addClass('active');
+  checkBoxFilter();
+});
+
+$(document).on('click', '.searchAdvanced', function(){
+  $(`.${currentShow}Adv`).toggle();
+  ($('.searchAdvanced').text() === 'See Advanced') ? $('.searchAdvanced').text('Hide Advanced') : $('.searchAdvanced').text('See Advanced');
 });
 
 //function that checks which DB endpoints to use goes here
 //slices off 4 letter prefixes and sees what kinds there are
   //can we run 2 endpoints?
 
+const checkBoxFilter = () => {
+  $('.searchAdvanced').text('See Advanced');
+  $('.allFilter').hide();
+  if (playerButton === true) {
+    if(info) {
+      $('.players').show();
+      currentshow = 'players';
+    } else if (gameLogs) {
+      $('.dailyPlayerGameLogs').show();
+      currentshow = 'dailyPlayerGameLogs';
+    } else if (seasonLogs) {
+      $('.seasonalPlayerStats').show();
+      currentshow = 'seasonalPlayerStats';
+    }
+  }
+  if (playerButton === false) {
+    if (gameLogs) {
+      $('.dailyTeamGameLogs').show();
+      currentshow = 'dailyTeamGameLogs';
+    } else if (seasonLogs) {
+      $('.seasonalTeamStats').show();
+      currentshow = 'seasonalTeamStats';
+    }
+  }
+}
+
+checkBoxFilter();
 
 $(document).on('click', '.searchSubmit', () => {
   
@@ -80,7 +158,7 @@ $(document).on('click', '.searchSubmit', () => {
   console.log(searchObj);
 
   $.post('api/search', searchObj, () =>{
-    console.log("SENT BBY");
+    console.log("SENT");
   })
 })
 // =================================player vs team button logic on frontend search ====================================
