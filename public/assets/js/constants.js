@@ -536,6 +536,8 @@ const checkboxMaker = (obj) => {
                 }
             } 
         }
+        // $('.searchButtonL').append(`<button class="searchAdvanced btn btn-warning float-left">See Advanced</button>`);
+        // $('.searchButtonL').append(`<button type="submit" class="searchSubmit btn btn-primary float-right">Submit</button>`);
         $('.searchChecksAdv').append(`<div class="col-sm align-self-end mt-4"><button class="searchAdvanced btn btn-warning float-left">See Advanced</button>`);
         $('.searchChecksAdv').append(`<div class="col-sm align-self-end"><button type="submit" class="searchSubmit btn btn-primary float-right">Submit</button>`);
     }
