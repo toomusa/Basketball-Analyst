@@ -490,15 +490,52 @@ const API = {
 
 const checkboxMaker = (obj) => {
     for(let key in obj) {
-        let rowDiv = $(`<div class="row${key}">`);
+        // let rowDiv = $(`<div class="${key}">`);
         for(let keyy in obj[key]){
             let bigDiv;
             if (keyy === 'primary') {
-                bigDiv = $(`<div class="row primary"> <br>`);
-                bigDiv.append(`<h5 class="col-sm-12">${key} ${keyy}</h5>`);
+                let keyName;
+                bigDiv = $(`<div class="row mb-4 primary">`);
+
+                if (key === 'players') {
+                    keyName = 'Players';
+                    bigDiv.addClass('playerFilter players allFilter');
+                } else if (key === 'playerInjuries') {
+                    keyName = 'Player Injuries';
+                    bigDiv.addClass('playerFilter playerInjuries allFilter');
+                } else if (key === 'dailyPlayerGameLogs') {
+                    keyName = 'Daily Player Game Logs';
+                    bigDiv.addClass('playerFilter dailyPlayerGameLogs allFilter');
+                } else if (key === 'dailyTeamGamelogs') { 
+                    keyName = 'Daily Team Game Logs';
+                    bigDiv.addClass('teamFilter dailyTeamGameLogs allFilter');
+                } else if (key === 'seasonalPlayerStats') {
+                    keyName = 'Seasonal Player Stats';
+                    bigDiv.addClass('playerFilter seasonalPlayerStats allFilter');
+                } else if (key === 'seasonalTeamStats','seasonalTeamStats') {
+                    keyName = 'Seasonal Team Stats';
+                    bigDiv.addClass('teamFilter seasonalTeamStats allFilter');
+                }
+
+                bigDiv.append(`<h5 class="col-sm-12 mt-3">${keyName}</h5>`);
+                
             } else {
-                bigDiv = $(`<div class="row advanced"> <br>`);
-                bigDiv.append(`<h5 class="col-sm-12">${key} ${keyy}</h5>`);
+                bigDiv = $(`<div class="row advanced"></div>`);
+                // bigDiv.append(`<h5 class="col-sm-12 mt-3">${key} ${keyy}</h5>`);
+
+                if (key === 'players') {
+                    bigDiv.addClass('allFilter playersAdv');
+                } else if (key === 'playerInjuries') {
+                    bigDiv.addClass('allFilter playerInjuriesAdv');
+                } else if (key === 'dailyPlayerGameLogs') {
+                    bigDiv.addClass('allFilter dailyPlayerGameLogsAdv');
+                } else if (key === 'dailyTeamGamelogs') { 
+                    bigDiv.addClass('allFilter dailyTeamGameLogsAdv');
+                } else if (key === 'seasonalPlayerStats') {
+                    bigDiv.addClass('allFilter seasonalPlayerStatsAdv');
+                } else if (key === 'seasonalTeamStats','seasonalTeamStats') {
+                    bigDiv.addClass('allFilter seasonalTeamStatsAdv');
+                }
             }
             for(let keyyy in obj[key][keyy]) {
                 let newDiv = $(`<div class="col-sm-4">`);
@@ -506,14 +543,21 @@ const checkboxMaker = (obj) => {
                 <input class="form-check-input" type="checkbox" id="${keyyy}" name="chk" value="${obj[key][keyy][keyyy]}">
                 <label class="form-check-label" for="inlineCheckbox3">${obj[key][keyy][keyyy]}</label>
                 </div>`);
+
                 bigDiv.append(newDiv);
                 }
-            rowDiv.append(bigDiv);
-            rowDiv.append(`<hr>`);
+                if (keyy === 'primary') {
+                    $('.searchChecks').append(bigDiv);
+                } else {
+                    $('.searchChecksAdv').append(bigDiv);
+                }
             } 
-        $('.searchChecks').append(rowDiv);
         }
-        $('.searchChecks').append(`<div class="col-sm align-self-end"><button type="submit" class="searchSubmit btn btn-primary float-right">Submit</button>`);
+        // $('.searchButtonL').append(`<button class="searchAdvanced btn btn-warning float-left">See Advanced</button>`);
+        // $('.searchButtonL').append(`<button type="submit" class="searchSubmit btn btn-primary float-right">Submit</button>`);
+        $('.searchChecksAdv').append(`<div class="col-sm align-self-end mt-4"><button class="searchAdvanced btn btn-warning float-left">See Advanced</button>`);
+        $('.searchChecksAdv').append(`<div class="col-sm align-self-end"><button type="submit" class="searchSubmit btn btn-primary float-right">Submit</button>`);
     }
 
   checkboxMaker(API);
+

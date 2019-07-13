@@ -2,8 +2,24 @@
 
 <div class="searchbox jumbotron mx-5 mt-5 py-3 px-3">
   <div class="card">
-    <div class="card-body">
-      <h4>Searchbox</h4>
+    <div class="card-body row">
+
+      <h4 class="col-sm-2">Searchbox</h4>
+
+      <div class="col-sm-3 mx-0">
+        <div class="btn-group px-0 btn-block col-sm-12 btn-group-toggle" role="group" aria-label="">
+          <button type="radio" class="btn btn-secondary active playerButton" style="width: 50%">Player</button>
+          <button type="radio" class="btn btn-secondary teamButton" style="width: 50%">Team</button>
+        </div>
+      </div>
+      <div class="col-sm-0 col-md-1"></div>
+      <div class="col-sm-5 mx-0">
+        <div class="btn-group px-0 btn-block col-sm-12 btn-group-toggle" role="group" aria-label="">
+          <button type="radio" class="btn btn-secondary active infoButton" style="width: 33%">Info</button>
+          <button type="radio" class="btn btn-secondary gameLogButton" style="width: 33%">Game Logs</button>
+          <button type="radio" class="btn btn-secondary seasonButton" style="width: 33%">Season Logs</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -13,12 +29,7 @@
       <div class="card cardMiddle">
 
         <div class="card-body search">
-          <div class="row mx-0 mb-4">
-            <div class="btn-group px-0 btn-block col-sm-12 btn-group-toggle" role="group" aria-label="">
-              <button type="radio" class="btn btn-secondary playerButton" style="width: 50%">Player</button>
-              <button type="radio" class="btn btn-secondary teamButton" style="width: 50%">Team</button>
-            </div>
-          </div>
+
           <div class="playerSearchBar row mx-0">
             <label>Search For a Player</label>
             <input id="playerSearch" class="form-control col-sm-10 pr-0 mr-0" type="text" placeholder="Kevin Durant">
@@ -26,16 +37,17 @@
               <button type="button" class="playerAddBtn btn btn-block btn-success ml-3 btnAdd"> + </button>
             </div>
           </div>
-          <div class="teamSearchBar row mt-2 mx-0">
+          <div class="teamSearchBar row mx-0">
             <label>Search For a Team</label>
-            <input id="teamSearch" class="form-control col-sm-10 pr-0 mr-0" type="text" placeholder="Golden State Warriors"/>
+            <input id="teamSearch" class="form-control col-sm-10 pr-0 mr-0" type="text"
+              placeholder="Golden State Warriors" />
             <div class="pull-right col-sm-2 pl-0 ml-0">
               <button type="button" class="teamAddBtn btn btn-block btn-success ml-3 btnAdd"> + </button>
             </div>
           </div>
           <div class="listAppend mt-2">
             <label>List</label>
-            <textarea readonly class="form-control listAdd" id="formtextArea" rows="4"></textarea>
+            <textarea readonly class="form-control listAdd" id="formtextArea" rows="7"></textarea>
           </div>
 
         </div>
@@ -46,27 +58,27 @@
       <div class="row params">
         <div class="col-sm-12">
           <div class="card cardMiddle">
-              <h5 class="mx-4 mt-4">Parameters</h5>
+            <h5 class="mx-4 mt-4">Parameters</h5>
             <div class="card-body searchParams mx-3">
               {{!-- daterangepicker.com --}}
 
               <div class="row row1">
                 <div class="form-check col-sm-3">
-                  <input class="form-check-input" type="checkbox" id="date" value="date">
+                  {{!-- <input class="form-check-input" type="checkbox" id="date" value="date"> --}}
                   <label>Date Range</label>
                 </div>
                 <div class="col-sm-5 custom-select">
                   <div class="datePicker" id="reportrange">
-                  {{!-- style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%; min-height:38px;" --}}
-                  <i class="fa fa-calendar"></i>&nbsp;
-                  <span id="spanDate"></span> <i class="fa fa-caret-down"></i>
-                </div>
+                    {{!-- style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%; min-height:38px;" --}}
+                    <i class="fa fa-calendar"></i>&nbsp;
+                    <span id="spanDate"></span> <i class="fa fa-caret-down"></i>
+                  </div>
                 </div>
               </div>
 
               <div class="row row2 mt-3">
                 <div class="form-check col-sm-3">
-                  <input class="form-check-input" type="checkbox" id="season" value="season">
+                  {{!-- <input class="form-check-input" type="checkbox" id="season" value="season"> --}}
                   <label>Season</label>
                 </div>
                 <div class="col-sm-5 px-0">
@@ -82,11 +94,11 @@
                     <option class="nbaSeason" name="2015-2016regular">2015-2016 Regular</option>
                   </select>
                 </div>
-            </div>
+              </div>
 
-            <div class="row row3 mt-3">
+              <div class="row row3 mt-3">
                 <div class="form-check col-sm-3">
-                  <input class="form-check-input" type="checkbox" id="season" value="season">
+                  {{!-- <input class="form-check-input" type="checkbox" id="season" value="season"> --}}
                   <label>Position</label>
                 </div>
                 <div class="col-sm-5 px-0">
@@ -99,13 +111,13 @@
                     <option class="">Center</option>
                   </select>
                 </div>
-            </div>
+              </div>
 
-            <div class="row row4 mt-3">
+              <div class="row row4 mt-3">
                 <div class="form-check col-sm-3">
-                  <input class="form-check-input" type="checkbox" id="season" value="season">
+                  {{!-- <input class="form-check-input" type="checkbox" id="season" value="season"> --}}
                   <label>Roster Status</label>
-                  
+
                 </div>
                 <div class="col-sm-5 px-0">
                   <select id="rosterStatus" class="selector custom-select pl-3" aria-labelledby="dropdownMenuPlayoff">
@@ -115,36 +127,33 @@
                     <option class="">Out</option>
                   </select>
                 </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-        
 
-          {{!-- Season, Date, Roster Status(out, probable, suspended,), Position, Country --}}
-        
+
+        {{!-- Season, Date, Roster Status(out, probable, suspended,), Position, Country --}}
+
 
       </div>
     </div>
   </div>
   <div class="row mt-3 mx-0">
     <div class="card col-sm-12">
-      <div class="card-body">
-        <h5>Checkboxes</h5>
+      <div class="card-body row">
+        <h4 class="col-sm-3">Checkboxes</h4>
+        <div class="col-sm-4 searchButtonL"></div>
       </div>
-      <div class="card-body searchChecks row">
-
-
-
-        
-        </div>
-
+      <div class="card-body searchChecks py-0 my-0">
       </div>
-
+      <div class="card-body searchChecksAdv pt-0 mt-0">
+      </div>
     </div>
   </div>
+
 </div>
-</div>
+
 
 <!--=================================Functions Section============================================-->
 <div class="customSearch jumbotron mx-5 py-3 px-3">
