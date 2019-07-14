@@ -6,7 +6,9 @@ var currentShow = 'players';
 //default
 $('.playerSearchBar').show();
 $('.teamSearchBar').hide();
-// $.noConflict();
+
+let userTableData;
+let userColumnConfig;
 
 $(document).ready(function() {
 // =================================calendar function====================================
@@ -178,34 +180,45 @@ $(document).on('click', '.searchSubmit', () => {
   console.log(searchObj);
 
   $.post('api/search', searchObj, (data) =>{
-      console.log("SENT");
-    // })
-    // .then(redirect => {
+
+    userTableData = data.userTableData;
+    userColumnConfig = data.userColumnConfig;
+
       console.log("***********USERTABLEDATA*************")
       console.log(data.userTableData)
       console.log("***********USERCOLUMNCONFIG*************")
       console.log(data.userColumnConfig)
+
       var table = new Tabulator("#user-tables", {
-        // height: 800,
         data: data.userTableData,
         layout: "fitColumns", 
         columns: data.userColumnConfig,
         index: "Player ID"
+        // height: 800,
         // virtualDom: true
         // rowClick:function(e, row){ //trigger an alert message when the row is clicked
         //     alert("Row " + row.getData().id + " Clicked!!!!");
         // },
       });
-      // $("#user-tables").append(table);
-    // $.post('/user', table, (response) => {
-    //   console.log("SENT TO DASHBOARD")
-    // });
-  // })
-})
 
-})
+      $("#save-table").removeClass("d-none");
+    })
+  })
 
-})
+
+  $(document).on("click", "#save-table", function(){
+    let userSaveTable = {userTableData,userColumnConfig}
+    $.post('/user', userSaveTable, (response) => {
+      console.log("SENT TO SQL SAVE")
+      window.location.href = "/dashboard";
+    });
+  })
+
+
+
+}) // this is where document.ready ends
+
+
 // =================================player vs team button logic on frontend search ====================================
 // var MySportsFeeds = require("mysportsfeeds-node");
 // var msf = new MySportsFeeds("2.0", true);
