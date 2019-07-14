@@ -160,7 +160,7 @@ module.exports = {
         }
         
         renderTable();
-        
+
         let userResponseData = {userTableData,userColumnConfig}
         res.status(200).send(userResponseData)
     }

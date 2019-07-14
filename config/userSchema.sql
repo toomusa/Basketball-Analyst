@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS user_db;
+DROP DATABASE IF EXISTS bball_db;
 
-CREATE DATABASE user_db;
+CREATE DATABASE bball_db;
 
-USE user_db;
+USE bball_db;
 
 CREATE TABLE users (
 	id INT AUTO_INCREMENT,
@@ -31,3 +31,8 @@ CREATE TABLE users (
     table20 LONGTEXT,
     PRIMARY KEY (id)
 );
+
+
+[{"name":"Last Updated On","field":"Last Updated On","layout":"fitData","resizableColumns":true,"movableColumns":true,
+"columnVertAlign":"middle","headerFilterPlaceholder":"Filter Column","movableRows":true,"resizableRows":true,"align":"center",
+"rowHandle...
