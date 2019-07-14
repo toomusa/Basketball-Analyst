@@ -101,35 +101,55 @@ $(document).on('click', '.seasonButton', function(){
 });
 
 $(document).on('click', '.searchAdvanced', function(){
-  $(`.${currentShow}Adv`).toggle();
+  $(`.${currentShow}Adv`).toggleClass('d-none');
   ($('.searchAdvanced').text() === 'See Advanced') ? $('.searchAdvanced').text('Hide Advanced') : $('.searchAdvanced').text('See Advanced');
 });
 
-//function that checks which DB endpoints to use goes here
-//slices off 4 letter prefixes and sees what kinds there are
-  //can we run 2 endpoints?
+$(document).on('click','.checkAll',function(){
+  $('input:checkbox:visible').not(this).not('.customFunction').prop('checked', this.checked);
+  // var checked = $(this).prop('checked');
+  // $('searchChecks').child().child().child().child().find('input:checkbox').prop('checked', checked);
+  // $('searchChecksAdv').child().find('input:checkbox').prop('checked', checked);
+});
+
+// //function for checking search value
+// $(document).on('keyup','#playerSearch', () => {
+//   let prefix = $('#playerSearch').val();
+//   if (prefix.length === 0) {
+//     $('#playerDropdown').empty();
+//     $('#playerDropdown').append(
+//     `<option value="Kevin Durant">
+//     <option value="Stephen Curry">
+//     <option value="James Harden">
+//     <option value="Chris Paul">
+//     <option value="Dwight Howard"></option>`);
+//   } if (prefix.length > 3) {
+//     $('#playerDropdown').empty();
+//     trieSearchPlayer(prefix);
+//   };
+// });
 
 const checkBoxFilter = () => {
   $('.searchAdvanced').text('See Advanced');
-  $('.allFilter').hide();
+  $('.allFilter').addClass('d-none');
   if (playerButton === true) {
     if(info) {
-      $('.players').show();
+      $('.players').removeClass('d-none');
       currentshow = 'players';
     } else if (gameLogs) {
-      $('.dailyPlayerGameLogs').show();
+      $('.dailyPlayerGameLogs').removeClass('d-none');
       currentshow = 'dailyPlayerGameLogs';
     } else if (seasonLogs) {
-      $('.seasonalPlayerStats').show();
+      $('.seasonalPlayerStats').removeClass('d-none');
       currentshow = 'seasonalPlayerStats';
     }
   }
   if (playerButton === false) {
     if (gameLogs) {
-      $('.dailyTeamGameLogs').show();
+      $('.dailyTeamGameLogs').removeClass('d-none');
       currentshow = 'dailyTeamGameLogs';
     } else if (seasonLogs) {
-      $('.seasonalTeamStats').show();
+      $('.seasonalTeamStats').removeClass('d-none');
       currentshow = 'seasonalTeamStats';
     }
   }

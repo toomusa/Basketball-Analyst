@@ -12,10 +12,11 @@ CREATE TABLE players (
     firstName VARCHAR(100) NOT NULL,
     lastName VARCHAR(100) NOT NULL,
     teamName VARCHAR(100) NOT NULL,
+    teamAbbr VARCHAR (5) NOT NULL,
     teamId INTEGER (10) NOT NULL,
     PRIMARY KEY (id)
 );
 
 -- JSON data coming in
 -- translate to:
--- INSERT INTO players (playerId, firstName, lastName, teamName, teamId)
+-- INSERT INTO players (playerId, firstName, lastName, teamName, teamAbbr, teamId)

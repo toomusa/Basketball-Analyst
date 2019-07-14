@@ -3,7 +3,6 @@ const users = require("../../models/users/userModels.js");
 const players = require("../../models/players/playerModels.js");
 var Tabulator = require('tabulator-tables');
 
-
 module.exports = {
     goHome: (req, res) => {
         res.render("index", {title: "Home"});

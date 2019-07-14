@@ -502,25 +502,25 @@ const checkboxMaker = (obj) => {
                     bigDiv.addClass('playerFilter players allFilter');
                 } else if (key === 'playerInjuries') {
                     keyName = 'Player Injuries';
-                    bigDiv.addClass('playerFilter playerInjuries allFilter');
+                    bigDiv.addClass('playerFilter playerInjuries allFilter d-none');
                 } else if (key === 'dailyPlayerGameLogs') {
                     keyName = 'Daily Player Game Logs';
-                    bigDiv.addClass('playerFilter dailyPlayerGameLogs allFilter');
+                    bigDiv.addClass('playerFilter dailyPlayerGameLogs allFilter d-none');
                 } else if (key === 'dailyTeamGamelogs') { 
                     keyName = 'Daily Team Game Logs';
-                    bigDiv.addClass('teamFilter dailyTeamGameLogs allFilter');
+                    bigDiv.addClass('teamFilter dailyTeamGameLogs allFilter d-none');
                 } else if (key === 'seasonalPlayerStats') {
                     keyName = 'Seasonal Player Stats';
-                    bigDiv.addClass('playerFilter seasonalPlayerStats allFilter');
+                    bigDiv.addClass('playerFilter seasonalPlayerStats allFilter d-none');
                 } else if (key === 'seasonalTeamStats','seasonalTeamStats') {
                     keyName = 'Seasonal Team Stats';
-                    bigDiv.addClass('teamFilter seasonalTeamStats allFilter');
+                    bigDiv.addClass('teamFilter seasonalTeamStats allFilter d-none');
                 }
 
                 bigDiv.append(`<h5 class="col-sm-12 mt-3">${keyName}</h5>`);
                 
             } else {
-                bigDiv = $(`<div class="row advanced"></div>`);
+                bigDiv = $(`<div class="row advanced d-none"></div>`);
                 // bigDiv.append(`<h5 class="col-sm-12 mt-3">${key} ${keyy}</h5>`);
 
                 if (key === 'players') {
@@ -556,6 +556,7 @@ const checkboxMaker = (obj) => {
         // $('.searchButtonL').append(`<button class="searchAdvanced btn btn-warning float-left">See Advanced</button>`);
         // $('.searchButtonL').append(`<button type="submit" class="searchSubmit btn btn-primary float-right">Submit</button>`);
         $('.searchChecksAdv').append(`<div class="col-sm align-self-end mt-4"><button class="searchAdvanced btn btn-warning float-left">See Advanced</button>`);
+        $('.searchButtonL').append(`<div class="col-sm align-self-end"><input type="checkbox" class="checkAll btn btn-success float-middle">Check All</input>`);
         $('.searchChecksAdv').append(`<div class="col-sm align-self-end"><button type="submit" class="searchSubmit btn btn-primary float-right">Submit</button>`);
     }
 
