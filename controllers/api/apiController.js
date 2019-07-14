@@ -3,6 +3,7 @@ const users = require("../../models/users/userModels.js");
 const players = require("../../models/players/playerModels.js");
 const API = require("../../models/api/apiModels.js").API;
 const headerCheck = require("../../models/api/apiModels.js").headerCheck;
+const apiModels = require("../../models/api/apiModels.js");
 var Tabulator = require('tabulator-tables');
 
 
@@ -12,9 +13,13 @@ msf.authenticate("1895dd8d-e910-476e-a495-9f7980", "MYSPORTSFEEDS");
 
 module.exports = {
     queryData: async (req, res) => {
-        // let {season, position, roster, playerString, teamString, endpoint} = req.body;
+        // let {season, position, roster, playerString, teamString, endpoint, checkBox} = req.body;
         let {checkBox} = req.body;
-        // console.log(checkBox)
+        let season = "2016-2017-regular";
+        let playerString = "kawhi-leonard,stephen-curry,kevin-durant,james-harden";
+        let teamString = "";
+        let roster = "assigned-to-roster";
+        let position = "";
 
         // splice out first 4 characters, determine which endpoint to query, and set endpoint
         let objKeys = Object.keys(checkBox);        
@@ -23,7 +28,6 @@ module.exports = {
             return elem;
         })
         let prefix = [...new Set(prefixes)].toString();
-
         let endpoint;
         if (prefix === "plyr") {
             endpoint = "players";
@@ -41,150 +45,123 @@ module.exports = {
             console.log("Something went wrong with prefix");
         }
 
-        let season = "2016-2017-regular";
-        // let endpoint = "players";
-        let playerString = "kawhi-leonard";
-        // ,stephen-curry,kevin-durant,james-harden
-        let teamString = "";
-        let roster = "assigned-to-roster";
-        let position = "";
         var data = await msf.getData('nba', season, endpoint, 'json', {player: playerString, team: teamString, 
                                         rosterstatus: roster, position: position, force: true});
-        console.log(data);
-        console.log("*************************************")
+        console.log("GOT DATA FROM API")
         let playersDataArray = await API.players(data);
+        let userTableData = [];
+        let userColumnConfig = [];
 
         const userTableQuery = () => {
-            let userTable = [];
             playersDataArray.forEach(player => {
-                let tableRow = {};
+                let tableRowData = {};
                 return new Promise ((resolve, reject) => {
                     for(let key in player) {
                         for (let item in checkBox) {
                             if (key === item) {
-                                tableRow[checkBox[item]] = player[key];
+                                tableRowData[checkBox[item]] = player[key];
                             }
                         }
                     }
-                    userTable.push(tableRow);
+                    userTableData.push(tableRowData);
                     resolve();
                 })
             })
-            console.log(userTable)
-            console.log("*************************************")
-            let columns = Object.keys(userTable[0]);
-            console.log(columns)
         }
         userTableQuery();
-        // await Promise.all(userTableQuery());
-    // },
+
         const renderTable = () => {
 
-        // let userTableData = userTable;
+            let tableColumnOptions = {
+                // name fields
+                nameField: (header, dataKey) => {
+                    const nameColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
+                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableRows: true, resizableRows: true, align: "center", rowHandle: true,
+                        selectable: true, selectablePersistence: true}
+                    return nameColumn;
+                },
+                // plaint text fields
+                textField: (header, dataKey) => {
+                    const textColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
+                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableRows: true, resizableRows: true, align: "center", rowHandle: true}
+                    return textColumn;
+                },
+                // number fields
+                numberField: (header, dataKey) => {
+                    const numberColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
+                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableRows: true, resizableRows: true, align: "center", rowHandle: true}
+                    return numberColumn;
+                },
+                // money fields
+                moneyField: (header, dataKey) => {
+                    const moneyColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
+                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableRows: true, resizableRows: true, align: "center", rowHandle: true}
+                    return moneyColumn;
+                },
+                // percentage fields
+                percentageField: (header, dataKey) => {
+                    const percentageColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
+                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableRows: true, resizableRows: true, align: "center", rowHandle: true}
+                    return percentageColumn;
+                },
+                // date fields
+                dateField: (header, dataKey) => {
+                    const dateColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
+                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableRows: true, resizableRows: true, align: "center", rowHandle: true}
+                    return dateColumn;
+                },
+                // abbreviations
+                abbrField: (header, dataKey) => {
+                    const abbrColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
+                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableRows: true, resizableRows: true, align: "center", rowHandle: true}
+                    return abbrColumn;
+                },
+                // abbreviations
+                imageField: (header, dataKey) => {
+                    const imageColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
+                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableRows: true, resizableRows: true, align: "center", rowHandle: true}
+                    return imageColumn;
+                },
+                // abbreviations
+                hexField: (header, dataKey) => {
+                    const hexColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
+                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableRows: true, resizableRows: true, align: "center", rowHandle: true}
+                    return hexColumn;
+                }
+            };
 
-        // let userTableColumns;
-        
-        const playerKeys = ['plyrLastUpdatedOn', 'plyrId', 'plyrFirstName', 'plyrLastName', 'plyrPrimaryPosition', 'plyrAlternatePositions', 
-                            'plyrJerseyNumber', 'plyrCurrentTeamId', 'plyrCurrentTeamAbbreviation', 'plyrCurrentRosterStatus', 
-                            'plyrCurrentInjury', 'plyrHeight', 'plyrWeight', 'plyrBirthDate', 'plyrAge', 'plyrBirthCity', 'plyrBirthCountry', 
-                            'plyrRookie', 'plyrHighSchool', 'plyrCollege', 'plyrOfficialImageSrc', 'plyrHandednessShoots', 'plyrSocialMediaType', 
-                            'plyrSocialMediaValue', 'plyrContractStartYear', 'plyrContractBaseSalary', 'plyrContractMinorsSalary', 
-                            'plyrContractSigningBonus', 'plyrContractOtherBonuses', 'plyrContractCapHit', 'plyrContractNoTradeClause', 
-                            'plyrContractModifiedTradeClause', 'plyrContractnoMovementClause', 'plyrContractSigningTeamId', 
-                            'plyrContractSigningTeamAbbreviation', 'plyrContractSignedOn', 'plyrContractTotalYears', 'plyrContractTotalSalary', 
-                            'plyrContractTotalBonuses', 'plyrContractExpiryStatus', 'plyrContractAnnualSalary', 'plyrDraftedYear', 
-                            'plyrDraftedTeamId', 'plyrDraftedTeamAbbreviation', 'plyrDraftedPickTeamId', 'plyrDraftedPickTeamAbbreviation', 
-                            'plyrDraftedRound', 'plyrDraftedRoundPick', 'plyrOverallPick', 'plyrExternalMappingsSource', 'plyrExternalMappingsId', 
-                            'plyrTeamAsOfDateId', 'plyrTeamAsOfDateAbbreviation']
+            const createUserColumns = (userTableData) => {
+            for (let key in userTableData[0]) {                 
+                let dataKey = key;
+                let header = key;
 
-        const playerHeaders = ['Last Updated On', 'First Name', 'Last Name', 'Position', 'Alternate Position', 'Jersey Number', 
-                               'Team Abbreviation', 'Height', 'Weight', 'Birth Date', 'Age', 'Birth City', 'Birth Country', 
-                               'Rookie Status', 'High School', 'College', 'Dominant Hand', 'Social Media Type', 'Social Media Account', 
-                               'Contract Start Year', 'Base Salary', 'Minors Salary', 'Signing Bonus', 'Other Bonuses', 'Cap Hit', 
-                               'No Trade Clause', 'Modified Trade Clause', 'Movement Clause', 'Signing Team ID', 
-                               'Signing Team Abbreviation', 'Signed On', 'Total Years', 'Total Salary', 'Total Bonuses', 
-                               'Expiry Status', 'Annual Salary', 'Draft Year', 'Draft Team Abbreviation', 'Pick Team Abbreviation', 
-                               'Draft Round', 'Overall Pick Number', "Roster Status", "Current Injury", "Player ID", "Team ID", "Image", 
-                               "Draft Team ID", "Pick Team ID", "Draft Round Pick Number", "External Mapping Source", "ExternalMappingsId", 
-                               "As of Date Team ID", "As of Date Team Abbreviation"];
-        
-        console.log(playerKeys.length)
-        console.log(playerHeaders.length)
-
-        let columnData = {};
-        const headerMatch = (headerCheck) => {
-            for (let key in headerCheck) {
-                if (columnData[headerCheck[key]]) {
-                    columnData[headerCheck[key]].push(key);
-                } else {
-                    columnData[headerCheck[key]] = [key];
+                (apiModels.nameFields.includes(key)) ? userColumnConfig.push(tableColumnOptions.nameField(dataKey, header)) :
+                (apiModels.textFields.includes(key)) ? userColumnConfig.push(tableColumnOptions.textField(dataKey, header)) :
+                (apiModels.numberFields.includes(key)) ? userColumnConfig.push(tableColumnOptions.numberField(dataKey, header)) :
+                (apiModels.moneyFields.includes(key)) ? userColumnConfig.push(tableColumnOptions.moneyField(dataKey, header)) :
+                (apiModels.percentageFields.includes(key)) ? userColumnConfig.push(tableColumnOptions.percentageField(dataKey, header)) :
+                (apiModels.dateFields.includes(key)) ? userColumnConfig.push(tableColumnOptions.dateField(dataKey, header)) :
+                (apiModels.abbrFields.includes(key)) ? userColumnConfig.push(tableColumnOptions.abbrField(dataKey, header)) :
+                (apiModels.imageFields.includes(key)) ? userColumnConfig.push(tableColumnOptions.imageField(dataKey, header)) :
+                (apiModels.hexFields.includes(key)) ? userColumnConfig.push(tableColumnOptions.hexField(dataKey, header)) : 
+                    console.log("Something went wrong while creating columns");
                 }
             }
+            createUserColumns(userTableData);
         }
-        headerMatch(headerCheck);
-
-        console.log(Object.keys(columnData).length)
-
-
-        }
-        let tableColumnOptions = [
-            // plaint text fields
-            {id:1, name:"First Name", field:"plyrFirstName"},
-            {id:1, name:"First Name", field: object.key },
-
-
-            // number fields
-            {id:1, name:"Oli Bob", age:"12", col:"red", dob:""},
-            {id:2, name:"Mary May", age:"1", col:"blue", dob:"14/05/1982"},
-            {id:3, name:"Christine Lobowski", age:"42", col:"green", dob:"22/05/1982"},
-
-
-            // stat fields
-            {id:4, name:"Brendon Philips", age:"125", col:"orange", dob:"01/08/1980"},
-            {id:5, name:"Margret Marmajuke", age:"16", col:"yellow", dob:"31/01/1999"},
-
-            // money fields
-
-            // abbreviations
-
-
-            // date fields
-
-            // 
-
-
-        ];
-
-        // var table = new Tabulator("#user-tables", {
-        //     height: 600,
-        //     data: userTableData,
-        //     layout: "fitColumns", 
-        //     columns: userTableColumns,
-        //     rowClick:function(e, row){ //trigger an alert message when the row is clicked
-        //         alert("Row " + row.getData().id + " Clicked!!!!");
-        //     },
-
-        // });
-        
         
         renderTable();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        let userResponseData = {userTableData,userColumnConfig}
+        res.status(200).send(userResponseData)
     }
 };
