@@ -22,7 +22,7 @@ const API = {
             plyrCollege: "College",
             plyrHandednessShoots: "Dominant Hand",
             plyrSocialMediaType: "Social Media Type",
-            plyrSocialMediaValue: "Social Media Account",
+            plyrSocialMediaValue: "Social Media",
             plyrContractStartYear: "Contract Start Year",
             plyrContractBaseSalary: "Base Salary",
             plyrContractMinorsSalary: "Minors Salary",
@@ -68,7 +68,7 @@ const API = {
             plijCurrentInjuryDescription: "Injury Description",
             plijCurrentInjuryPlayingProbability: "Playing Probability",
             plijSocialMediaAccountsMediaType: "Social Media Type",
-            plijSocialMediaAccountsValue: "Social Media Link"
+            plijSocialMediaAccountsValue: "Social Media Account"
         },
         // unused: {
             // plijLastUpdatedOn: 

@@ -6,7 +6,7 @@ var currentShow = 'players';
 //default
 $('.playerSearchBar').show();
 $('.teamSearchBar').hide();
-
+// $.noConflict();
 
 $(document).ready(function() {
 // =================================calendar function====================================
@@ -157,9 +157,34 @@ $(document).on('click', '.searchSubmit', () => {
 
   console.log(searchObj);
 
-  $.post('api/search', searchObj, () =>{
-    console.log("SENT");
-  })
+  $.post('api/search', searchObj, (data) =>{
+      console.log("SENT");
+    // })
+    // .then(redirect => {
+      console.log("***********USERTABLEDATA*************")
+      console.log(data.userTableData)
+      console.log("***********USERCOLUMNCONFIG*************")
+      console.log(data.userColumnConfig)
+      var table = new Tabulator("#user-tables", {
+        // height: 800,
+        data: data.userTableData,
+        layout: "fitColumns", 
+        columns: data.userColumnConfig,
+        index: "Player ID"
+        // virtualDom: true
+        // rowClick:function(e, row){ //trigger an alert message when the row is clicked
+        //     alert("Row " + row.getData().id + " Clicked!!!!");
+        // },
+      });
+      // $("#user-tables").append(table);
+    // $.post('/user', table, (response) => {
+    //   console.log("SENT TO DASHBOARD")
+    // });
+  // })
+})
+
+})
+
 })
 // =================================player vs team button logic on frontend search ====================================
 // var MySportsFeeds = require("mysportsfeeds-node");
@@ -178,21 +203,21 @@ $(document).on('click', '.searchSubmit', () => {
 // checkboxMaker(API.players);
 
 
-let apikey_token = "1895dd8d-e910-476e-a495-9f7980"
+// let apikey_token = "1895dd8d-e910-476e-a495-9f7980"
 
-$.ajax
-({
-  type: "GET",
-  url: "https://cors-anywhere.herokuapp.com/" + "https://api.mysportsfeeds.com/v2.1/pull/nba/players",
-  dataType: 'json',
-  async: false,
-  headers: {
-    "Authorization": `Basic btoa({1895dd8d-e910-476e-a495-9f7980}): MYSPORTSFEEDS`
-  },
-  data: '{ "comment" }',
-  success: function (){
-    alert('Thanks for your comment!'); 
-  }
-});
+// $.ajax
+// ({
+//   type: "GET",
+//   url: "https://cors-anywhere.herokuapp.com/" + "https://api.mysportsfeeds.com/v2.1/pull/nba/players",
+//   dataType: 'json',
+//   async: false,
+//   headers: {
+//     "Authorization": `Basic btoa({1895dd8d-e910-476e-a495-9f7980}): MYSPORTSFEEDS`
+//   },
+//   data: '{ "comment" }',
+//   success: function (){
+//     alert('Thanks for your comment!'); 
+//   }
+// });
 
-});
+// })
