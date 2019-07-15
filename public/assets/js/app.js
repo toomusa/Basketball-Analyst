@@ -41,6 +41,15 @@ const logoutButton = () => {
 
 logoutButton();
 
+$(document).on("click", ".editBtn", ()=> {
+  if ($(".editBtn").text() === "Edit") {
+      $(".editBtn").text("Save Edits");
+      $(".editBar").removeClass("d-none");
+  } else if ($(".editBtn").text() === "Save Edits") {
+      $(".editBtn").text("Edit");
+      $(".editBar").addClass("d-none");
+  }
+});
 // ==================================Params Section Search Page===============================
 // $(document).on('click', '.nbaSeason', () => {
 //   let currentSeason = $(this).text();
