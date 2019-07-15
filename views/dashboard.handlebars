@@ -1,6 +1,117 @@
 {{>header}}
 
+<div class="myTeam jumbotron mx-5 mt-5 py-3 px-3">
 
+    <div class="card">
+      <div class="card-body">
+        <h4 class="float-left">My Team</h4>
+        <h4 class="float-right">Fantasy Score: &nbsp; <span class="fantasyScore">XX</span></h4>
+      </div>
+    </div>
+
+    <div class="card cardHeight mt-3">
+      <div class="card-body">
+
+        <div class="row row1Team myTeam rowTeam">
+          <div class="col-sm-6">
+            <div class="row text-center">
+              <div class="team alert-success mx-1 text-light col-sm" id="team">?</div>
+              <div class="team alert-success mx-1 text-light col-sm" id="team">?</div>
+              <div class="team alert-success mx-1 text-light col-sm" id="team">?</div>
+              <div class="team alert-success mx-1 text-light col-sm" id="team">?</div>
+            </div>
+            <div class="row text-center">
+              <div class="col-sm">name</div>
+              <div class="col-sm">name</div>
+              <div class="col-sm">name</div>
+              <div class="col-sm">name</div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row text-center">
+              <div class="team alert-success mx-1 text-light col-sm" id="team">?</div>
+              <div class="team alert-success mx-1 text-light col-sm" id="team">?</div>
+              <div class="team alert-success mx-1 text-light col-sm" id="team">?</div>
+              <div class="team alert-success mx-1 text-light col-sm" id="team">?</div>
+            </div>
+            <div class="row text-center">
+              <div class="col-sm">name</div>
+              <div class="col-sm">name</div>
+              <div class="col-sm">name</div>
+              <div class="col-sm">name</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <div class="card cardHeight mt-3">
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="row rowTeam text-center">
+              <div class="team alert-primary mx-1 text-light col-sm" id="team">?</div>
+              <div class="team alert-primary mx-1 text-light col-sm" id="team">?</div>
+              <div class="team alert-primary mx-1 text-light col-sm" id="team">?</div>
+              <div class="team alert-primary mx-1 text-light col-sm" id="team">?</div>
+            </div>
+            <div class="row text-center">
+              <div class="col-sm">name</div>
+              <div class="col-sm">name</div>
+              <div class="col-sm">name</div>
+              <div class="col-sm">name</div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row rowTeam text-center">
+              <div class="team alert-primary mx-1 text-light col-sm" id="team">?</div>
+              <div class="team alert-primary mx-1 text-light col-sm" id="team">?</div>
+              <div class="team alert-primary mx-1 text-light col-sm" id="team">?</div>
+              <div class="team alert-primary mx-1 text-light col-sm" id="team">?</div>
+            </div>
+            <div class="row text-center">
+              <div class="col-sm">name</div>
+              <div class="col-sm">name</div>
+              <div class="col-sm">name</div>
+              <div class="col-sm">name</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+      <div class="edit mt-3">
+      <div class="dashSearchBar row mx-3">
+          <div class="col-sm-3">
+            <button class="btn editBtn btn-danger">Edit</button>
+          </div>
+          <div class="col-sm-9 editBar d-none">
+            <div class="row">
+            <label class="offset-sm-3 col-sm-4 text-right pt-2">Add Players</label>
+            <input list="dashDropdown" id="dashSearch" class="form-control col-sm-4 pr-0 mr-0" type="text"
+              placeholder="Kevin Durant">
+            <datalist id="dashDropdown">
+              <option value="Kevin Durant">
+              <option value="Stephen Curry">
+              <option value="James Harden">
+              <option value="Chris Paul">
+              <option value="Dwight Howard">
+            </datalist>
+            <div class="pull-right col-sm-1 ml-0 pl-0">
+              <button type="button" class="dashAddBtn btn btn-block btn-success ml-3 dashAdd"> + </button>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+    
+
+</div>
+
+{{!-- dashboard stuff --}}
 <div class="dashboard jumbotron mx-5 mt-5 py-3 px-3">
 
     <div class="card">

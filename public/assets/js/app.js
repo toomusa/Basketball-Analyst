@@ -3,19 +3,15 @@ var info = true;
 var gameLogs = false;
 var seasonLogs = false;
 var currentShow = 'players';
-//default
-$('.playerSearchBar').show();
-$('.teamSearchBar').hide();
 
 let userTableData;
 let userColumnConfig;
+let loggedIn = true;
+let username = '';
 
 $(document).ready(function() {
 // =================================calendar function====================================
-
-
 $(function() {
-
     var start = moment().subtract(29, 'days');
     var end = moment();
 
@@ -35,9 +31,24 @@ $(function() {
            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
         }
     }, cb);
-
     cb(start, end);
 
+});
+// ==================================Dashboard Section=======================================
+const logoutButton = () => {
+  (loggedIn) ? $(".navbar-nav2").append(`<li class="nav-item ml-4"><a class="nav-link font-weight-light logout" href="/">Logout</a></li>`) : $(".logout").parent().remove();
+}
+
+logoutButton();
+
+$(document).on("click", ".editBtn", ()=> {
+  if ($(".editBtn").text() === "Edit") {
+      $(".editBtn").text("Save Edits");
+      $(".editBar").removeClass("d-none");
+  } else if ($(".editBtn").text() === "Save Edits") {
+      $(".editBtn").text("Edit");
+      $(".editBar").addClass("d-none");
+  }
 });
 // ==================================Params Section Search Page===============================
 // $(document).on('click', '.nbaSeason', () => {
@@ -47,11 +58,10 @@ $(function() {
 //   $('#seasonInput').text(currentSeason);
 // })
 
-
 //player search click functions
 $(document).on('click', '.playerButton', function(){
-  $('.playerSearchBar').show();
-  $('.teamSearchBar').hide();
+  $('.playerSearchBar').removeClass('d-none');
+  $('.teamSearchBar').addClass('d-none');
   $('.listAdd').empty();
   $('.playerButton').addClass('active');
   $('.teamButton').removeClass('active');
@@ -61,8 +71,8 @@ $(document).on('click', '.playerButton', function(){
 });
 
 $(document).on('click', '.teamButton', function(){
-  $('.playerSearchBar').hide();
-  $('.teamSearchBar').show();
+  $('.playerSearchBar').addClass('d-none');
+  $('.teamSearchBar').removeClass('d-none');
   $('.listAdd').empty();
   $('.playerButton').removeClass('active');
   $('.teamButton').addClass('active');
@@ -109,27 +119,11 @@ $(document).on('click', '.searchAdvanced', function(){
 
 $(document).on('click','.checkAll',function(){
   $('input:checkbox:visible').not(this).not('.customFunction').prop('checked', this.checked);
-  // var checked = $(this).prop('checked');
-  // $('searchChecks').child().child().child().child().find('input:checkbox').prop('checked', checked);
-  // $('searchChecksAdv').child().find('input:checkbox').prop('checked', checked);
 });
 
-// //function for checking search value
-// $(document).on('keyup','#playerSearch', () => {
-//   let prefix = $('#playerSearch').val();
-//   if (prefix.length === 0) {
-//     $('#playerDropdown').empty();
-//     $('#playerDropdown').append(
-//     `<option value="Kevin Durant">
-//     <option value="Stephen Curry">
-//     <option value="James Harden">
-//     <option value="Chris Paul">
-//     <option value="Dwight Howard"></option>`);
-//   } if (prefix.length > 3) {
-//     $('#playerDropdown').empty();
-//     trieSearchPlayer(prefix);
-//   };
-// });
+$(document).on('click', '.removeBtn', function(){
+  $(this).parent().remove();
+});
 
 const checkBoxFilter = () => {
   $('.searchAdvanced').text('See Advanced');
@@ -155,10 +149,11 @@ const checkBoxFilter = () => {
       currentshow = 'seasonalTeamStats';
     }
   }
-}
+};
 
 checkBoxFilter();
 
+//Submit Button
 $(document).on('click', '.searchSubmit', () => {
   
   event.preventDefault();
@@ -168,13 +163,16 @@ $(document).on('click', '.searchSubmit', () => {
   let position = $('#positionInput').val();
   let roster = $('#rosterStatus').val();
   let checkBox = {};
+  let nameList = [];
   $("input:checkbox[name=chk]:checked").each(function () {
     checkBox[$(this).attr("id")] = $(this).attr("value");
   });
 
+  $("ul .addedName").each(function() { nameList.push(($(this).text()).slice(1))});
+  // console.log(nameList); //not exported yet but working as intended!
 
   let searchObj = {
-    date, season, position, roster, checkBox
+    date, season, position, roster, checkBox, nameList
   }
 
   console.log(searchObj);

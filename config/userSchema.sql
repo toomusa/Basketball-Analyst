@@ -9,6 +9,7 @@ CREATE TABLE users (
     user_token VARCHAR(255) NOT NULL,
     user_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
+    my_team LONGTEXT,
     table1 LONGTEXT,
     table2 LONGTEXT,
     table3 LONGTEXT,

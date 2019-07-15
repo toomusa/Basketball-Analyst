@@ -6,6 +6,15 @@
   min-height: 300px;
 }
 
+.cardHeight {
+  min-height: 160px;
+}
+
+#team {
+  min-height: 200px;
+  font-size: 72px;
+  line-height: 200px;
+}
 .customSearch {
   min-height: 300px;
 }
@@ -62,6 +71,16 @@
 
 .btnAdd {
   font-weight: bold;
+}
+
+.listingArea {
+  min-height: 160px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}​
 
 .bg-gif { 
   background-image: url(https://media3.giphy.com/media/Fg22kcTuD29iw/giphy.gif);
@@ -81,3 +100,4 @@
 .error-actions .btn { 
   margin-right:10px; 
 }
+
