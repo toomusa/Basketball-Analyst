@@ -162,7 +162,7 @@ $(document).on('click', '.searchSubmit', () => {
   // console.log(nameList); //not exported yet but working as intended!
 
   let searchObj = {
-    date, season, position, roster, checkBox
+    date, season, position, roster, checkBox, nameList
   }
 
   console.log(searchObj);

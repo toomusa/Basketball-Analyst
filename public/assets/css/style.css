@@ -6,6 +6,13 @@
   min-height: 300px;
 }
 
+.cardHeight {
+  min-height: 160px;
+}
+
+#team {
+  min-height: 200px;
+}
 .customSearch {
   min-height: 300px;
 }
