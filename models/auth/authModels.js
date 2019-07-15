@@ -30,7 +30,7 @@ const cTable = require("console-table");
 // };
 
 // const existingUser(data from userCheck) {
-//   if (data.length>4) {          //for checking if there are tables at all
+//   if (data.length>5) {          //for checking if there are tables at all
 //   for(let i=4; i<data.length) {
 //     // data[i] feed into dashboard with tabulator
 //   }
