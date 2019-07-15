@@ -3,9 +3,6 @@ var info = true;
 var gameLogs = false;
 var seasonLogs = false;
 var currentShow = 'players';
-//default
-$('.playerSearchBar').show();
-$('.teamSearchBar').hide();
 
 let userTableData;
 let userColumnConfig;
@@ -50,8 +47,8 @@ $(function() {
 
 //player search click functions
 $(document).on('click', '.playerButton', function(){
-  $('.playerSearchBar').show();
-  $('.teamSearchBar').hide();
+  $('.playerSearchBar').removeClass('d-none');
+  $('.teamSearchBar').addClass('d-none');
   $('.listAdd').empty();
   $('.playerButton').addClass('active');
   $('.teamButton').removeClass('active');
@@ -61,8 +58,8 @@ $(document).on('click', '.playerButton', function(){
 });
 
 $(document).on('click', '.teamButton', function(){
-  $('.playerSearchBar').hide();
-  $('.teamSearchBar').show();
+  $('.playerSearchBar').addClass('d-none');
+  $('.teamSearchBar').removeClass('d-none');
   $('.listAdd').empty();
   $('.playerButton').removeClass('active');
   $('.teamButton').addClass('active');
