@@ -9,8 +9,10 @@ const auth = require('../../config/keys').auth;
 
 module.exports = {
     userLogin: async (req, res) => {
-        let {userId} = req.body;
+        let {userId} = req.body[0];
+        let {userEmail} = req.body[1];
 
+        connection.query("SELECT * FROM users WHERE id = ? AND ")
         // query mysql users table
         // if user.uid exists in mysql
         //     query mysql for exisiting queries 

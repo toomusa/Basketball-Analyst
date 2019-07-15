@@ -123,14 +123,14 @@ module.exports = {
                         movableRows: true, resizableRows: true, align: "center", rowHandle: true}
                     return abbrColumn;
                 },
-                // abbreviations
+                // images
                 imageField: (header, dataKey) => {
                     const imageColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
                         movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
                         movableRows: true, resizableRows: true, align: "center", rowHandle: true}
                     return imageColumn;
                 },
-                // abbreviations
+                // hex values
                 hexField: (header, dataKey) => {
                     const hexColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
                         movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 

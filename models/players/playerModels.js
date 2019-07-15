@@ -12,8 +12,7 @@ var mysql = require('mysql');
 
 // CRUD FUNCTIONS
 
-let playerListFrontEndTest = [];
-let playersArrayFormatted = '';
+let playersArrayFormatted = [];
 //function for once a day grabbing all players from API
 
 let playersArray = [];
@@ -36,53 +35,41 @@ const playerGrabber = (data) => {
   })
 }
 
-// const playersArrayFormatter = (playersArray) => {
-//   // console.log(playersArray);
-//   playersArrayFormatted = [];
-//   playersArrayForNow = "";
-//   let objFinalString = "";
-//   playersArray.forEach(item => {
-//     let objArray = Object.values(item);
-//     // console.log("LEVEL1: " + objArray)
-//     let objString = "";
-//     objArray.forEach(value => {
-//       // let valueString = `"${value}",`;
-//       objString += "'" + value + "', ";
-//     })
-//     // console.log("LEVEL2: " + objString)
-//     objFinalString += "(" + objString.slice(0,-2) + ") ";
-//   })
-//   // console.log("LEVEL3: " + objFinalString)
-//   playersArrayForNow += objFinalString;
-//   playersArrayFormatted.push(playersArrayForNow.slice(0,-1));
-//   console.log(playersArrayFormatted);
-// }
+const playersArrayFormatter = (playersArray) => {
+  playersArray.forEach(item => {
+    let objArray = Object.values(item);
+    playersArrayFormatted.push(objArray);
+  })
+}
+
+// the apostrophes in these names are causing the write failure
+  // "DeAndre'' Bembry"
+  // "Mike D'Antoni"
+  // "De'Aaron Fox"
+  // "Devonte'' Graham"
+  // "Le'Bryan Nash"
+  // "Royce O'Neale"
+  // "Kyle O'Quinn"
+  // "D'Angelo Russell"
+  // "Amar'e Stoudemire"
+  // "De'Anthony Melton"
+  // "E'Twaun Moore"
+  // "J.J. O'Brien"
+  // "Johnny O'Bryant"
 
 
 const playerChecker = async function() {
   var data = await msf.getData('nba', 'current', 'players', 'json', {force: true});
   playerGrabber(data);
   playersArrayFormatter(playersArray);
-  // console.log(playersArrayFormatted);
-  // let query = `"INSERT INTO players (playerId, firstName, lastName, teamAbbr, teamId) VALUES ?"` + connection.escape(playersArrayFormatted);
-  // console.log("QUERY: " + query);
-  connection.query("INSERT INTO players (playerId, firstName, lastName, teamAbbr, teamId) VALUES ?", [playersArrayFormatted], function(err, res){ //dont forget teamName
+  const query = connection.query("INSERT INTO players (playerId, firstName, lastName, teamAbbr, teamId) VALUES ?", [playersArrayFormatted], function(err, res){ //dont forget teamName
+    console.log(query.sql)
     if (err) throw err;
     console.log(res);
   })
 }
 
-let questionMark = "?";
-    for (let i = 0; i < playersArray.length - 1; i++) {questionMark += ", ?"}
-
-
 // playerChecker();  //run on server start once
 
 const dayInMilliseconds = 1000 * 60 * 60 * 24;
 // setInterval(playerChecker(),dayInMilliseconds ); //run every 12 hours 
-
-// connection.query(`SELECT * FROM players`, function(err, res) {
-//   if (err) throw err;
-//   console.table(res);
-//   console.log("i'm hitted");
-// })
