@@ -50,17 +50,28 @@
               <button type="button" class="playerAddBtn btn btn-block btn-success ml-3 btnAdd"> + </button>
             </div>
           </div>
-          <div class="teamSearchBar row mx-0">
+          <div class="teamSearchBar d-none row mx-0">
             <label>Search For a Team</label>
-            <input id="teamSearch" class="form-control col-sm-10 pr-0 mr-0" type="text"
+            <input list="teamDropdown" id="teamSearch" class="form-control col-sm-10 pr-0 mr-0" type="text"
               placeholder="Golden State Warriors" />
+               <datalist id="teamDropdown">
+                <option value="Chicago Bulls">
+                <option value="Golden State Warriors">
+                <option value="Houston Rockets">
+                <option value="New York Knicks">
+                <option value="Miami Heat"></option>
+              </datalist>
             <div class="pull-right col-sm-2 pl-0 ml-0">
               <button type="button" class="teamAddBtn btn btn-block btn-success ml-3 btnAdd"> + </button>
             </div>
           </div>
           <div class="listAppend mt-2">
             <label>List</label>
-            <textarea readonly class="form-control listAdd" id="formtextArea" rows="7"></textarea>
+            <div class="container listingArea alert-secondary rounded">
+              <ul style="list-style: none;" class="listAdd">
+
+              </ul>
+            </div>
           </div>
 
         </div>
@@ -80,7 +91,7 @@
                   {{!-- <input class="form-check-input" type="checkbox" id="date" value="date"> --}}
                   <label>Date Range</label>
                 </div>
-                <div class="col-sm-5 custom-select">
+                <div class="col-sm-6 custom-select">
                   <div class="datePicker" id="reportrange">
                     {{!-- style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%; min-height:38px;" --}}
                     <i class="fa fa-calendar"></i>&nbsp;
@@ -94,7 +105,7 @@
                   {{!-- <input class="form-check-input" type="checkbox" id="season" value="season"> --}}
                   <label>Season</label>
                 </div>
-                <div class="col-sm-5 px-0">
+                <div class="col-sm-6 px-0">
                   <select id="seasonInput" class="selector custom-select pl-3" aria-labelledby="dropdownMenuButton">
                     <option class="nbaSeason" name="2019playoff">Current</option>
                     <option class="nbaSeason" name="2019playoff">2019 Playoff</option>
@@ -114,7 +125,7 @@
                   {{!-- <input class="form-check-input" type="checkbox" id="season" value="season"> --}}
                   <label>Position</label>
                 </div>
-                <div class="col-sm-5 px-0">
+                <div class="col-sm-6 px-0">
                   <select id="positionInput" class="selector custom-select pl-3" aria-labelledby="dropdownMenuPlayoff">
                     <option class="">All</option>
                     <option class="">Point Guard</option>
@@ -132,7 +143,7 @@
                   <label>Roster Status</label>
 
                 </div>
-                <div class="col-sm-5 px-0">
+                <div class="col-sm-6 px-0">
                   <select id="rosterStatus" class="selector custom-select pl-3" aria-labelledby="dropdownMenuPlayoff">
                     <option class="">Available</option>
                     <option class="">Probable</option>

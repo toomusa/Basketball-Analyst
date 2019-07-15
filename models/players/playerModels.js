@@ -36,27 +36,27 @@ const playerGrabber = (data) => {
   })
 }
 
-const playersArrayFormatter = (playersArray) => {
-  // console.log(playersArray);
-  playersArrayFormatted = [];
-  playersArrayForNow = "";
-  let objFinalString = "";
-  playersArray.forEach(item => {
-    let objArray = Object.values(item);
-    // console.log("LEVEL1: " + objArray)
-    let objString = "";
-    objArray.forEach(value => {
-      // let valueString = `"${value}",`;
-      objString += "'" + value + "', ";
-    })
-    // console.log("LEVEL2: " + objString)
-    objFinalString += "(" + objString.slice(0,-2) + ") ";
-  })
-  // console.log("LEVEL3: " + objFinalString)
-  playersArrayForNow += objFinalString;
-  playersArrayFormatted.push(playersArrayForNow.slice(0,-1));
-  console.log(playersArrayFormatted);
-}
+// const playersArrayFormatter = (playersArray) => {
+//   // console.log(playersArray);
+//   playersArrayFormatted = [];
+//   playersArrayForNow = "";
+//   let objFinalString = "";
+//   playersArray.forEach(item => {
+//     let objArray = Object.values(item);
+//     // console.log("LEVEL1: " + objArray)
+//     let objString = "";
+//     objArray.forEach(value => {
+//       // let valueString = `"${value}",`;
+//       objString += "'" + value + "', ";
+//     })
+//     // console.log("LEVEL2: " + objString)
+//     objFinalString += "(" + objString.slice(0,-2) + ") ";
+//   })
+//   // console.log("LEVEL3: " + objFinalString)
+//   playersArrayForNow += objFinalString;
+//   playersArrayFormatted.push(playersArrayForNow.slice(0,-1));
+//   console.log(playersArrayFormatted);
+// }
 
 
 const playerChecker = async function() {
@@ -76,7 +76,7 @@ let questionMark = "?";
     for (let i = 0; i < playersArray.length - 1; i++) {questionMark += ", ?"}
 
 
-playerChecker();  //run on server start once
+// playerChecker();  //run on server start once
 
 const dayInMilliseconds = 1000 * 60 * 60 * 24;
 // setInterval(playerChecker(),dayInMilliseconds ); //run every 12 hours 
