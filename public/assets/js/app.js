@@ -109,27 +109,11 @@ $(document).on('click', '.searchAdvanced', function(){
 
 $(document).on('click','.checkAll',function(){
   $('input:checkbox:visible').not(this).not('.customFunction').prop('checked', this.checked);
-  // var checked = $(this).prop('checked');
-  // $('searchChecks').child().child().child().child().find('input:checkbox').prop('checked', checked);
-  // $('searchChecksAdv').child().find('input:checkbox').prop('checked', checked);
 });
 
-// //function for checking search value
-// $(document).on('keyup','#playerSearch', () => {
-//   let prefix = $('#playerSearch').val();
-//   if (prefix.length === 0) {
-//     $('#playerDropdown').empty();
-//     $('#playerDropdown').append(
-//     `<option value="Kevin Durant">
-//     <option value="Stephen Curry">
-//     <option value="James Harden">
-//     <option value="Chris Paul">
-//     <option value="Dwight Howard"></option>`);
-//   } if (prefix.length > 3) {
-//     $('#playerDropdown').empty();
-//     trieSearchPlayer(prefix);
-//   };
-// });
+$(document).on('click', '.removeBtn', function(){
+  $(this).parent().remove();
+});
 
 const checkBoxFilter = () => {
   $('.searchAdvanced').text('See Advanced');
@@ -155,10 +139,11 @@ const checkBoxFilter = () => {
       currentshow = 'seasonalTeamStats';
     }
   }
-}
+};
 
 checkBoxFilter();
 
+//Submit Button
 $(document).on('click', '.searchSubmit', () => {
   
   event.preventDefault();
@@ -168,10 +153,13 @@ $(document).on('click', '.searchSubmit', () => {
   let position = $('#positionInput').val();
   let roster = $('#rosterStatus').val();
   let checkBox = {};
+  let nameList = [];
   $("input:checkbox[name=chk]:checked").each(function () {
     checkBox[$(this).attr("id")] = $(this).attr("value");
   });
 
+  $("ul .addedName").each(function() { nameList.push(($(this).text()).slice(1))});
+  // console.log(nameList); //not exported yet but working as intended!
 
   let searchObj = {
     date, season, position, roster, checkBox

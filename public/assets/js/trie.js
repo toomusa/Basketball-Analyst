@@ -150,7 +150,7 @@ $(document).on('keyup','#playerSearch', () => {
     <option value="James Harden">
     <option value="Chris Paul">
     <option value="Dwight Howard"></option>`);
-  } if (prefix.length >= 3) {
+  } if (prefix.length >= 2) {
     $('#playerDropdown').empty();
     trieSearchPlayer(prefix);
   };
@@ -175,3 +175,40 @@ $(document).on('keyup','#teamSearch', () => {
 });
 
 
+const addInput= (name) => {
+  let nameList = new Set()
+  $("ul .addedName").each(function() { nameList.add(($(this).text()).slice(1))});
+  if (!nameList.has(name) && nameList.size <5) {
+  $('.listAdd').append(`<li class="addedName"><span class="removeBtn btn btn-sm">x</span>${name}</li>`);
+  }
+};
+
+$(document).on('click', '.playerAddBtn', function(){
+  let name = $('#playerSearch').val();
+  if (lastFirstTrie.contains(name) || playerTrie.contains(name)) {
+    addInput(name); 
+    $('#playerSearch').val('');
+    $('#playerDropdown').empty();
+    $('#playerDropdown').append(
+    `<option value="Kevin Durant">
+    <option value="Stephen Curry">
+    <option value="James Harden">
+    <option value="Chris Paul">
+    <option value="Dwight Howard"></option>`);
+  } else return
+});
+
+$(document).on('click', '.teamAddBtn', function(){
+  let name = $('#teamSearch').val();
+  if (lastFirstTeamTrie.contains(name) || teamTrie.contains(name)) {
+    addInput(name);
+    $('#teamSearch').val('');
+    $('#teamDropdown').empty();
+    $('#teamDropdown').append(
+    `<option value="Chicago Bulls">
+    <option value="Golden State Warriors">
+    <option value="Houston Rockets">
+    <option value="New York Knicks">
+    <option value="Miami Heat"></option>`);
+  } else return
+});
