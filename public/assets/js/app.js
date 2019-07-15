@@ -6,13 +6,12 @@ var currentShow = 'players';
 
 let userTableData;
 let userColumnConfig;
+let loggedIn = true;
+let username = '';
 
 $(document).ready(function() {
 // =================================calendar function====================================
-
-
 $(function() {
-
     var start = moment().subtract(29, 'days');
     var end = moment();
 
@@ -32,10 +31,16 @@ $(function() {
            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
         }
     }, cb);
-
     cb(start, end);
 
 });
+// ==================================Dashboard Section=======================================
+const logoutButton = () => {
+  (loggedIn) ? $(".navbar-nav2").append(`<li class="nav-item ml-4"><a class="nav-link font-weight-light logout" href="/">Logout</a></li>`) : $(".logout").parent().remove();
+}
+
+logoutButton();
+
 // ==================================Params Section Search Page===============================
 // $(document).on('click', '.nbaSeason', () => {
 //   let currentSeason = $(this).text();
@@ -43,7 +48,6 @@ $(function() {
 //   console.log(currentSeason + "3");
 //   $('#seasonInput').text(currentSeason);
 // })
-
 
 //player search click functions
 $(document).on('click', '.playerButton', function(){
