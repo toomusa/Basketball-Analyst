@@ -17,8 +17,8 @@ module.exports = {
                     console.log("SQL ROUTE SUCCESS!!")
                     userTableData = data[0].table1;
                     userColumnConfig = data[0].table2;
-                    console.log(userTableData)
-                    console.log(userColumnConfig)
+                    // console.log(userTableData)
+                    // console.log(userColumnConfig)
                     resolve();
                 })
             }).catch(err => console.log(err));

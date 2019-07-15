@@ -8,12 +8,11 @@ DROP TABLE IF EXISTS ????
 
 CREATE TABLE players (
     id INTEGER NOT NULL AUTO_INCREMENT,
-    playerId INTEGER (10) NOT NULL,
+    playerId INTEGER (100) NOT NULL,
     firstName VARCHAR(100) NOT NULL,
     lastName VARCHAR(100) NOT NULL,
-    teamName VARCHAR(100) NOT NULL,
-    teamAbbr VARCHAR (5) NOT NULL,
-    teamId INTEGER (10) NOT NULL,
+    teamAbbr VARCHAR (100) NOT NULL,
+    teamId VARCHAR (100) NOT NULL,
     PRIMARY KEY (id)
 );
 

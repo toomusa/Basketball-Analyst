@@ -7,10 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let userDataCheck = document.getElementById("user-data").textContent;
     let userColumnCheck = document.getElementById("user-columns").textContent;
-
-    console.log(typeof userDataCheck)
-    console.log(typeof userColumnCheck)
-
+    
     let userTableData = "";
     let userColumnConfig = "";
     userTableData = JSON.parse(userDataCheck);

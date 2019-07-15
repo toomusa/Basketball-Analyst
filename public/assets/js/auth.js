@@ -19,55 +19,66 @@ const btnLogin = document.getElementById("btnLogin");
 const btnSignUp = document.getElementById("btnSignUp");
 const btnLogout = document.getElementById("btnLogout");
 
-btnLogin.addEventListener("click", e => {
-    e.preventDefault();
-    const email = txtEmail.value;
-    const password = txtPassword.value;
-
-
-    const userInfo = {email, password}
-
-    // $.post("/auth/login", userInfo, function(data) {
-    //     if(data.user) {
-    //         const promise = auth.signInWithEmailAndPassword(data.email, data.password);
-    //         window.location.href = '/dashboard';
-    //     }
-    // })
-
-    // check for username validation and required, then fire off google auth
-
-    const promise = auth.signInWithEmailAndPassword(email, password);
-    promise.catch(e => console.error(e.message));
-    // window.location.href = '/dashboard';
+document.addEventListener("click", event => {
+    if (event.target.matches("#btnLogin")) {
+        event.preventDefault();
+        const email = txtEmail.value;
+        const password = txtPassword.value;
+        const promise = auth.signInWithEmailAndPassword(email, password);
+        promise.catch(e => console.error(e.message));
+    } else if (event.target.matches("#btnLogout")) {
+        auth.signOut();
+    } else if (event.target.matches("#btnSignUp")) {
+        event.preventDefault();
+        // check for real email
+        const email = txtEmail.value;
+        const password = txtPassword.value;
+        const promise = auth.createUserWithEmailAndPassword(email, password);
+        promise.catch(e => console.error(e.message));
+    }
 })
 
-btnSignUp.addEventListener("click", e => {
-    e.preventDefault();
-    // check for real email
-    const email = txtEmail.value;
-    const password = txtPassword.value;
-    const promise = auth.createUserWithEmailAndPassword(email, password);
-    promise.catch(e => console.error(e.message));
-})
+// btnLogin.addEventListener("click", e => {
+//     e.preventDefault();
+//     const email = txtEmail.value;
+//     const password = txtPassword.value;
 
-btnLogout.addEventListener("click", e => {
-    auth.signOut();
-    // $(btnLogout).addClass("d-none");
-    // $(btnLogin).removeClass("d-none");
-})
+//     const promise = auth.signInWithEmailAndPassword(email, password);
+//     promise.catch(e => console.error(e.message));
+//     // window.location.href = '/dashboard';
+// })
+
+// btnSignUp.addEventListener("click", e => {
+//     e.preventDefault();
+//     // check for real email
+//     const email = txtEmail.value;
+//     const password = txtPassword.value;
+//     const promise = auth.createUserWithEmailAndPassword(email, password);
+//     promise.catch(e => console.error(e.message));
+// })
+
+// btnLogout.addEventListener("click", e => {
+//     auth.signOut();
+//     // $(btnLogout).addClass("d-none");
+//     // $(btnLogin).removeClass("d-none");
+// })
 
 auth.onAuthStateChanged(user => {
     if (user) {
         console.log(user.uid);
+        console.log(user.email);
+        let userId = user.uid;
+        let userEmail = user.email
+        let userInfo = {userId, userEmail};
         
-        // $.post("/auth/login", user.uid, function(data) {
+        // $.post("/auth/login", userInfo, function(data) {
         //     // some code
         //     if(data) {
         //         window.location.href = '/dashboard';
         //     } else {
         //         window.location.href = '/search';
         //     }
-        // }
+        // })
 
         // $(btnLogout).removeClass("d-none");
     } else {
