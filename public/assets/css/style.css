@@ -12,6 +12,8 @@
 
 #team {
   min-height: 200px;
+  font-size: 72px;
+  line-height: 200px;
 }
 .customSearch {
   min-height: 300px;
