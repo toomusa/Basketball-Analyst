@@ -1,5 +1,5 @@
 
-const API = {
+const checkBoxRef = {
     players: {
         primary: {
             plyrLastUpdatedOn: "Last Updated On",
@@ -103,35 +103,35 @@ const API = {
             dpglMinSecondsPerGame: "Minutes per Game",
             dpglGamesStarted: "Games Started"
         },
-        twoPtFieldGoals: {
+        "Two Point Field Goals": {
             dpglFg2PtAtt: "2pt Attempts",
             dpglFg2PtAttPerGame: "2pt Attempts per Game",
             dpglFg2PtMade: "2pt Made",
             dpglFg2PtMadePerGame: "2pt Made per Game",
             dpglFg2PtPct: "2pt Percentage"
         },
-        threePtFieldGoals: {
+        "three Point Field Goals": {
             dpglFg3PtAtt: "3pt Attempts",
             dpglFg3PtAttPerGame: "3pt Attempts per Game",
             dpglFg3PtMade: "3pt Made",
             dpglFg3PtMadePerGame: "3pt Made per Game",
             dpglFg3PtPct: "3pt Percentage",
         },
-        fieldGoals: {
+        "field Goals": {
             dpglFgAtt: "Field Goal Attempts",
             dpglFgAttPerGame: "Field Goal Attempts per Game",
             dpglFgMade: "Field Goals Made",
             dpglFgMadePerGame: "Field Goals Made per Game",
             dpglFgPct: "Field Goal Percentage"
         },
-        freeThrows: {
+        "free Throws": {
             dpglFtAtt: "Free Throw Attempts",
             dpglFtAttPerGame: "Free Throw Attempts per Game",
             dpglFtMade: "Free Throws Made",
             dpglFtMadePerGame: "Free Throws Made per Game",
             dpglFtPct: "Free Throw Percentage",
         },
-        rebounds: {
+        "rebounds": {
             dpglOffReb: "Offensive Rebounds",
             dpglOffRebPerGame: "Offensive Rebounds per Game",
             dpglDefReb: "Defensive Rebounds",
@@ -139,7 +139,7 @@ const API = {
             dpglReb: "Rebounds",
             dpglRebPerGame: "Rebounds per Game"
         },
-        offense: {
+        "offense": {
             dpglAst: "Assists",
             dpglAstPerGame: "Assists per Game",
             dpglPts: "Points",
@@ -147,7 +147,7 @@ const API = {
             dpglTov: "Turnovers",
             dpglTovPerGame: "Turnovers per Game"
         },
-        defense: {
+        "defense": {
             dpglStl: "Steals",
             dpglStlPerGame: "Steals per Game",
             dpglBlk: "Blocks",
@@ -205,28 +205,28 @@ const API = {
             dtglWinPct: "Win Percentage",
             dtglGamesBack: "Games Back"
         },
-        twoPtFieldGoals: {
+        "two Point Field Goals": {
             dtglFg2PtAtt: "2pt Attempts",
             dtglFg2PtAttPerGame: "2pt Attempts per Game",
             dtglFg2PtMade: "2pt Made",
             dtglFg2PtMadePerGame: "2pt Made per Game",
             dtglFg2PtPct: "2pt Percentage"
         },
-        threePtFieldGoals: {
+        "three Point Field Goals": {
             dtglFg3PtAtt: "3pt Attempts",
             dtglFg3PtAttPerGame: "3pt Attempts per Game",
             dtglFg3PtMade: "3pt Made",
             dtglFg3PtMadePerGame: "3pt Made per Game",
             dtglFg3PtPct: "3pt Percentage",
         },
-        fieldGoals: {
+        "field Goals": {
             dtglFgAtt: "Field Goal Attempts",
             dtglFgAttPerGame: "Field Goal Attempts per Game",
             dtglFgMade: "Field Goals Made",
             dtglFgMadePerGame: "Field Goals Made per Game",
             dtglFgPct: "Field Goal Percentage"
         },
-        freeThrows: {
+        "free Throws": {
             dtglFtAtt: "Free Throw Attempts",
             dtglFtAttPerGame: "Free Throw Attempts per Game",
             dtglFtMade: "Free Throws Made",
@@ -313,28 +313,28 @@ const API = {
             splsMinSecondsPerGame: "Minutes per Game",
             splsGamesStarted: "Games Started"
         },
-        twoPtFieldGoals: {
+        "two Point Field Goals": {
             splsFg2PtAtt: "2pt Attempts",
             splsFg2PtAttPerGame: "2pt Attempts per Game",
             splsFg2PtMade: "2pt Made",
             splsFg2PtMadePerGame: "2pt Made per Game",
             splsFg2PtPct: "2pt Percentage"
         },
-        threePtFieldGoals: {
+        "three Point Field Goals": {
             splsFg3PtAtt: "3pt Attempts",
             splsFg3PtAttPerGame: "3pt Attempts per Game",
             splsFg3PtMade: "3pt Made",
             splsFg3PtMadePerGame: "3pt Made per Game",
             splsFg3PtPct: "3pt Percentage"
         },
-        fieldGoals: {
+        "field Goals": {
             splsFtAtt: "Field Goal Attempts",
             splsFtAttPerGame: "Field Goal Attempts per Game",
             splsFtMade: "Field Goals Made",
             splsFtMadePerGame: "Field Goals Made per Game",
             splsFtPct: "Field Goal Percentage"
         },
-        freeThrows: {
+        "free Throws": {
             splsFtAtt: "Free Throw Attempts",
             splsFtAttPerGame: "Free Throw Attempts per Game",
             splsFtMade: "Free Throws Made",
@@ -409,28 +409,28 @@ const API = {
             stmsWinPct: "Win Percentage",
             stmsGamesBack: "Games Back"
         },
-        twoPtFieldGoals: {
+        "two Point Field Goals": {
             stmsFg2PtAtt: "2pt Attempts",
             stmsFg2PtAttPerGame: "2pt Attempts per Game",
             stmsFg2PtMade: "2pt Made",
             stmsFg2PtMadePerGame: "2pt Made per Game",
             stmsFg2PtPct: "2pt Percentage"
         },
-        threePtFieldGoals: {
+        "three Point Field Goals": {
             stmsFg3PtAtt: "3pt Attempts",
             stmsFg3PtAttPerGame: "3pt Attempts per Game",
             stmsFg3PtMade: "3pt Made",
             stmsFg3PtMadePerGame: "3pt Made per Game",
             stmsFg3PtPct: "3pt Percentage",
         },
-        fieldGoals: {
+        "Field Goals": {
             stmsFgAtt: "Field Goal Attempts",
             stmsFgAttPerGame: "Field Goal Attempts per Game",
             stmsFgMade: "Field Goals Made",
             stmsFgMadePerGame: "Field Goals Made per Game",
             stmsFgPct: "Field Goal Percentage"
         },
-        freeThrows: {
+        "free Throws": {
             stmsFtAtt: "Free Throw Attempts",
             stmsFtAttPerGame: "Free Throw Attempts per Game",
             stmsFtMade: "Free Throws Made",
@@ -488,6 +488,34 @@ const API = {
     } 
 } 
 
+const teamObjRef = {
+    "Atlanta Hawks": "atlanta-hawks",
+    "Boston Celtics": "boston-celtics",
+    "Brooklyn Nets": "brooklyn-nets", 
+    "Charlotte Hornets": "charlotte-hornets",
+    "Chicago Bulls": "chicago-bulls",
+    "Cleveland Caveliers": "cleveland-caveliers", 
+    "Dallas Mavericks": "dallas-mavericks",
+    "Denver Nuggets": "denver-nuggets",
+    "Detroit Pistons": "detroit-pistons", 
+    "Golden State Warriors": "goldenstate-warriors",
+    "Houston Rockets": "houston-rockets", 
+    "Indiana Pacers": "indiana-pacers", 
+    "LA Clippers": "la-clippers", 
+    "Los Angeles Lakers": "losangeles-lakers", 
+    "Memphis Grizzlies": "memphis-grizzlies", 
+    "Miami Heat": "miami-heat", 
+    "Milwaukee Bucks": "milwaukee-bucks", 
+    "Minnesota Timberwolves": 'minnesota-timberwolves', 
+    "New Orleans Pelicans": "neworleans-pelicans", 
+    "New York Knicks": "newyork-knicks", 
+    "Oklahoma City Thunder": "oklahomacity-thunder",
+    "Orlando Magic": "orlando-magic", 
+    "Philadelphia 76ers": "philadelphia-76ers", 
+    "Phoenix Suns": "phoenix-suns", 
+    "Portland Trail Blazers": "portlandtrail-blazers"
+}
+
 const checkboxMaker = (obj) => {
     for(let key in obj) {
         // let rowDiv = $(`<div class="${key}">`);
@@ -495,7 +523,7 @@ const checkboxMaker = (obj) => {
             let bigDiv;
             if (keyy === 'primary') {
                 let keyName;
-                bigDiv = $(`<div class="row mb-4 primary">`);
+                bigDiv = $(`<div class="row mb-0 primary">`);
 
                 if (key === 'players') {
                     keyName = 'Players';
@@ -536,6 +564,8 @@ const checkboxMaker = (obj) => {
                 } else if (key === 'seasonalTeamStats','seasonalTeamStats') {
                     bigDiv.addClass('allFilter seasonalTeamStatsAdv');
                 }
+                bigDiv.addClass("mb-2");
+                bigDiv.append(`<h5 class="col-sm-12 mt-3 text-capitalize">${keyy}</h5>`);
             }
             for(let keyyy in obj[key][keyy]) {
                 let newDiv = $(`<div class="col-sm-4">`);
@@ -555,10 +585,10 @@ const checkboxMaker = (obj) => {
         }
         // $('.searchButtonL').append(`<button class="searchAdvanced btn btn-warning float-left">See Advanced</button>`);
         // $('.searchButtonL').append(`<button type="submit" class="searchSubmit btn btn-primary float-right">Submit</button>`);
-        $('.searchChecksAdv').append(`<div class="col-sm align-self-end mt-4"><button class="searchAdvanced btn btn-warning float-left">See Advanced</button>`);
-        $('.searchButtonL').append(`<div class="col-sm align-self-end"><input type="checkbox" class="checkAll btn btn-success float-middle">Check All</input>`);
-        $('.searchChecksAdv').append(`<div class="col-sm align-self-end"><button type="submit" class="searchSubmit btn btn-primary float-right">Submit</button>`);
+        $('.searchChecks').append(`<div class="col-sm align-self-end mt-4"><button class="searchAdvanced btn btn-warning float-right">See Advanced</button>`);
+        $('.searchButtonL').append(`<div class="col-sm align-self-end"><input type="checkbox" class="checkAll mb-1 btn btn-success">&nbsp; Check All</input>`);
+        $('.submitBPlace').append(`<div class="col-sm align-self-end pr-0 mr-0"><button type="submit" class="searchSubmit btn btn-primary float-right">Submit</button>`);
     }
 
-  checkboxMaker(API);
+  checkboxMaker(checkBoxRef);
 
