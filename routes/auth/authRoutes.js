@@ -2,13 +2,12 @@ const express = require("express");
 const router = express.Router();
 
 const authController = require("../../controllers/auth/authController.js");
-
-// router.route("/auth").get(authController.userLogin);
+// const htmlController = require("../../controllers/html/htmlController.js");
 
 router.route("/login").post(authController.userLogin);
 
-// router.route("/auth/signup").get(authController.findAll);
+// router.route("/signup").get(authController.userSignUp);
 
-// router.route("/auth/logout").get(authController.findAll);
+router.route("/logout").get(authController.redirectHome);
 
 module.exports = router;

@@ -6,7 +6,8 @@ var currentShow = 'players';
 
 let userTableData;
 let userColumnConfig;
-let loggedIn = true;
+// let userToken;
+// let loggedIn = true;
 let username = '';
 
 $(document).ready(function() {
@@ -35,11 +36,11 @@ $(function() {
 
 });
 // ==================================Dashboard Section=======================================
-const logoutButton = () => {
-  (loggedIn) ? $(".navbar-nav2").append(`<li class="nav-item ml-4"><a class="nav-link font-weight-light logout" href="/">Logout</a></li>`) : $(".logout").parent().remove();
-}
+// const logoutButton = () => {
+//   (loggedIn) ? $(".navbar-nav2").append(`<li class="nav-item ml-4"><a class="nav-link font-weight-light logout" href="/">Logout</a></li>`) : $(".logout").parent().remove();
+// }
 
-logoutButton();
+// logoutButton();
 
 $(document).on("click", ".editBtn", ()=> {
   if ($(".editBtn").text() === "Edit") {
@@ -205,8 +206,8 @@ $(document).on('click', '.searchSubmit', () => {
 
 
   $(document).on("click", "#save-table", function(){
-    let userSaveTable = {userTableData,userColumnConfig}
-    $.post('/user', userSaveTable, (response) => {
+    let userSaveTable = {userTableData, userColumnConfig}
+    $.post('/save', userSaveTable, (response) => {
       console.log("SENT TO SQL SAVE")
       window.location.href = "/dashboard";
     });

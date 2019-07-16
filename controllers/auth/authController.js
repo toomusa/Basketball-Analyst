@@ -9,19 +9,52 @@ const auth = require('../../config/keys').auth;
 
 module.exports = {
     userLogin: async (req, res) => {
-        let {userId} = req.body[0];
-        let {userEmail} = req.body[1];
+        let userDashboard = [];
+        let {userToken, userEmail, userName} = req.body;
+        console.log(userToken)
+        console.log(userEmail)
+        console.log(userName)
 
-        connection.query("SELECT * FROM users WHERE id = ? AND ")
-        // query mysql users table
-        // if user.uid exists in mysql
-        //     query mysql for exisiting queries 
-        //     render api queries to dashboard
-        // render dashboard
-        // else
-        // render search
+        connection.query("SELECT * FROM users WHERE user_token = ? AND user_email = ?", [userToken, userEmail], (err, data) => {
+            if (err) {
+                console.log("********User NOT Found********");
+            } else if (data) {
+                console.log("USER TOKEN BE: " + userToken)
+                res.send(userToken);
+            }
+        })
+
+                // connection.query("SELECT * FROM configs WHERE user_token = ?", [userToken], (err, data) => {
+                //     if (err) throw err;
+                //     console.log("***********CONFIG DATA***************")
+                //     // data.forEach(item => {
+                //     for (let i = 0; i < data.length; i++) {
+                //         // console.log(item)
+                //         userDashboard.push([data[i].id, data[i].table_data, data[i].column_data])
+                //     }
+                //     // });
+                //     // console.log(userDashboard)
+            
+                //     res.render("dashboard", {
+                //         title: "Dashboard", 
+                //         userDashboard
+                //     });
+                    
+                // })
+            
+
 
         console.log("userLogin works!");
-        res.json({email, password, user});
+    },
+    redirectHome: (req, res) => {
+        console.log("REDIRECT HOME")
+        firebase.auth().signOut()
+            .then(() => {
+                console.log("Signed out")
+                res.render("index", {title: "Home"});
+            })
+            .catch(console.log("Couldn't sign out"));
+        // let promise = auth.signOut();
+        // promise.catch(e => console.log(e));
     }
 };

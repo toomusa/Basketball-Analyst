@@ -242,8 +242,15 @@
 
   </div>
 
-  <div id="user-data"> {{{ userData }}} </div>
-  <div id="user-columns"> {{{ userColumns }}} </div>
+  <div id="user-dashboard">
+    {{#each userDashboard}}
+      <div>
+        <span class="user-data" data-id="{{this.id}}"> {{{ this.tableData }}} </span> <br><br>   
+        <span class="user-columns" data-id="{{this.id}}"> {{{ this.columnData }}} </span> <br><br>
+      </div>
+    {{/each}}
+  </div>
+  
 
   {{>footer}}
 
