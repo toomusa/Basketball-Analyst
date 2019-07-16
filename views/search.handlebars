@@ -40,11 +40,11 @@
             <label>Search For a Player</label>
             <input list="playerDropdown" id="playerSearch" class="form-control col-sm-10 pr-0 mr-0" type="text" placeholder="Kevin Durant">
               <datalist id="playerDropdown">
-                <option value="Kevin Durant">
-                <option value="Stephen Curry">
-                <option value="James Harden">
-                <option value="Chris Paul">
-                <option value="Dwight Howard">
+                <option class="option" value="Kevin Durant">
+                <option class="option" value="Stephen Curry">
+                <option class="option" value="James Harden">
+                <option class="option" value="Chris Paul">
+                <option class="option" value="Dwight Howard">
               </datalist>
             <div class="pull-right col-sm-2 pl-0 ml-0">
               <button type="button" class="playerAddBtn btn btn-block btn-success ml-3 btnAdd"> + </button>
@@ -55,11 +55,11 @@
             <input list="teamDropdown" id="teamSearch" class="form-control col-sm-10 pr-0 mr-0" type="text"
               placeholder="Golden State Warriors" />
                <datalist id="teamDropdown">
-                <option value="Chicago Bulls">
-                <option value="Golden State Warriors">
-                <option value="Houston Rockets">
-                <option value="New York Knicks">
-                <option value="Miami Heat"></option>
+                <option class="optionT" value="Chicago Bulls">
+                <option class="optionT" value="Golden State Warriors">
+                <option class="optionT" value="Houston Rockets">
+                <option class="optionT" value="New York Knicks">
+                <option class="optionT" value="Miami Heat"></option>
               </datalist>
             <div class="pull-right col-sm-2 pl-0 ml-0">
               <button type="button" class="teamAddBtn btn btn-block btn-success ml-3 btnAdd"> + </button>
@@ -67,7 +67,7 @@
           </div>
           <div class="listAppend mt-2">
             <label>List</label>
-            <div class="container listingArea alert-secondary rounded">
+            <div class="listingArea rounded">
               <ul style="list-style: none;" class="listAdd">
 
               </ul>
@@ -166,21 +166,21 @@
   <div class="row mt-3 mx-0">
     <div class="card col-sm-12">
       <div class="card-body row">
-        <h4 class="col-sm-3">Checkboxes</h4>
-        <div class="col-sm-4 searchButtonL"></div>
+        <h4 class="col-sm-2">Checkboxes</h4>
+        <div class="col-sm-4 searchButtonL text-left"></div>
       </div>
       <div class="card-body searchChecks py-0 my-0">
       </div>
-      <div class="card-body searchChecksAdv pt-0 mt-0">
+      <div class="card-body searchChecksAdv pt-0 mt-2">
       </div>
     </div>
   </div>
-
+  <div class="submitBPlace row mt-3 mr-0 pr-0"></div>
 </div>
 
 
-<!--=================================Functions Section============================================-->
-<div class="customSearch jumbotron mx-5 py-3 px-3">
+<!--=================================Functions Section========HIDDEN====================================-->
+<div class="customSearch jumbotron mx-5 py-3 px-3 d-none">
   <div class="card">
     <div class="card-body">
       <h4>Custom Functions</h4>

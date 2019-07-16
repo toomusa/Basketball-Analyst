@@ -123,7 +123,7 @@ const trieSearchPlayer = function(str) {
   let resultArr = [...new Set([...playerTrie.find(str), ...convert(lastFirstTrie.find(str))])];
   // console.log(resultArr);
   for (let i=0; i<resultArr.length; i++) {
-      let newOption = `<option value="${resultArr[i]}">`;
+      let newOption = `<option class="option" value="${resultArr[i]}">`;
       $('#playerDropdown').append(newOption);
   }
 };
@@ -131,7 +131,7 @@ const trieSearchPlayer = function(str) {
 const trieSearchTeam = function(str) {
   let resultArr = [...new Set([...teamTrie.find(str), ...convert(lastFirstTeamTrie.find(str))])];
   for (let i=0; i<resultArr.length; i++) {
-      let newOption = `<option value="${resultArr[i]}">`;
+      let newOption = `<option class="option" value="${resultArr[i]}">`;
       $('#teamDropdown').append(newOption);
   }
 };
@@ -145,11 +145,11 @@ $(document).on('keyup','#playerSearch', () => {
   if (prefix.length === 0) {
     $('#playerDropdown').empty();
     $('#playerDropdown').append(
-    `<option value="Kevin Durant">
-    <option value="Stephen Curry">
-    <option value="James Harden">
-    <option value="Chris Paul">
-    <option value="Dwight Howard"></option>`);
+    `<option class="option" value="Kevin Durant">
+    <option class="option" value="Stephen Curry">
+    <option class="option" value="James Harden">
+    <option class="option" value="Chris Paul">
+    <option class="option" value="Dwight Howard"></option>`);
   } if (prefix.length >= 2) {
     $('#playerDropdown').empty();
     trieSearchPlayer(prefix);
@@ -163,11 +163,11 @@ $(document).on('keyup','#teamSearch', () => {
   if (prefix.length === 0) {
     $('#teamDropdown').empty();
     $('#teamDropdown').append(
-    `<option value="Chicago Bulls">
-    <option value="Golden State Warriors">
-    <option value="Houston Rockets">
-    <option value="New York Knicks">
-    <option value="Miami Heat"></option>`);
+    `<option class="optionT" value="Chicago Bulls">
+    <option class="optionT" value="Golden State Warriors">
+    <option class="optionT" value="Houston Rockets">
+    <option class="optionT" value="New York Knicks">
+    <option class="optionT" value="Miami Heat"></option>`);
   } if (prefix.length >= 1) {
     $('#teamDropdown').empty();
     trieSearchTeam(prefix);
@@ -178,8 +178,27 @@ $(document).on('keyup','#teamSearch', () => {
 const addInput= (name) => {
   let nameList = new Set()
   $("ul .addedName").each(function() { nameList.add(($(this).text()).slice(1))});
-  if (!nameList.has(name) && nameList.size <5) {
-  $('.listAdd').append(`<li class="addedName"><span class="removeBtn btn btn-sm">x</span>${name}</li>`);
+  let dashArr = $(".dashAdd").text().split(", ");
+  dashArr.forEach(str => {
+    nameList.add(str);
+  });
+  if (!nameList.has(name) && nameList.size <=50) {
+    $('.listAdd').append(`<li class="addedName"><span class="removeBtn btn btn-sm">x</span>${name}</li>`);
+    console.log($('.dashAdd').val());
+    console.log($('.dashAdd').text())
+    if($('.dashAdd').text() !== "") {
+      $('.dashAdd').append(`, ${name}`);
+    } else {
+      $('.dashAdd').append(`${name}`);
+    }
+  }
+};
+
+const addInputTeam = (name) => {
+  let nameList = new Set()
+  $("ul .addedNameTeam").each(function() { nameList.add(($(this).text()).slice(1))});
+  if (!nameList.has(name) && nameList.size <=50) {
+  $('.listAdd').append(`<li class="addedNameTeam"><span class="removeBtn btn btn-sm">x</span>${name}</li>`);
   }
 };
 
@@ -190,25 +209,52 @@ $(document).on('click', '.playerAddBtn', function(){
     $('#playerSearch').val('');
     $('#playerDropdown').empty();
     $('#playerDropdown').append(
-    `<option value="Kevin Durant">
-    <option value="Stephen Curry">
-    <option value="James Harden">
-    <option value="Chris Paul">
-    <option value="Dwight Howard"></option>`);
+    `<option class="option" value="Kevin Durant">
+    <option class="option" value="Stephen Curry">
+    <option class="option" value="James Harden">
+    <option class="option" value="Chris Paul">
+    <option class="option" value="Dwight Howard"></option>`);
   } else return
 });
 
 $(document).on('click', '.teamAddBtn', function(){
   let name = $('#teamSearch').val();
   if (lastFirstTeamTrie.contains(name) || teamTrie.contains(name)) {
-    addInput(name);
+    addInputTeam(name);
     $('#teamSearch').val('');
     $('#teamDropdown').empty();
     $('#teamDropdown').append(
-    `<option value="Chicago Bulls">
-    <option value="Golden State Warriors">
-    <option value="Houston Rockets">
-    <option value="New York Knicks">
-    <option value="Miami Heat"></option>`);
+    `<option class="optionT" value="Chicago Bulls">
+    <option class="optionT" value="Golden State Warriors">
+    <option class="optionT" value="Houston Rockets">
+    <option class="optionT" value="New York Knicks">
+    <option class="optionT" value="Miami Heat"></option>`);
   } else return
 });
+
+$("#playerSearch").keyup(function(event) {
+  if (event.keyCode === 13) {
+      $(".playerAddBtn").click();
+  }
+});
+
+$("#teamSearch").keyup(function(event) {
+  if (event.keyCode === 13) {
+      $(".teamAddBtn").click();
+  }
+});
+
+const playerCheckTrie = () => {
+  $.get("/api/players", function(data) {
+    // some code
+    console.log("get request is being hit")
+    if(data) {
+        console.log('somehow got data')
+        console.log(data);
+    } else {
+        console.log("no data begot")
+    }
+})
+}
+
+playerCheckTrie();

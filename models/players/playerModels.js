@@ -21,12 +21,13 @@ let playersArray = [];
 const playerGrabber = (data) => {
   data.players.forEach(item => {
     const player = {
-      playerId: item.player.id ? item.player.id : "5",
-      firstName: item.player.firstName ? item.player.firstName : "5",
-      lastName: item.player.lastName ? item.player.lastName : "5",
-      teamAbbr: (item.player.currentTeam && item.player.currentTeam.abbreviation) ? item.player.currentTeam.abbreviation : "5",
-      teamId: (item.player.currentTeam && item.player.currentTeam.id) ? item.player.currentTeam.id : "5",
-      // plyrOfficialImageSrc: item.player.officialImageSrc ? item.player.officialImageSrc : undefined,
+      playerId: item.player.id ? item.player.id : undefined,
+      firstName: item.player.firstName ? item.player.firstName : undefined,
+      lastName: item.player.lastName ? item.player.lastName : undefined,
+      playerImg: item.player.officialImageSrc ? item.player.officialImageSrc : undefined,
+      teamAbbr: (item.player.currentTeam && item.player.currentTeam.abbreviation) ? item.player.currentTeam.abbreviation : undefined,
+      teamId: (item.player.currentTeam && item.player.currentTeam.id) ? item.player.currentTeam.id : undefined,
+      
       // plyrTeamAsOfDateId: (item.teamAsOfDate && item.teamAsOfDate.id) ? item.teamAsOfDate.id : undefined,
       // plyrTeamAsOfDateAbbreviation: (item.teamAsOfDate && item.teamAsOfDate.abbreviatio) ? item.teamAsOfDate.abbreviatio : undefined
     }
@@ -62,14 +63,32 @@ const playerChecker = async function() {
   var data = await msf.getData('nba', 'current', 'players', 'json', {force: true});
   playerGrabber(data);
   playersArrayFormatter(playersArray);
-  const query = connection.query("INSERT INTO players (playerId, firstName, lastName, teamAbbr, teamId) VALUES ?", [playersArrayFormatted], function(err, res){ //dont forget teamName
-    console.log(query.sql)
+  
+  connection.query(`DROP TABLE IF EXISTS players;`, function(err, res){
     if (err) throw err;
-    console.log(res);
-  })
-}
+    connection.query(`CREATE TABLE players (
+      id INTEGER NOT NULL AUTO_INCREMENT,
+      playerId INTEGER (100) NOT NULL,
+      firstName VARCHAR(100) NOT NULL,
+      lastName VARCHAR(100) NOT NULL,
+      playerImg VARCHAR (255),
+      teamAbbr VARCHAR (100),
+      teamId VARCHAR (100),
+      PRIMARY KEY (id));`, function(err, res){
+      if (err) throw err;
+        const query = connection.query("INSERT INTO players (playerId, firstName, lastName, playerImg, teamAbbr, teamId) VALUES ?", [playersArrayFormatted], function(err, res){ //dont forget teamName
+          // console.log(query.sql)
+          if (err) throw err;
+          console.log(res);
+        })
+    })
+  });
+};
 
 // playerChecker();  //run on server start once
 
 const dayInMilliseconds = 1000 * 60 * 60 * 24;
-// setInterval(playerChecker(),dayInMilliseconds ); //run every 12 hours 
+// setInterval(function(){playerChecker()},dayInMilliseconds ); //run every 24 hours 
+
+
+module.exports = {playerChecker};
