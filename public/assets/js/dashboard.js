@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", function(){
         let userDataCheck = $(".user-data").text();
         let userColumnCheck = $(".user-columns").text();
 
-        console.log(typeof userDataCheck)
-        console.log(typeof userColumnCheck)
+        console.log(userDataCheck)
+        console.log(userColumnCheck)
     
         let userTableData;
         let userColumnConfig;
@@ -21,7 +21,13 @@ document.addEventListener("DOMContentLoaded", function(){
             data: userTableData,
             layout: "fitColumns", 
             columns: userColumnConfig,
-            index: "Player ID"
+            index: "Player ID",
+            placeholder: "<div class='text-center'><div class='spinner-grow text-success' style='width: 4rem; height: 4rem;' role='status'><span class='sr-only'>Loading...</span></div></div>",
+            initialSort:[
+                {column:"Team Abbr", dir:"asc"},
+                {column:"Last Name", dir:"asc"}, 
+                ],
+            autoColumns:true
             // height: 800,
             // virtualDom: true
             // rowClick:function(e, row){ //trigger an alert message when the row is clicked
