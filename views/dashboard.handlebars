@@ -12,12 +12,12 @@
     <div class="card cardHeight mt-3">
       <div class="card-body pb-0 row">
         <h4 class="col-sm-4">My Team</h4>
-        <h5 class="offset-sm-4 col-sm-4 text-right">Spots Remaining: &nbsp;&nbsp;</h5>
+        <h5 class="offset-sm-4 col-sm-4 text-right">Spots Remaining: <span id="spotsRemaining">16</span></h5>
       </div>
       <div class="card-body">
 
         <div class="row row1Team myTeam rowTeam">
-          <div class="col-sm-6">
+          {{!-- <div class="col-sm-6">
             <div class="row text-center">
               <div class="team myTeam alert-success mx-1 text-light col-sm" id="team">?</div>
               <div class="team myTeam alert-success mx-1 text-light col-sm" id="team">?</div>
@@ -30,8 +30,8 @@
               <div class="myTeamName myTeamName3 col-sm">name</div>
               <div class="myTeamName myTeamName4 col-sm">name</div>
             </div>
-          </div>
-          <div class="col-sm-6">
+          </div> --}}
+          {{!-- <div class="col-sm-6">
             <div class="row text-center">
               <div class="team myTeam alert-success mx-1 text-light col-sm" id="team">?</div>
               <div class="team myTeam alert-success mx-1 text-light col-sm" id="team">?</div>
@@ -44,13 +44,13 @@
               <div class="myTeamName myTeamName7 col-sm">name</div>
               <div class="myTeamName myTeamName8 col-sm">name</div>
             </div>
-          </div>
+          </div> --}}
         </div>
 
       </div>
     </div>
     
-    <div class="card cardHeight mt-3">
+    {{!-- <div class="card cardHeight mt-3">
       <div class="card-body pb-0"><h4>WatchList</h4></div>
       <div class="card-body">
 
@@ -86,7 +86,7 @@
         </div>
 
       </div>
-    </div>
+    </div> --}}
       <div class="edit mt-3">
       <div class="playerSearchBar row mx-3">
           <div class="col-sm-2">
@@ -108,9 +108,9 @@
                 <option value="Dwight Howard">
               </datalist>
               <button type="button" class="playerAddBtn btn btn-success mr-3 pb-1"> + </button>
-              <div class="pull-right col-sm-5 mx-0 pl-0 text-right">
+              <div class="pull-right col-sm-3 mx-0 pl-0 text-right">
                 <button type="button" class="addToMyTeam btn btn-success"> Add To My Team </button>
-                <button type="button" class="addToWatchList addToMyTeam btn btn-primary"> Add To WatchList </button>
+                <button type="button" class="addToWatchList addToMyTeam btn btn-primary d-none"> Add To WatchList </button>
               </div>
             </div>
             
@@ -131,7 +131,7 @@
       </div>
 
       {{#each userDashboard}}
-      <div id="user-tables{{this.id}}">
+      <div class="mx-3 my-3" id="user-tables{{this.id}}">
         {{!-- Append user tables here for now --}}
         {{!-- {{table}} --}}
       </div>

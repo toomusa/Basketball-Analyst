@@ -67,21 +67,30 @@ $(document).on("click", ".addToMyTeam", ()=>{
     })
     firstNameArr.shift();
     lastNameArr.shift();
-    nameArr = dashArr.shift();
+    dashArr.shift();
+    // nameArr = dashArr.shift();
+    console.log(dashArr);
     let nameArrays = {firstNameArr, lastNameArr}
     $.post("/api/addplayer", nameArrays, data => {
-      console.log("post request finished imgArray");
+      // console.log("post request finished imgArray");
       imgArray = data;
       console.log(imgArray);
-      for(let i=0; i<nameArr.length; i++){
-      let newDiv = $(`<div>`);
-      newDiv.append(`<img class="playerImg" src="${imgArray[i]}">`);
-      newDiv.append(`<p class="playerName">${nameArr[i]}</p>`);
-      (thisBool)? $(".row2Team").prepend(newDiv) : $(".row1Team").prepend(newDiv);
+      console.log(dashArr);
+
+      for(let i=0; i<dashArr.length; i++){
+      let newDiv = $(`<div class="mx-2 col-sm-2">`);
+      newDiv.append(`<img class="border border-success playerImg" src="${imgArray[i]}">`);
+      newDiv.append(`<p class="text-center playerName">${dashArr[i]}</p>`);
+      (thisBool)? ($(".row2Team").prepend(newDiv)) : $(".row1Team").prepend(newDiv);
+      $(".dashAdd").empty();
+      ($("#spotsRemaining").text()>0)? $("#spotsRemaining").text(($("#spotsRemaining").text()-1)): false
     }
     })
   }
 })
+
+
+// testfn(['https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/201142.png'],"someone here", false);
 
 // ==================================Params Section Search Page===============================
 // $(document).on('click', '.nbaSeason', () => {
