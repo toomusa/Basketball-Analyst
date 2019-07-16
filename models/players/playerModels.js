@@ -16,9 +16,12 @@ let playersArrayFormatted = [];
 //function for once a day grabbing all players from API
 
 let playersArray = [];
-
+const playersTrie = [];
+const teamsTrie = [];
+let trieObj = {};
 
 const playerGrabber = (data) => {
+  // console.log(data);
   data.players.forEach(item => {
     const player = {
       playerId: item.player.id ? item.player.id : undefined,
@@ -32,8 +35,11 @@ const playerGrabber = (data) => {
       // plyrTeamAsOfDateAbbreviation: (item.teamAsOfDate && item.teamAsOfDate.abbreviatio) ? item.teamAsOfDate.abbreviatio : undefined
     }
     playersArray.push(player);
+    playersTrie.push(`${player.firstName} ${player.lastName}`);
+    teamsTrie.push(`${player.teamAbbr}`);
     // console.log(player);
   })
+  trieObj = {playersTrie, teamsTrie};
 }
 
 const playersArrayFormatter = (playersArray) => {
@@ -60,8 +66,12 @@ const playersArrayFormatter = (playersArray) => {
 
 
 const playerChecker = async function() {
+  console.log("playerModels.js playerChecker");
   var data = await msf.getData('nba', 'current', 'players', 'json', {force: true});
   playerGrabber(data);
+  // console.log(playersTrie);
+  // console.log(teamsTrie);
+  // console.log([playersArray]);
   playersArrayFormatter(playersArray);
   
   connection.query(`DROP TABLE IF EXISTS players;`, function(err, res){
@@ -79,7 +89,9 @@ const playerChecker = async function() {
         const query = connection.query("INSERT INTO players (playerId, firstName, lastName, playerImg, teamAbbr, teamId) VALUES ?", [playersArrayFormatted], function(err, res){ //dont forget teamName
           // console.log(query.sql)
           if (err) throw err;
-          console.log(res);
+          // console.log(res);
+          console.log(trieObj)
+          return trieObj;
         })
     })
   });
@@ -87,7 +99,7 @@ const playerChecker = async function() {
 
 // playerChecker();  //run on server start once
 
-const dayInMilliseconds = 1000 * 60 * 60 * 24;
+// const dayInMilliseconds = 1000 * 60 * 60 * 24;
 // setInterval(function(){playerChecker()},dayInMilliseconds ); //run every 24 hours 
 
 

@@ -1,13 +1,17 @@
 
 
 // $(document).ready(function() {
+
 document.addEventListener("DOMContentLoaded", function(){
         // Handler when all assets (including images) are loaded
     console.log("I'm alive!")
-
+    let counter = 1;
     $("#user-dashboard span").each(() => {
-        let userDataCheck = $(".user-data").text();
-        let userColumnCheck = $(".user-columns").text();
+        // let userDataCheck = '';
+        // let userColumnCheck = '';
+        
+        let userDataCheck = $(`#data${counter}`).text();
+        let userColumnCheck = $(`#column${counter}`).text();
 
         console.log(userDataCheck)
         console.log(userColumnCheck)
@@ -16,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function(){
         let userColumnConfig;
         userTableData = JSON.parse(userDataCheck);
         userColumnConfig = JSON.parse(userColumnCheck);
-    
-        var table = new Tabulator("#user-tables", {
+        
+        var table = new Tabulator(`#user-tables${counter}`, {
             data: userTableData,
             layout: "fitColumns", 
             columns: userColumnConfig,
@@ -34,6 +38,8 @@ document.addEventListener("DOMContentLoaded", function(){
             //     alert("Row " + row.getData().id + " Clicked!!!!");
             // },
         });
+        counter++;
+        // console.log(counter);
     })
 
 });

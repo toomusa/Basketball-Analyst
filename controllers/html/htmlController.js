@@ -44,35 +44,20 @@ module.exports = {
         res.render("index", {title: "Home"});
     },
     goDashboard: async (req, res) => {
-        // if (req) 
-        let userTableData;
-        let userColumnConfig;
         let userDashboard = [];
 
         const searchDb = async () => {
             return new Promise((resolve, reject) => {
                 connection.query("SELECT * FROM configs WHERE user_token = ?;", [userToken], (err, data) => {
                     if (err) throw err;
-                    console.log("SQL ROUTE SUCCESS!!")
-
                     for (let i = 0; i < data.length; i++) {
-                        // console.log(item)
                         userDashboard.push({id: data[i].id, tableData: data[i].table_data, columnData: data[i].column_data})
-                        console.log(typeof data[i].table_data)
-                        console.log(typeof data[i].column_data)
                     }
-                    console.log(userDashboard)
-
-                    // userTableData = data[0].table_data;
-                    // userColumnConfig = data[0].column_data;
-                    // console.log(userTableData)
-                    // console.log(userColumnConfig)
                     resolve();
                 })
             }).catch(err => console.log(err));
         }
         await searchDb();
-
 
         res.render("dashboard", {
             title: "Dashboard", 
@@ -81,34 +66,18 @@ module.exports = {
     },
     userDashboard: async (req, res) => {
         // let userToken = (req.params.usertoken).replace(":", "");
-        console.log(userToken)
-        // let userTableData;
-        // let userColumnConfig;
+        // console.log(userToken)
         let userDashboard = [];
+
         const searchDb = async () => {
             return new Promise((resolve, reject) => {
                 connection.query("SELECT * FROM configs WHERE user_token = ?", [userToken], (err, data) => {
                     if (err) throw err;
-                    console.log("***********CONFIG DATA***************")
-                    // data.forEach(item => {
                     for (let i = 0; i < data.length; i++) {
-                        // console.log(item)
                         userDashboard.push({id: data[i].id, tableData: data[i].table_data, columnData: data[i].column_data})
                     }
-                    // });
-                    // console.log(userDashboard)
                     resolve();
                 })
-                // connection.query("SELECT * FROM configs WHERE user_token = ?;", [userToken], (err, data) => {
-                //     if (err) throw err;
-                //     console.log("SQL ROUTE SUCCESS!!")
-                //     // console.log(data)
-                //     userTableData = data[0].table_data;
-                //     userColumnConfig = data[0].column_data;
-                //     // console.log(userTableData)
-                //     // console.log(userColumnConfig)
-                //     resolve();
-                // })
             }).catch(err => console.log(err));
         }
         await searchDb();
@@ -117,11 +86,6 @@ module.exports = {
             title: "Dashboard", 
             userDashboard
         });
-        // res.render("dashboard", {
-        //     title: "Dashboard", 
-        //     userData: userTableData, 
-        //     userColumns: userColumnConfig
-        // });
     },
     goSearch: (req, res) => {
         res.render("search", {title: "Search"});
@@ -136,11 +100,6 @@ module.exports = {
         console.log("SAVING TO USER DASHBOARD")
         let userTableData = JSON.stringify(req.body.userTableData);
         let userColumnConfig = JSON.stringify(req.body.userColumnConfig);
-        
-
-        // let user = auth.currentUser;
-        // console.log(auth.currentUser)
-        // console.log(user)
 
         connection.query("INSERT INTO configs (user_token, table_data, column_data) VALUES (?, ?, ?)", [userToken, userTableData, userColumnConfig], (err, data) => {
             if (err) throw err;
