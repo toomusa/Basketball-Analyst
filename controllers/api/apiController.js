@@ -166,6 +166,7 @@ module.exports = {
     },
     queryTrie: async (req, res) => {
         await console.log("i'm hitting route");
-        // players.playerChecker()
+        let trieObj = await players.playerChecker();
+        res.status(200).send(trieObj)
     }
 };

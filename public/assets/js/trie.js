@@ -245,12 +245,14 @@ $("#teamSearch").keyup(function(event) {
 });
 
 const playerCheckTrie = () => {
+  console.log("playerchecktrie firing at least")
   $.get("/api/players", function(data) {
     // some code
     console.log("get request is being hit")
     if(data) {
         console.log('somehow got data')
         console.log(data);
+        // console.log(data.teamsTrie);
     } else {
         console.log("no data begot")
     }
@@ -258,3 +260,6 @@ const playerCheckTrie = () => {
 }
 
 playerCheckTrie();
+
+const dayInMilliseconds = 1000 * 60 * 60 * 24;
+// setInterval(function(){playerCheckTrie()},dayInMilliseconds ); //run every 24 hours 

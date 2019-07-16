@@ -9,6 +9,7 @@ const auth = require('../../config/keys').auth;
 
 module.exports = {
     userLogin: async (req, res) => {
+        console.log("authController.userLogin");
         let userDashboard = [];
         let {userToken, userEmail, userName} = req.body;
         console.log(userToken)
@@ -19,7 +20,7 @@ module.exports = {
             if (err) {
                 console.log("********User NOT Found********");
             } else if (data) {
-                console.log("USER TOKEN BE: " + userToken)
+                console.log("USER TOKEN FOUND: " + userToken)
                 res.send(userToken);
             }
         })

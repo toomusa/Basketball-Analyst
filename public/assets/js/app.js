@@ -52,6 +52,17 @@ $(document).on("click", ".editBtn", ()=> {
       $(".editBar").addClass("d-none");
   }
 });
+
+// $(document).on("click", ".addToMyTeam", ()=>{
+//   let dash = $(".dashAdd").text();
+//   if (dash) {
+//     dash.split(", ");
+//     dash.forEach(player => {
+
+//     })
+//   }
+// })
+
 // ==================================Params Section Search Page===============================
 // $(document).on('click', '.nbaSeason', () => {
 //   let currentSeason = $(this).text();
@@ -237,7 +248,6 @@ $(document).on('click', '.searchSubmit', () => {
       window.location.href = "/dashboard";
     });
   })
-
 
 
 }) // this is where document.ready ends

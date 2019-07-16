@@ -42,7 +42,9 @@ let currentUser;
 // }
 
 document.addEventListener("click", async event => {
+    console.log("auth.js sees a click");
     if (event.target.matches("#btnLogin")) {
+        console.log("auth.js sees #btnLogin");
         event.preventDefault();
         let email = txtEmail.value;
         let password = txtPassword.value;
@@ -54,10 +56,12 @@ document.addEventListener("click", async event => {
         // await recordUser();
         // userLogin();
     } else if (event.target.matches("#btnLogout")) {
+        console.log("auth.js sees #btnLogout");
         auth.signOut();
         $("#btnLogout").addClass("d-none");
         // window.location.href = '/auth/logout';
     } else if (event.target.matches("#btnSignUp")) {
+        console.log("auth.js sees #btnSignUp");
         event.preventDefault();
         // check for real email
         let email = txtEmail.value;
@@ -93,8 +97,9 @@ document.addEventListener("click", async event => {
 // })
 
 // const recordUser = async (user) => {  
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged(user => {        
         if (user) {
+            if (window.location.pathname !== '/') {return};
         console.log(user.uid);
         console.log(user.email);
         let userToken = user.uid;
@@ -106,10 +111,12 @@ document.addEventListener("click", async event => {
                 // some code
             console.log(data)
             if(data) {
+                console.log("server responded with found data");
                 let userToken = data;
                 setTimeout((window.location = '/dashboard/:'+ userToken), 500)
                 
             } else {
+                console.log("server could not find data");
                 window.location = '/search';
             }
         })
