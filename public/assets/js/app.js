@@ -83,6 +83,7 @@ $(document).on("click", ".addToMyTeam", ()=>{
       newDiv.append(`<p class="text-center playerName">${dashArr[i]}</p>`);
       (thisBool)? ($(".row2Team").prepend(newDiv)) : $(".row1Team").prepend(newDiv);
       $(".dashAdd").empty();
+      ($("#spotsRemaining").text()>0)? $("#spotsRemaining").text(($("#spotsRemaining").text()-1)): false
     }
     })
   }
