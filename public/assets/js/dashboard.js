@@ -5,25 +5,30 @@ document.addEventListener("DOMContentLoaded", function(){
         // Handler when all assets (including images) are loaded
     console.log("I'm alive!")
 
-    let userDataCheck = document.getElementById("user-data").textContent;
-    let userColumnCheck = document.getElementById("user-columns").textContent;
-    
-    let userTableData = "";
-    let userColumnConfig = "";
-    userTableData = JSON.parse(userDataCheck);
-    userColumnConfig = JSON.parse(userColumnCheck);
+    $("#user-dashboard span").each(() => {
+        let userDataCheck = $(".user-data").text();
+        let userColumnCheck = $(".user-columns").text();
 
-    var table = new Tabulator("#user-tables", {
-        data: userTableData,
-        layout: "fitColumns", 
-        columns: userColumnConfig,
-        index: "Player ID"
-        // height: 800,
-        // virtualDom: true
-        // rowClick:function(e, row){ //trigger an alert message when the row is clicked
-        //     alert("Row " + row.getData().id + " Clicked!!!!");
-        // },
-    });
+        console.log(typeof userDataCheck)
+        console.log(typeof userColumnCheck)
+    
+        let userTableData;
+        let userColumnConfig;
+        userTableData = JSON.parse(userDataCheck);
+        userColumnConfig = JSON.parse(userColumnCheck);
+    
+        var table = new Tabulator("#user-tables", {
+            data: userTableData,
+            layout: "fitColumns", 
+            columns: userColumnConfig,
+            index: "Player ID"
+            // height: 800,
+            // virtualDom: true
+            // rowClick:function(e, row){ //trigger an alert message when the row is clicked
+            //     alert("Row " + row.getData().id + " Clicked!!!!");
+            // },
+        });
+    })
 
 });
 

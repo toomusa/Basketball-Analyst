@@ -11,28 +11,57 @@ firebase.initializeApp({
 });
 
 const auth = firebase.auth();
-
 const txtUsername = document.getElementById("username");
 const txtEmail = document.getElementById("email");
 const txtPassword = document.getElementById("password");
 const btnLogin = document.getElementById("btnLogin");
 const btnSignUp = document.getElementById("btnSignUp");
-const btnLogout = document.getElementById("btnLogout");
+// const btnLogout = document.getElementById("btnLogout");
+let userName;
+let userToken;
+let userEmail;
+let currentUser;
 
-document.addEventListener("click", event => {
+// const userLogin = () => {
+//     let userToken = currentUser.uid;
+//     let userEmail = currentUser.email;
+//     let userInfo = {userToken, userEmail, userName};
+//     console.log(userToken);
+//     console.log(userEmail);
+    
+//     $.post("/auth/login", userInfo, function(data) {
+//         console.log(data)
+//         if(data) {
+//             $("#btnLogout").removeClass("d-none");
+//             let userToken = data;
+//             window.location.href = '/:'+ userToken;
+//         } else {
+//             window.location.href = '/search';
+//         }
+//     })
+// }
+
+document.addEventListener("click", async event => {
     if (event.target.matches("#btnLogin")) {
         event.preventDefault();
-        const email = txtEmail.value;
-        const password = txtPassword.value;
+        let email = txtEmail.value;
+        let password = txtPassword.value;
+        userName = txtUsername.value;
         const promise = auth.signInWithEmailAndPassword(email, password);
         promise.catch(e => console.error(e.message));
+        // promise.then(currentUser = auth.currentUser);
+        // console.log(currentUser)
+        // await recordUser();
+        // userLogin();
     } else if (event.target.matches("#btnLogout")) {
         auth.signOut();
+        $("#btnLogout").addClass("d-none");
+        // window.location.href = '/auth/logout';
     } else if (event.target.matches("#btnSignUp")) {
         event.preventDefault();
         // check for real email
-        const email = txtEmail.value;
-        const password = txtPassword.value;
+        let email = txtEmail.value;
+        let password = txtPassword.value;
         const promise = auth.createUserWithEmailAndPassword(email, password);
         promise.catch(e => console.error(e.message));
     }
@@ -63,26 +92,32 @@ document.addEventListener("click", event => {
 //     // $(btnLogin).removeClass("d-none");
 // })
 
-auth.onAuthStateChanged(user => {
-    if (user) {
+// const recordUser = async (user) => {  
+    auth.onAuthStateChanged(user => {
+        if (user) {
         console.log(user.uid);
         console.log(user.email);
-        let userId = user.uid;
+        let userToken = user.uid;
         let userEmail = user.email
-        let userInfo = {userId, userEmail};
+        let userInfo = {userToken, userEmail, userName};
+        // $("#btnLogout").removeClass("d-none");
         
-        // $.post("/auth/login", userInfo, function(data) {
-        //     // some code
-        //     if(data) {
-        //         window.location.href = '/dashboard';
-        //     } else {
-        //         window.location.href = '/search';
-        //     }
-        // })
-
-        // $(btnLogout).removeClass("d-none");
-    } else {
-        console.log("not logged in");
+        $.post("/auth/login", userInfo, function(data) {
+                // some code
+            console.log(data)
+            if(data) {
+                let userToken = data;
+                setTimeout((window.location = '/dashboard/:'+ userToken), 500)
+                
+            } else {
+                window.location = '/search';
+            }
+        })
         // $(btnLogin).addClass("d-none");
-    }
-})
+        } else {
+            console.log("not logged in");
+            // $("#btnLogout").addClass("d-none");
+            // $(btnLogin).removeClass("d-none");
+        }
+    })
+// }

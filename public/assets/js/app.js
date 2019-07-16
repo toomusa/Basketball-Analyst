@@ -6,6 +6,8 @@ var currentshow = 'playersAdv';
 
 let userTableData;
 let userColumnConfig;
+// let userToken;
+
 // let loggedIn = true;
 let username = '';
 
@@ -229,8 +231,8 @@ $(document).on('click', '.searchSubmit', () => {
 
 
   $(document).on("click", "#save-table", function(){
-    let userSaveTable = {userTableData,userColumnConfig}
-    $.post('/user', userSaveTable, (response) => {
+    let userSaveTable = {userTableData, userColumnConfig}
+    $.post('/save', userSaveTable, (response) => {
       console.log("SENT TO SQL SAVE")
       window.location.href = "/dashboard";
     });
