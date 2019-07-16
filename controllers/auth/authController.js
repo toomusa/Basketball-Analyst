@@ -24,27 +24,6 @@ module.exports = {
                 res.send(userToken);
             }
         })
-
-                // connection.query("SELECT * FROM configs WHERE user_token = ?", [userToken], (err, data) => {
-                //     if (err) throw err;
-                //     console.log("***********CONFIG DATA***************")
-                //     // data.forEach(item => {
-                //     for (let i = 0; i < data.length; i++) {
-                //         // console.log(item)
-                //         userDashboard.push([data[i].id, data[i].table_data, data[i].column_data])
-                //     }
-                //     // });
-                //     // console.log(userDashboard)
-            
-                //     res.render("dashboard", {
-                //         title: "Dashboard", 
-                //         userDashboard
-                //     });
-                    
-                // })
-            
-
-
         console.log("userLogin works!");
     },
     redirectHome: (req, res) => {
