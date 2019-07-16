@@ -193,6 +193,6 @@ module.exports = {
             });
         }
         console.log(imgArray);
-        setTimeout(function() {res.status(200).send(imgArray)}, 1000);
+        setTimeout(function() {res.status(200).send(imgArray)}, 1500);
     }
 };

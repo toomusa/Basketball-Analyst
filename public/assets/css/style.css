@@ -31,10 +31,12 @@
 
 .row1Team {
   overflow-x: scroll;
+  min-height: 240px;
 }
 
 .row2Team {
   overflow-x: scroll;
+  min-height: 240px;
 }
 
 .cardMiddle {
