@@ -76,7 +76,7 @@ module.exports = {
                 // name fields
                 nameField: (header, dataKey) => {
                     const nameColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
-                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableColumns: true, columnVertAlign: "middle", headerFilter:true, headerFilterPlaceholder: "Filter Column", 
                         movableRows: true, resizableRows: true, align: "center", rowHandle: true,
                         selectable: true, selectablePersistence: true}
                     return nameColumn;
@@ -84,56 +84,56 @@ module.exports = {
                 // plaint text fields
                 textField: (header, dataKey) => {
                     const textColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
-                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableColumns: true, columnVertAlign: "middle", headerFilter:true, headerFilterPlaceholder: "Filter Column", 
                         movableRows: true, resizableRows: true, align: "center", rowHandle: true}
                     return textColumn;
                 },
                 // number fields
                 numberField: (header, dataKey) => {
                     const numberColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
-                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableColumns: true, columnVertAlign: "middle", headerFilter:true, headerFilterPlaceholder: "Filter Column", 
                         movableRows: true, resizableRows: true, align: "center", rowHandle: true}
                     return numberColumn;
                 },
                 // money fields
                 moneyField: (header, dataKey) => {
                     const moneyColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
-                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableColumns: true, columnVertAlign: "middle", headerFilter:true, headerFilterPlaceholder: "Filter Column", 
                         movableRows: true, resizableRows: true, align: "center", rowHandle: true}
                     return moneyColumn;
                 },
                 // percentage fields
                 percentageField: (header, dataKey) => {
                     const percentageColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
-                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableColumns: true, columnVertAlign: "middle", headerFilter:true, headerFilterPlaceholder: "Filter Column", 
                         movableRows: true, resizableRows: true, align: "center", rowHandle: true}
                     return percentageColumn;
                 },
                 // date fields
                 dateField: (header, dataKey) => {
                     const dateColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
-                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableColumns: true, columnVertAlign: "middle", headerFilter:true, headerFilterPlaceholder: "Filter Column", 
                         movableRows: true, resizableRows: true, align: "center", rowHandle: true}
                     return dateColumn;
                 },
                 // abbreviations
                 abbrField: (header, dataKey) => {
                     const abbrColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
-                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableColumns: true, columnVertAlign: "middle", headerFilter:true, headerFilterPlaceholder: "Filter Column", 
                         movableRows: true, resizableRows: true, align: "center", rowHandle: true}
                     return abbrColumn;
                 },
                 // images
                 imageField: (header, dataKey) => {
                     const imageColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
-                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableColumns: true, columnVertAlign: "middle", headerFilter:true, headerFilterPlaceholder: "Filter Column", 
                         movableRows: true, resizableRows: true, align: "center", rowHandle: true}
                     return imageColumn;
                 },
                 // hex values
                 hexField: (header, dataKey) => {
                     const hexColumn = {name: header, field: dataKey, layout: "fitData", resizableColumns: true, 
-                        movableColumns: true, columnVertAlign: "middle", headerFilterPlaceholder: "Filter Column", 
+                        movableColumns: true, columnVertAlign: "middle", headerFilter:true, headerFilterPlaceholder: "Filter Column", 
                         movableRows: true, resizableRows: true, align: "center", rowHandle: true}
                     return hexColumn;
                 }
