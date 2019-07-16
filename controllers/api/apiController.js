@@ -165,8 +165,23 @@ module.exports = {
         res.status(200).send(userResponseData)
     },
     queryTrie: async (req, res) => {
-        await console.log("i'm hitting route");
+        // await console.log("i'm hitting route");
         let trieObj = await players.playerChecker();
         res.status(200).send(trieObj)
+    },
+    queryPlayers: async (req, res)=> {
+        console.log("queryplayers was hit in api controllers");
+        // console.log(req.body);
+        let imgArray = [];
+        let {firstNameArr, lastNameArr} = req.body;
+        for(let i=0; i<firstNameArr.length; i++){
+            let query = await connection.query(`SELECT * FROM players WHERE firstName = ? AND lastName = ?`, [firstNameArr[i], lastNameArr[i]], (err, data)=> {
+                if (err) throw err;
+                imgArray.push(data[1].playerImg);
+                console.log(imgArray);
+            });
+        }
+        console.log(imgArray);
+        setTimeout(function() {res.status(200).send(imgArray)}, 1000);
     }
 };
