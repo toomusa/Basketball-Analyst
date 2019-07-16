@@ -3,7 +3,7 @@ var info = true;
 var gameLogs = false;
 var seasonLogs = false;
 var currentshow = 'playersAdv';
-
+let imgArray = [];
 let userTableData;
 let userColumnConfig;
 // let userToken;
@@ -53,15 +53,35 @@ $(document).on("click", ".editBtn", ()=> {
   }
 });
 
-// $(document).on("click", ".addToMyTeam", ()=>{
-//   let dash = $(".dashAdd").text();
-//   if (dash) {
-//     dash.split(", ");
-//     dash.forEach(player => {
-
-//     })
-//   }
-// })
+$(document).on("click", ".addToMyTeam", ()=>{
+  let thisBool = $(this).hasClass(".addToWatchList")
+  let dashArr = $(".dashAdd").text().split("x");
+  // console.log(dashArr);
+  if (dashArr !== "") {
+    let firstNameArr = [];
+    let lastNameArr = [];
+    let nameArr = [];
+    dashArr.forEach(player => {
+      firstNameArr.push(player.split(" ")[0]);
+      lastNameArr.push(player.split(" ")[1]);
+    })
+    firstNameArr.shift();
+    lastNameArr.shift();
+    nameArr = dashArr.shift();
+    let nameArrays = {firstNameArr, lastNameArr}
+    $.post("/api/addplayer", nameArrays, data => {
+      console.log("post request finished imgArray");
+      imgArray = data;
+      console.log(imgArray);
+      for(let i=0; i<nameArr.length; i++){
+      let newDiv = $(`<div>`);
+      newDiv.append(`<img class="playerImg" src="${imgArray[i]}">`);
+      newDiv.append(`<p class="playerName">${nameArr[i]}</p>`);
+      (thisBool)? $(".row2Team").prepend(newDiv) : $(".row1Team").prepend(newDiv);
+    }
+    })
+  }
+})
 
 // ==================================Params Section Search Page===============================
 // $(document).on('click', '.nbaSeason', () => {
@@ -136,6 +156,10 @@ $(document).on('click','.checkAll',function(){
 
 $(document).on('click', '.removeBtn', function(){
   $(this).parent().remove();
+});
+
+$(document).on('click', '.removeBtn2', function(){
+  $(this).remove();
 });
 
 const checkBoxFilter = () => {

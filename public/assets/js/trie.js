@@ -178,18 +178,19 @@ $(document).on('keyup','#teamSearch', () => {
 const addInput= (name) => {
   let nameList = new Set()
   $("ul .addedName").each(function() { nameList.add(($(this).text()).slice(1))});
-  let dashArr = $(".dashAdd").text().split(", ");
+  $(".removeBtn2").each(function() { nameList.add(($(this).text()).slice(1))});
+  let dashArr = $(".dashAdd").text().split("x");
   dashArr.forEach(str => {
     nameList.add(str);
   });
   if (!nameList.has(name) && nameList.size <=50) {
     $('.listAdd').append(`<li class="addedName"><span class="removeBtn btn btn-sm">x</span>${name}</li>`);
-    console.log($('.dashAdd').val());
-    console.log($('.dashAdd').text())
+    // console.log($('.dashAdd').val());
+    // console.log($('.dashAdd').text())
     if($('.dashAdd').text() !== "") {
-      $('.dashAdd').append(`, ${name}`);
+      $('.dashAdd').append(`<span class="ml-1"><span class="removeBtn btn btn-sm">x</span>${name}</span>`);
     } else {
-      $('.dashAdd').append(`${name}`);
+      $('.dashAdd').append(`<span class="ml-1"><span class="removeBtn btn btn-sm">x</span>${name}</span>`);
     }
   }
 };
@@ -259,7 +260,7 @@ const playerCheckTrie = () => {
 })
 }
 
-playerCheckTrie();
+// playerCheckTrie();
 
 const dayInMilliseconds = 1000 * 60 * 60 * 24;
 // setInterval(function(){playerCheckTrie()},dayInMilliseconds ); //run every 24 hours 

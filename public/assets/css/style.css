@@ -23,6 +23,20 @@
   min-height: 340px;
 }
 
+.playerImg {
+  object-fit: cover;
+  min-height: 200px;
+  width: 150px;
+}
+
+.row1Team {
+  overflow-x: scroll;
+}
+
+.row2Team {
+  overflow-x: scroll;
+}
+
 .cardMiddle {
   min-height: 340px;
 }

@@ -5,6 +5,7 @@ const apiController = require("../../controllers/api/apiController.js");
 
 router.route("/search").post(apiController.queryData);
 router.route("/players").get(apiController.queryTrie);
+router.route("/addplayer").post(apiController.queryPlayers);
 // router.route("/search/response").get(apiController.queryData);
 
 // router.route("/api/save")
