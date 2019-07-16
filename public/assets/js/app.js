@@ -2,11 +2,11 @@ var playerButton = true;
 var info = true;
 var gameLogs = false;
 var seasonLogs = false;
-var currentShow = 'players';
+var currentshow = 'playersAdv';
 
 let userTableData;
 let userColumnConfig;
-let loggedIn = true;
+// let loggedIn = true;
 let username = '';
 
 $(document).ready(function() {
@@ -35,11 +35,11 @@ $(function() {
 
 });
 // ==================================Dashboard Section=======================================
-const logoutButton = () => {
-  (loggedIn) ? $(".navbar-nav2").append(`<li class="nav-item ml-4"><a class="nav-link font-weight-light logout" href="/">Logout</a></li>`) : $(".logout").parent().remove();
-}
+// const logoutButton = () => {
+//   (loggedIn) ? $(".navbar-nav2").append(`<li class="nav-item ml-4"><a class="nav-link font-weight-light logout" href="/">Logout</a></li>`) : $(".logout").parent().remove();
+// }
 
-logoutButton();
+// logoutButton();
 
 $(document).on("click", ".editBtn", ()=> {
   if ($(".editBtn").text() === "Edit") {
@@ -113,7 +113,7 @@ $(document).on('click', '.seasonButton', function(){
 });
 
 $(document).on('click', '.searchAdvanced', function(){
-  $(`.${currentShow}Adv`).toggleClass('d-none');
+  ($('.searchAdvanced').text() === 'See Advanced')? $(`.${currentshow}`).removeClass('d-none'): $(`.${currentshow}`).addClass('d-none');
   ($('.searchAdvanced').text() === 'See Advanced') ? $('.searchAdvanced').text('Hide Advanced') : $('.searchAdvanced').text('See Advanced');
 });
 
@@ -131,22 +131,24 @@ const checkBoxFilter = () => {
   if (playerButton === true) {
     if(info) {
       $('.players').removeClass('d-none');
-      currentshow = 'players';
+      currentshow = 'playersAdv';
     } else if (gameLogs) {
       $('.dailyPlayerGameLogs').removeClass('d-none');
-      currentshow = 'dailyPlayerGameLogs';
+      currentshow = 'dailyPlayerGameLogsAdv';
     } else if (seasonLogs) {
       $('.seasonalPlayerStats').removeClass('d-none');
-      currentshow = 'seasonalPlayerStats';
+      currentshow = 'seasonalPlayerStatsAdv';
     }
   }
   if (playerButton === false) {
-    if (gameLogs) {
+    if (info) {
+      currentshow = '';
+    } else if (gameLogs) {
       $('.dailyTeamGameLogs').removeClass('d-none');
-      currentshow = 'dailyTeamGameLogs';
+      currentshow = 'dailyTeamGameLogsAdv';
     } else if (seasonLogs) {
       $('.seasonalTeamStats').removeClass('d-none');
-      currentshow = 'seasonalTeamStats';
+      currentshow = 'seasonalTeamStatsAdv';
     }
   }
 };
@@ -164,15 +166,37 @@ $(document).on('click', '.searchSubmit', () => {
   let roster = $('#rosterStatus').val();
   let checkBox = {};
   let nameList = [];
+  let teamList = [];
+  let playerString ="";
+  let teamString = "";
   $("input:checkbox[name=chk]:checked").each(function () {
     checkBox[$(this).attr("id")] = $(this).attr("value");
   });
 
   $("ul .addedName").each(function() { nameList.push(($(this).text()).slice(1))});
-  // console.log(nameList); //not exported yet but working as intended!
+  $("ul .addedNameTeam").each(function() { teamList.push(($(this).text()).slice(1))});
+  
+  const playerStringMaker = () => {
+    nameList.forEach(item => {
+      playerString += `,${item.toLowerCase().replace(/\s+/g, "-")}`;
+    })
+    playerString = playerString.slice(1);
+    // console.log(playerString); //not exported yet but working as intended!
+  }
+  const teamStringMaker = () => {
+    teamList.forEach(item => {
+      teamString += `,${teamObjRef[item]}`
+    })
+    teamString = teamString.slice(1);
+  }
+
+  playerStringMaker();
+  teamStringMaker();
+  // console.log(playerString);
+  // console.log(teamString);
 
   let searchObj = {
-    date, season, position, roster, checkBox, nameList
+    date, season, position, roster, checkBox, playerString, teamString
   }
 
   console.log(searchObj);

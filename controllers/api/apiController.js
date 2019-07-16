@@ -163,5 +163,9 @@ module.exports = {
 
         let userResponseData = {userTableData,userColumnConfig}
         res.status(200).send(userResponseData)
+    },
+    queryTrie: async (req, res) => {
+        await console.log("i'm hitting route");
+        // players.playerChecker()
     }
 };
