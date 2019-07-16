@@ -5,39 +5,6 @@ var Tabulator = require('tabulator-tables');
 const firebase = require('../../config/keys').firebase;
 let currentUser;
 let userToken = "ewN2eCX32CbqSAqiUdLbU5OhvR73";
-const auth = firebase.auth();
-
-
-auth.onAuthStateChanged(user => {
-    if (user) {
-        console.log("############### USER FOUND ##################")
-        console.log(user)
-        currentUser = user;
-    } else {
-        console.log(user)
-      // No user is signed in.
-    }
-  });
-
-// firebase.initializeApp({
-//     apiKey: "AIzaSyAO6lUZstiSf_siMPd91vbUopvzadeRrLw",
-//     authDomain: "basketball-analyst-ad924.firebaseapp.com",
-//     databaseURL: "https://basketball-analyst-ad924.firebaseio.com",
-//     projectId: "basketball-analyst-ad924",
-//     storageBucket: "",
-//     messagingSenderId: "302991295174",
-//     appId: "1:302991295174:web:f551b5124a916f43"
-// });
-
-
-auth.onAuthStateChanged(user => {
-    if (user) {
-        console.log("############### USER FOUND ##################")
-        currentUser = user;
-    } else {
-      // No user is signed in.
-    }
-  });
 
 module.exports = {
     goHome: (req, res) => {

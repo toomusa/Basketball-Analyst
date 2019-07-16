@@ -1,4 +1,4 @@
-console.log("connected")
+// console.log("connected")
 
 firebase.initializeApp({
     apiKey: "AIzaSyAO6lUZstiSf_siMPd91vbUopvzadeRrLw",
@@ -42,7 +42,7 @@ let currentUser;
 // }
 
 document.addEventListener("click", async event => {
-    console.log("auth.js sees a click");
+    // console.log("auth.js sees a click");
     if (event.target.matches("#btnLogin")) {
         console.log("auth.js sees #btnLogin");
         event.preventDefault();

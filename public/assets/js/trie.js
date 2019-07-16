@@ -259,7 +259,7 @@ const playerCheckTrie = () => {
 })
 }
 
-playerCheckTrie();
+// playerCheckTrie();
 
 const dayInMilliseconds = 1000 * 60 * 60 * 24;
 // setInterval(function(){playerCheckTrie()},dayInMilliseconds ); //run every 24 hours 
