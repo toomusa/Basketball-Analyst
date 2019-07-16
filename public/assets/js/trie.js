@@ -178,8 +178,19 @@ $(document).on('keyup','#teamSearch', () => {
 const addInput= (name) => {
   let nameList = new Set()
   $("ul .addedName").each(function() { nameList.add(($(this).text()).slice(1))});
+  let dashArr = $(".dashAdd").text().split(", ");
+  dashArr.forEach(str => {
+    nameList.add(str);
+  });
   if (!nameList.has(name) && nameList.size <=50) {
-  $('.listAdd').append(`<li class="addedName"><span class="removeBtn btn btn-sm">x</span>${name}</li>`);
+    $('.listAdd').append(`<li class="addedName"><span class="removeBtn btn btn-sm">x</span>${name}</li>`);
+    console.log($('.dashAdd').val());
+    console.log($('.dashAdd').text())
+    if($('.dashAdd').text() !== "") {
+      $('.dashAdd').append(`, ${name}`);
+    } else {
+      $('.dashAdd').append(`${name}`);
+    }
   }
 };
 
@@ -232,3 +243,18 @@ $("#teamSearch").keyup(function(event) {
       $(".teamAddBtn").click();
   }
 });
+
+const playerCheckTrie = () => {
+  $.get("/api/players", function(data) {
+    // some code
+    console.log("get request is being hit")
+    if(data) {
+        console.log('somehow got data')
+        console.log(data);
+    } else {
+        console.log("no data begot")
+    }
+})
+}
+
+playerCheckTrie();
