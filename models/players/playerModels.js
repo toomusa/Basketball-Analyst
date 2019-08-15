@@ -90,7 +90,7 @@ const playerChecker = async function() {
           // console.log(query.sql)
           if (err) throw err;
           // console.log(res);
-          console.log(trieObj)
+          // console.log(trieObj)
           return trieObj;
         })
     })

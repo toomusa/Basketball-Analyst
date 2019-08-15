@@ -1,4 +1,4 @@
-require("dotenv");
+require("dotenv").config();
 var keys = require("./keys.js")
 var mysql = require("mysql");
 let connection;
