@@ -18,9 +18,9 @@ module.exports = {
         // console.log(req.body.date)
         // let {date} = req.body;
 
-        let {checkBox} = req.body;
+        let {checkBox, playerString} = req.body;
         let season = "2016-2017-regular";
-        let playerString = "kawhi-leonard,stephen-curry,kevin-durant,james-harden";
+        // let playerString = "kawhi-leonard,stephen-curry,kevin-durant,james-harden";
         let teamString = "";
         let roster = "assigned-to-roster";
         let position = "";
@@ -183,16 +183,65 @@ module.exports = {
     queryPlayers: async (req, res)=> {
         console.log("queryplayers was hit in api controllers");
         // console.log(req.body);
-        let imgArray = [];
-        let {firstNameArr, lastNameArr} = req.body;
-        for(let i=0; i<firstNameArr.length; i++){
-            let query = await connection.query(`SELECT * FROM players WHERE firstName = ? AND lastName = ?`, [firstNameArr[i], lastNameArr[i]], (err, data)=> {
-                if (err) throw err;
-                imgArray.push(data[1].playerImg);
-                console.log(imgArray);
-            });
-        }
-        console.log(imgArray);
-        setTimeout(function() {res.status(200).send(imgArray)}, 1500);
+        const imgArray = await doLoopThing(req.body);
+        // let imgArray = [];
+        // let {firstNameArr, lastNameArr} = req.body;
+
+        // for(let i=0; i<firstNameArr.length; i++){
+        //     await connection.query(`SELECT playerImg FROM players WHERE firstName = ? AND lastName = ?`, [firstNameArr[i], lastNameArr[i]], (err, data)=> {
+        //         if (err) throw err;
+        //         imgArray.push(data);
+        //         console.log('inside loop :: ', imgArray);
+        //     });
+        // }
+
+        // for(let i=0; i<firstNameArr.length; i++){
+        //     let query = await makeQuery(firstNameArr[i], lastNameArr)
+        // }
+
+        
+        // try {
+        //     const promises = firstNameArr.map( (firstName, i) => makeQueries(firstName, lastNameArr[ i ]));
+        //     // console.log('PROMISES :: ', promises);
+        //     // const playerImages = await Promise.all( promises )
+            
+        //     Promise.all( promises )
+        //         .then( results => console.log(results))
+
+        //     // console.log('after loop :: ', playerImages);
+        //     res.status(200).send(imgArray)
+
+        // } catch ( error ) {
+        //     console.error( error )
+        // }
+        
+        console.log('Sending Response...')
+        res.status(200).send(imgArray)
+        // setTimeout(function() {res.status(200).send(imgArray)}, 1500);
     }
 };
+
+async function doLoopThing({firstNameArr, lastNameArr}) {
+    let imgArray = [];
+    // let {firstNameArr, lastNameArr} = req.body;
+
+    for(let i=0; i<firstNameArr.length; i++){
+        await connection.query(`SELECT playerImg FROM players WHERE firstName = ? AND lastName = ?`, [firstNameArr[i], lastNameArr[i]], (err, data)=> {
+            if (err) throw err;
+            imgArray.push(data);
+            console.log('inside loop :: ', imgArray);
+        });
+    }
+    console.log('after loop :: ', imgArray)
+    return imgArray;
+}
+
+
+function makeQuery(firstName, lastName) {
+    return connection.query(`SELECT * FROM players WHERE firstName = ? AND lastName = ?`, [firstName, lastName], (err, data)=> {
+        if (err) throw err;
+        // imgArray.push(data[0].playerImg);
+        console.log('inside loop :: ', data[0].playerImg);
+        return data[0].playerImg;
+    });
+}
