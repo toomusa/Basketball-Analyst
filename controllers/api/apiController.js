@@ -189,12 +189,11 @@ module.exports = {
         for(let i=0; i<firstNameArr.length; i++){
             let query = await connection.query(`SELECT * FROM players WHERE firstName = ? AND lastName = ?`, [firstNameArr[i], lastNameArr[i]], (err, data)=> {
                 if (err) throw err;
-                imgArray.push(data[1].playerImg);
+                imgArray.push(data[0].playerImg);
                 console.log(imgArray);
             });
         }
         console.log(imgArray);
-        res.status(200).send(imgArray)
         setTimeout(function() {res.status(200).send(imgArray)}, 1500);
     }
 }
