@@ -97,7 +97,7 @@ const playerChecker = async function() {
   });
 };
 
-// playerChecker();  //run on server start once
+playerChecker();  //run on server start once
 
 // const dayInMilliseconds = 1000 * 60 * 60 * 24;
 // setInterval(function(){playerChecker()},dayInMilliseconds ); //run every 24 hours 
