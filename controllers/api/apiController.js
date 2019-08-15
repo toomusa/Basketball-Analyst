@@ -183,57 +183,20 @@ module.exports = {
     queryPlayers: async (req, res)=> {
         console.log("queryplayers was hit in api controllers");
         // console.log(req.body);
-        const imgArray = await doLoopThing(req.body);
-        // let imgArray = [];
-        // let {firstNameArr, lastNameArr} = req.body;
 
-        // for(let i=0; i<firstNameArr.length; i++){
-        //     await connection.query(`SELECT playerImg FROM players WHERE firstName = ? AND lastName = ?`, [firstNameArr[i], lastNameArr[i]], (err, data)=> {
-        //         if (err) throw err;
-        //         imgArray.push(data);
-        //         console.log('inside loop :: ', imgArray);
-        //     });
-        // }
-
-        // for(let i=0; i<firstNameArr.length; i++){
-        //     let query = await makeQuery(firstNameArr[i], lastNameArr)
-        // }
-
-        
-        // try {
-        //     const promises = firstNameArr.map( (firstName, i) => makeQueries(firstName, lastNameArr[ i ]));
-        //     // console.log('PROMISES :: ', promises);
-        //     // const playerImages = await Promise.all( promises )
-            
-        //     Promise.all( promises )
-        //         .then( results => console.log(results))
-
-        //     // console.log('after loop :: ', playerImages);
-        //     res.status(200).send(imgArray)
-
-        // } catch ( error ) {
-        //     console.error( error )
-        // }
-        
-        console.log('Sending Response...')
+        let imgArray = [];
+        let {firstNameArr, lastNameArr} = req.body;
+        for(let i=0; i<firstNameArr.length; i++){
+            let query = await connection.query(`SELECT * FROM players WHERE firstName = ? AND lastName = ?`, [firstNameArr[i], lastNameArr[i]], (err, data)=> {
+                if (err) throw err;
+                imgArray.push(data[1].playerImg);
+                console.log(imgArray);
+            });
+        }
+        console.log(imgArray);
         res.status(200).send(imgArray)
-        // setTimeout(function() {res.status(200).send(imgArray)}, 1500);
+        setTimeout(function() {res.status(200).send(imgArray)}, 1500);
     }
-};
-
-async function doLoopThing({firstNameArr, lastNameArr}) {
-    let imgArray = [];
-    // let {firstNameArr, lastNameArr} = req.body;
-
-    for(let i=0; i<firstNameArr.length; i++){
-        await connection.query(`SELECT playerImg FROM players WHERE firstName = ? AND lastName = ?`, [firstNameArr[i], lastNameArr[i]], (err, data)=> {
-            if (err) throw err;
-            imgArray.push(data);
-            console.log('inside loop :: ', imgArray);
-        });
-    }
-    console.log('after loop :: ', imgArray)
-    return imgArray;
 }
 
 
