@@ -15,10 +15,9 @@ const routes = require("./routes/index.js");
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static('public'));
+
 // Set Handlebars as the default templating engine.
-app.engine("handlebars", exphbs({
-  defaultLayout: "main"
-}));
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
 // Routing

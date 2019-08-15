@@ -69,13 +69,13 @@ $(document).on("click", ".addToMyTeam", ()=>{
     lastNameArr.shift();
     dashArr.shift();
     // nameArr = dashArr.shift();
-    console.log(dashArr);
+    // console.log(dashArr);
     let nameArrays = {firstNameArr, lastNameArr}
     $.post("/api/addplayer", nameArrays, data => {
       // console.log("post request finished imgArray");
       imgArray = data;
       console.log(imgArray);
-      console.log(dashArr);
+      // console.log(dashArr);
 
       for(let i=0; i<dashArr.length; i++){
       let newDiv = $(`<div class="mx-2 col-sm-2">`);
@@ -238,7 +238,7 @@ $(document).on('click', '.searchSubmit', () => {
 
   playerStringMaker();
   teamStringMaker();
-  // console.log(playerString);
+  console.log(playerString);
   // console.log(teamString);
 
   let searchObj = {
