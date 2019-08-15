@@ -24,6 +24,6 @@ CREATE TABLE configs (
     PRIMARY KEY (id)
 );
 
-[{"name":"Last Updated On","field":"Last Updated On","layout":"fitData","resizableColumns":true,"movableColumns":true,
-"columnVertAlign":"middle","headerFilterPlaceholder":"Filter Column","movableRows":true,"resizableRows":true,"align":"center",
-"rowHandle...
+-- [{"name":"Last Updated On","field":"Last Updated On","layout":"fitData","resizableColumns":true,"movableColumns":true,
+-- "columnVertAlign":"middle","headerFilterPlaceholder":"Filter Column","movableRows":true,"resizableRows":true,"align":"center",
+-- "rowHandle...
