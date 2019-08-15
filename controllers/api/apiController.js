@@ -18,9 +18,9 @@ module.exports = {
         // console.log(req.body.date)
         // let {date} = req.body;
 
-        let {checkBox} = req.body;
+        let {checkBox, playerString} = req.body;
         let season = "2016-2017-regular";
-        let playerString = "kawhi-leonard,stephen-curry,kevin-durant,james-harden";
+        // let playerString = "kawhi-leonard,stephen-curry,kevin-durant,james-harden";
         let teamString = "";
         let roster = "assigned-to-roster";
         let position = "";
@@ -183,6 +183,7 @@ module.exports = {
     queryPlayers: async (req, res)=> {
         console.log("queryplayers was hit in api controllers");
         // console.log(req.body);
+
         let imgArray = [];
         let {firstNameArr, lastNameArr} = req.body;
         for(let i=0; i<firstNameArr.length; i++){
@@ -196,4 +197,14 @@ module.exports = {
         res.status(200).send(imgArray)
         setTimeout(function() {res.status(200).send(imgArray)}, 1500);
     }
-};
+}
+
+
+function makeQuery(firstName, lastName) {
+    return connection.query(`SELECT * FROM players WHERE firstName = ? AND lastName = ?`, [firstName, lastName], (err, data)=> {
+        if (err) throw err;
+        // imgArray.push(data[0].playerImg);
+        console.log('inside loop :: ', data[0].playerImg);
+        return data[0].playerImg;
+    });
+}
